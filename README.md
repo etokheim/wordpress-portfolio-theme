@@ -1,2 +1,2 @@
-# wordpress-portfolio-theme
-My personal portfolio theme
+# Wordpress Portfolio Theme
+Beta version of my personal portfolio theme.
