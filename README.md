@@ -1,2 +1,2 @@
 # Wordpress Portfolio Theme
-Beta version of my personal portfolio theme.
+Early beta version of my personal portfolio theme.
