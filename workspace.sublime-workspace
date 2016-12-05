@@ -1,0 +1,788 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"upda",
+				"updatePositionsStyling"
+			],
+			[
+				"req",
+				"requestAnimationFrame"
+			],
+			[
+				"getCat",
+				"getCatListHTML"
+			],
+			[
+				"get",
+				"getCurrentCat"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"score",
+				"score"
+			],
+			[
+				"a",
+				"applied"
+			],
+			[
+				"collisi",
+				"collisionY"
+			],
+			[
+				"colli",
+				"collisionY"
+			],
+			[
+				"index",
+				"enemyIndex"
+			],
+			[
+				"enemy",
+				"enemyIndex"
+			],
+			[
+				"ene",
+				"enemyIndex"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"pro",
+				"projects"
+			],
+			[
+				"formatted",
+				"formattedEmployerTitle"
+			],
+			[
+				"table",
+				"table-cell"
+			],
+			[
+				"conent",
+				"contentHolder"
+			],
+			[
+				"on",
+				"onLoadHook"
+			],
+			[
+				"object",
+				"object-fit"
+			],
+			[
+				"intro",
+				"intro_dimmer"
+			],
+			[
+				"new",
+				"newOpacity"
+			],
+			[
+				"anima",
+				"animateByScroll"
+			],
+			[
+				"class",
+				"classWithEndProperties"
+			],
+			[
+				"categories",
+				"categoriesRemoved"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"nextSli",
+				"nextSlideEasing"
+			],
+			[
+				"nex",
+				"nextSlide"
+			],
+			[
+				"slide",
+				"nextSlideTransitionSpeed"
+			],
+			[
+				"slideBak",
+				"slideBackgroundStartSize"
+			],
+			[
+				"nextSlide",
+				"nextSlideDelay"
+			],
+			[
+				"current",
+				"currentSlide"
+			],
+			[
+				"start",
+				"startIntroSlideshow"
+			],
+			[
+				"curren",
+				"currentSlide"
+			],
+			[
+				"have",
+				"haveNotifiedOfBeta"
+			],
+			[
+				"toggle",
+				"toggleBeta"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"window",
+				"windowSize"
+			],
+			[
+				"user",
+				"userIsScrolling"
+			],
+			[
+				"gF",
+				"gForceX"
+			],
+			[
+				"ph",
+				"phpversion"
+			],
+			[
+				"dra",
+				"drawPlayer1"
+			],
+			[
+				"border-",
+				"border-bottom"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"margi",
+				"margin-top"
+			],
+			[
+				"menu_1",
+				"menu_1_height"
+			],
+			[
+				"ballghost",
+				"ballGhost1Radius"
+			],
+			[
+				"paddleHeight",
+				"paddleHeight2"
+			],
+			[
+				"create",
+				"createParticlesY"
+			],
+			[
+				"paddleHei",
+				"paddleHeight"
+			],
+			[
+				"sfxHit",
+				"sfxHitWall"
+			],
+			[
+				"sfx",
+				"sfxHitArray"
+			],
+			[
+				"random",
+				"randomSound"
+			],
+			[
+				"paddleWidth",
+				"paddleWidth2"
+			],
+			[
+				"paddleX",
+				"paddleX2"
+			],
+			[
+				"particles",
+				"particles"
+			],
+			[
+				"paddleplayer",
+				"paddlePlayer2Color"
+			],
+			[
+				"ballbeing",
+				"ballBeingHitY"
+			],
+			[
+				"particl",
+				"particlePos"
+			],
+			[
+				"ballGhost2",
+				"ballGhost2Radius"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 227.0,
+		"last_filter": "install ",
+		"selected_items":
+		[
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"material",
+				"Material Theme: Advanced configuration"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"packa remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"packa install",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Install Package Control"
+			]
+		],
+		"width": 549.0
+	},
+	"console":
+	{
+		"height": 176.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/wamp/www/erling/wp-content/themes/t_fisk"
+	],
+	"file_history":
+	[
+		"/C/Users/erlin/Desktop/Udacity/01 Front-end course/08 Website Optimization/07 Web portfolio - performance optimization/frontend-nanodegree-mobile-portfolio/dist/css/style.css",
+		"/C/Users/erlin/Desktop/Udacity/01 Front-end course/08 Website Optimization/07 Web portfolio - performance optimization/frontend-nanodegree-mobile-portfolio/dist/js/perfmatters.js",
+		"/C/Users/erlin/Desktop/Udacity/01 Front-end course/08 Website Optimization/07 Web portfolio - performance optimization/frontend-nanodegree-mobile-portfolio/dist/project-webperf.html",
+		"/C/Users/erlin/Desktop/Udacity/01 Front-end course/08 Website Optimization/07 Web portfolio - performance optimization/frontend-nanodegree-mobile-portfolio/dist/project-mobile.html",
+		"/C/Users/erlin/Desktop/Udacity/01 Front-end course/08 Website Optimization/07 Web portfolio - performance optimization/frontend-nanodegree-mobile-portfolio/dist/project-2048.html",
+		"/C/Users/erlin/Desktop/Udacity/01 Front-end course/08 Website Optimization/07 Web portfolio - performance optimization/frontend-nanodegree-mobile-portfolio/src/index.html",
+		"/C/Users/erlin/Desktop/Udacity/01 Front-end course/08 Website Optimization/07 Web portfolio - performance optimization/frontend-nanodegree-mobile-portfolio/dist/views/js/main.js",
+		"/C/Users/erlin/Desktop/Udacity/01 Front-end course/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/08 Website Optimization/06 Hacker news - Performance optimization/news-aggregator/styles/app.css",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/08 Website Optimization/06 Hacker news - Performance optimization/news-aggregator/scripts/app.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/08 Website Optimization/06 Hacker news - Performance optimization/news-aggregator/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/09 Javascript basics - Online Resume/master/js/helper.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/09 Javascript basics - Online Resume/master/js/resumeBuilder.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/09 Javascript basics - Online Resume/master/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/21 Google Maps API/ud864/05_Interpreting Geocoding Responses.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/21 Google Maps API/ud864/04_Hello_Map_Quiz.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/21 Google Maps API/ud864/Project_Code_4_WindowShoppingPart2.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/21 Google Maps API/ud864/Project_Code_6_StaticMapsAndStreetViewImagery.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/.git/modules/19 Refactor spaghetti code/ud989-school-attendance/COMMIT_EDITMSG",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/.git/modules/20 Todo-app/ud989-todo-app/COMMIT_EDITMSG",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/16 Cat clicker/style.css",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/16 Cat clicker/js/javascript.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/16 Cat clicker/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/16 Cat clicker/Andys-cat-clicker/ud989-cat-clicker-andy/app.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/18 Retain/ud989-retain/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/18 Retain/ud989-retain/js/retain.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/13 Classic Arcade Game - Ladybug/frontend-nanodegree-arcade-game/index.sublime-workspace",
+		"/C/wamp/www/gitTesting/frontend-nanodegree-arcade-game/js/app.js",
+		"/C/wamp/www/-Prosjekt-/0011 Udacity/14 Optimize Cameron's portfolio page/frontend-nanodegree-mobile-portfolio/js/analytics.js",
+		"/C/wamp/www/-Prosjekt-/0011 Udacity/14 Optimize Cameron's portfolio page/frontend-nanodegree-mobile-portfolio/index.html",
+		"/C/Users/E/OneDrive/+ Shared - Erling, Torstein og Jens Kristian +/Prosjekt/0004 Paddle Collision testing/javascript.js",
+		"/C/wamp/www/-Prosjekt-/0011 Udacity/13 Classic Arcade Game - Ladybug/frontend-nanodegree-arcade-game/js/app.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/11 Meme maker/master/MemeMaker.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/12 working with image data/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/13 Classic Arcade Game - Ladybug/frontend-nanodegree-arcade-game/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/13 Classic Arcade Game - Ladybug/frontend-nanodegree-arcade-game/js/app.js",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/header.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/footer.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/front-page.php",
+		"/C/Users/erlin/OneDrive/Skrivebord/BootstrapTest/css/bootstrap.css",
+		"/C/Users/erlin/OneDrive/Skrivebord/BootstrapTest/index.html",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/page-test-template.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/js/javascript-front-page.js",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/single.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/index.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/template-parts/content.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/functions.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/js/javascript.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/02 Starting small/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/05 Javascript basics - Online Resume/frontend-nanodegree-resume/index.html",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/css/style_small.css",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/05 Javascript basics - Online Resume/frontend-nanodegree-resume/js/helper.js",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/style.css",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/05 Javascript basics - Online Resume/frontend-nanodegree-resume/js/resumeBuilder.js",
+		"/C/Users/erlin/Desktop/Udacity/delete/.git/logs/refs/heads/master",
+		"/C/Users/erlin/Desktop/Udacity/delete/.git/logs/HEAD",
+		"/C/Users/erlin/Downloads/git/logs/refs/remotes/origin/HEAD",
+		"/C/Users/erlin/Downloads/git/logs/refs/heads/master",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/05 Javascript basics - Online Resume/frontend-nanodegree-resume/js/jQuery.js",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/05 Javascript basics - Online Resume/frontend-nanodegree-resume/README.md",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/02 Starting small/mainpage.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/01 Front-end course/02 Starting small/main.css",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/test.html",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/test.txt",
+		"/C/Users/erlin/Desktop/Udacity/Udacity/index.html",
+		"/C/Users/erlin/Desktop/Udacity/index.html",
+		"/C/Users/erlin/Desktop/Udacity/Test/index.html",
+		"/C/Users/erlin/Desktop/Udacity/README.md",
+		"/C/Users/erlin/Desktop/Udacity/reflections.txt",
+		"/C/wamp/www/- Prosjekt -/0011 Udacity Front-end web developement/01 Mock up to website 1/index.html",
+		"/C/wamp/www/- Prosjekt -/0011 Udacity Front-end web developement/01 Mock up to website 1/reflections.txt",
+		"/C/Users/erlin/Downloads/bash_profile_course",
+		"/C/Users/erlin/.bash_profile",
+		"/C/Users/erlin/test.html",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/test-template.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/home.php",
+		"/C/Users/erlin/AppData/Local/Temp/Temp1_bootstrap.zip/css/bootstrap-theme.css",
+		"/C/Users/erlin/OneDrive/Skrivebord/index.php",
+		"/C/Users/erlin/ownCloud/Dokument/CV-sida/CV og søknad/02 Søknad/Hei og takk for omvisinga me fekk då eg var på bes.txt",
+		"/C/Users/erlin/ownCloud/Dokument/CV-sida/Nettsida/- Til opplasting -/front-page.php",
+		"/C/Users/erlin/ownCloud/Dokument/CV-sida/CV og søknad/02 Søknad/Søknad.dat",
+		"/C/Users/erlin/ownCloud/Dokument/CV-sida/CV og søknad/02 Søknad/Søknad, hjelp.dat",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/inc/custom-header.php",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/style_small.css",
+		"/C/wamp/www/erling/wp-content/themes/t_fisk/style_medium.css",
+		"/C/wamp/www/erling/wp-config.php",
+		"/C/wamp/www/- Prosjekt -/0008 Nyborg Pedagogikk/wp-content/themes/nyborgpedagogikk - 19sept/home.php",
+		"/C/wamp/www/erling/wp-content/themes/twentyfifteen/header.php",
+		"/C/wamp/www/- Prosjekt -/0008 Nyborg Pedagogikk/wp-content/plugins/np_simple_title_and_text_plugin/np_frontpage_post_from_tag.php",
+		"/C/wamp/www/- Prosjekt -/0008 Nyborg Pedagogikk/wp-content/themes/nyborg-pedagogikk/functions.php",
+		"/C/wamp/www/- Prosjekt -/0008 Nyborg Pedagogikk/wp-content/themes/nyborg-pedagogikk/homecolumns.php",
+		"/C/wamp/www/- Prosjekt -/0008 Nyborg Pedagogikk/wp-content/themes/nyborg-pedagogikk/home.php",
+		"/C/wamp/www/- Prosjekt -/0008 Nyborg Pedagogikk/wp-content/plugins/siteorigin-panels/siteorigin-panels.php",
+		"/C/wamp/www/- Prosjekt -/0008 Nyborg Pedagogikk/wp-content/themes/nyborg-pedagogikk/style.css",
+		"/C/Users/erlin/OneDrive/+ Shared - Erling, Torstein og Jens Kristian +/- Prosjekt -/0008 T - 2D orbit/Test version/javascript.js",
+		"/C/Users/erlin/OneDrive/+ Shared - Erling, Torstein og Jens Kristian +/- Prosjekt -/0010 JT - WIP/Test versions/Particle collision test/WIP.js",
+		"/C/Users/erlin/AppData/Local/Temp/Temp1_9697578-0c518c08c010728ea05e7819e091853ecc6317a0.zip/9697578-0c518c08c010728ea05e7819e091853ecc6317a0/openvpn.md",
+		"/C/Users/erlin/OneDrive/- Shared - Erling, Torstein og Jens Kristian/- Prosjekt -/0007 E - Warrior/testGame.js",
+		"/C/Users/erlin/OneDrive/- Shared - Erling, Torstein og Jens Kristian/- Prosjekt -/0007 E - Warrior/testGame.html",
+		"/C/Users/erlin/OneDrive/- Shared - Erling, Torstein og Jens Kristian/- Prosjekt -/0004 Paddle Collision testing/index.html",
+		"/C/Users/erlin/OneDrive/- Shared - Erling, Torstein og Jens Kristian/- Prosjekt -/0004 Paddle Collision testing/javascript.js",
+		"/C/wamp/www/- Prosjekt -/0008 Nyborg Pedagogikk/wp-content/themes/nyborg-pedagogikk/rednote.php",
+		"/C/Users/erlin/AppData/Local/Temp/nyborgpedagogikk.wordpress.2015-12-06.xml",
+		"/C/wamp/www/- Fun -/Paddle/javascript.js",
+		"/C/Users/erlin/OneDrive/- Shared - Erling, Torstein og Jens Kristian/- Prosjekt -/00 Ressursar/01 Canvas grunnlag/index.html",
+		"/C/Users/erlin/OneDrive/- Shared - Erling, Torstein og Jens Kristian/- Prosjekt -/00 Ressursar/01 Canvas grunnlag/javascript.js",
+		"/C/Users/erlin/OneDrive/Dokument2/Ubiquiti Cacti 2/cacti_host_template_ubiquiti_airos_5_6_ap.xml",
+		"/C/Users/erlin/OneDrive/Dokument2/Ubiquiti Cacti 2/AirOS5.6-AP.xml",
+		"/C/Users/erlin/OneDrive/Skrivebord/test.html",
+		"//FISKEOPPDRETT/Videos/title03.mkv",
+		"//FISKEOPPDRETT/Videos/Valiant (2005).m4v",
+		"/C/wamp/www/- Fun -/Paddle/index.html",
+		"/C/wamp/www/wordpress/wp-content/themes/nyborgpedagogikk/style.css",
+		"/C/wamp/www/- Fun -/Paddle/style.css",
+		"/C/Users/erlin/OneDrive/- Shared - Erling, Torstein og Jens Kristian/javascript.js",
+		"/C/Users/erlin/OneDrive/- Shared - Erling, Torstein og Jens Kristian/index.html",
+		"/C/wamp/bin/apache/apache2.4.9/conf/httpd.conf"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 117.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"reques",
+			"updatePositions",
+			"  ",
+			"js",
+			"loadStoryBatch",
+			"loadStoryBatch();",
+			"loadStoryBat",
+			"setTimeout(animate, 4);",
+			"color",
+			"setTimeout",
+			"color",
+			"colorizeAndScaleStories",
+			"setTimeout(animate, 4)",
+			"animate",
+			"onStoryClick",
+			"will",
+			"onStoryClick",
+			"result",
+			"qrWorker",
+			"qrworker",
+			"qrWorker",
+			"\t",
+			"  ",
+			"QRCodeManager",
+			"setInterval",
+			"zoom",
+			"drawingManager",
+			"listener",
+			"getStreetView",
+			"todo",
+			"Address",
+			"address",
+			"\t ",
+			" ",
+			"key",
+			"api",
+			"key=",
+			"key",
+			"api",
+			"getCurrentCat",
+			"getCurrentCat()",
+			"append",
+			"new ",
+			"Index",
+			"index",
+			"this.listHTML",
+			"getCatListhtml",
+			"HTML",
+			"html",
+			"HTML",
+			"setCurrent",
+			"this",
+			"getCurrentCat",
+			"CurrentCat",
+			"currentCat",
+			"timesClicked",
+			"\\",
+			"cat",
+			"male",
+			"girls",
+			"boys",
+			"catNames",
+			"currrentCat",
+			"model",
+			"}\n}",
+			"ermalink - use to edit and share this gradient:",
+			" Permalink - use to edit and share this gradient: h",
+			"\t\tbackground: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(238,238,238,0.99) 1%, rgba(255,255,255,0) 100%); /* FF3.6-15 */\n",
+			"http://colorzilla.com/gradient-editor/#eeeeee+1,ffffff+100&1+0,0+100",
+			"listed_cat_i",
+			"\tbox-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);\n",
+			".cat",
+			"main_con",
+			"main_container",
+			"cat_container_featured",
+			"getAllNotes",
+			"localStorage",
+			"display",
+			"\n",
+			"20px",
+			"3",
+			"1",
+			"TITLE_FONT",
+			"fillText",
+			"gameBoard.prototype.update",
+			"gameBoard.prototype.re",
+			"TILE_HEIGHT",
+			"player.score",
+			"final score",
+			"render",
+			"displayFinalScore",
+			"timer = ",
+			"displayFinalScore",
+			"player",
+			"startTimer",
+			"time = ",
+			"input",
+			"player",
+			"xSp",
+			"100",
+			"83",
+			"render",
+			"Array",
+			"array",
+			"Array",
+			"array",
+			"[i]",
+			"w",
+			"allEnemies[i].y",
+			"clear",
+			"render",
+			"renderEn",
+			"this",
+			"player",
+			"player.y",
+			"update",
+			"10",
+			"this",
+			"10",
+			"storedDt",
+			"update",
+			"requestAnim",
+			"dt",
+			"width",
+			"sprite",
+			"Enemy.prototype.update",
+			"delete",
+			"canvas"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"heightOf"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "C:\\wamp\\www\\erling\\wp-content\\themes\\t_fisk"
+		}
+	],
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"css",
+				"css\\style.css"
+			],
+			[
+				"js",
+				"views\\js\\main.js"
+			],
+			[
+				"perf",
+				"js\\perfmatters.js"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"worker",
+				"app\\scripts\\jsqrcode\\qrworker.js"
+			],
+			[
+				"qrwo",
+				"app\\scripts\\jsqrcode\\qrworker.js"
+			],
+			[
+				"7",
+				"Project_Code_7_Drawing.html"
+			],
+			[
+				"style",
+				"style.css"
+			],
+			[
+				"in",
+				"index.html"
+			],
+			[
+				"anal",
+				"js\\analytics.js"
+			],
+			[
+				"engi",
+				"js\\engine.js"
+			],
+			[
+				"app",
+				"js\\app.js"
+			],
+			[
+				"engin",
+				"js\\engine.js"
+			],
+			[
+				"en",
+				"js\\engine.js"
+			],
+			[
+				"eng",
+				"js\\engine.js"
+			],
+			[
+				"jsen",
+				"js\\engine.js"
+			],
+			[
+				"main",
+				"C:\\Users\\erlin\\Desktop\\Udacity\\Udacity\\01 Front-end course\\02 Starting small\\mainpage.html"
+			],
+			[
+				"index",
+				"C:\\Users\\erlin\\Desktop\\Udacity\\Udacity\\01 Front-end course\\02 Starting small\\index.html"
+			],
+			[
+				"java",
+				"C:\\wamp\\www\\erling\\wp-content\\themes\\t_fisk\\js\\javascript.js"
+			],
+			[
+				"content",
+				"C:\\wamp\\www\\erling\\wp-content\\themes\\t_fisk\\template-parts\\content.php"
+			],
+			[
+				"header",
+				"C:\\wamp\\www\\erling\\wp-content\\themes\\t_fisk\\header.php"
+			],
+			[
+				"javasc",
+				"C:\\wamp\\www\\erling\\wp-content\\themes\\t_fisk\\js\\javascript.js"
+			],
+			[
+				"head",
+				"C:\\wamp\\www\\erling\\wp-content\\themes\\t_fisk\\header.php"
+			],
+			[
+				"ja",
+				"C:\\wamp\\www\\- Prosjekt -\\0008 Nyborg Pedagogikk\\wp-content\\themes\\nyborgpedagogikk - 19sept\\home.php"
+			],
+			[
+				"styl",
+				"C:\\wamp\\www\\- Prosjekt -\\0008 Nyborg Pedagogikk\\wp-content\\themes\\nyborg-pedagogikk\\style.css"
+			],
+			[
+				"hom",
+				"C:\\wamp\\www\\- Prosjekt -\\0008 Nyborg Pedagogikk\\wp-content\\themes\\nyborg-pedagogikk\\home.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 312.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
