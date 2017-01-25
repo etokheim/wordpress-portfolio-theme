@@ -23,7 +23,7 @@
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css" />
-	
+
 	<link rel="stylesheet" media='screen and (min-width: 701px) and (max-width: 900px)' type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style_medium.css" />
 	<link rel="stylesheet" media='screen and (max-width: 700px)' type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style_small.css" />
 
@@ -84,7 +84,7 @@
 		<h3>Meny:</h3>
 		<br/>
 		<nav id="navMenu" class="navMenu">
-			<?php 
+			<?php
 				$args = array(
 					"theme_location" => "primarymenu",
 				);
@@ -106,7 +106,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="header_section_width" style="z-index: 1;">
+		<div class="header_section_width">
 			<a href="<?php echo home_url(); ?>"><div id="header_logo_container"><?php //bloginfo("name"); ?><img height="13" width="150" itemprop="logo" alt="cropped-logo-3.png" class="custom-logo" src="<?php echo get_template_directory_uri() . "/img/logo-white.svg"; ?>"></div></a>
 
 			<div id="header_social_container">
@@ -130,7 +130,7 @@
 	<div id="right_box_margin" class="frame_container">
 		<div class="frame_lefrig_hidden align_pos_right frame">
 			<div id="toc_container">
-				
+
 			</div>
 		</div>
 	</div>

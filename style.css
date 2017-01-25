@@ -1801,6 +1801,7 @@ em {
 	margin: 0 auto;
 	position: relative;
 	padding: 15px 10px 15px 10px;
+	z-index: 5;
 	/*border-right: 1px solid grey;
 	border-left: 1px solid grey;*/
 }
@@ -1847,6 +1848,8 @@ em {
 
 .frame_topbot_hidden {
 	width: 100%;
+	overflow: hidden;
+
 	height: 0%;
 }
 
