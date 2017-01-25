@@ -106,10 +106,10 @@ function test() {
 }
 
 
-function determineWindowSize() {	
+function determineWindowSize() {
 	if(window.innerWidth <= 700) {
 		windowSize = "small";
-	
+
 		// // Funksjon frå front-page!!!! !! !!!!
 		// setTimeout(function() {
 		// 	notifyBeta();
@@ -142,7 +142,7 @@ var frame = {
 	toggle: function() {
 		$(".frame_topbot_hidden").toggleClass("header_fill_visible");
 		$(".frame_lefrig_hidden").toggleClass("header_fill_visible");
-		
+
 		// Turn off the gradient (to see logo and icons better on light backgrounds)
 		$(".header_gradient").toggleClass("header_gradient_off");
 
@@ -199,21 +199,21 @@ window.onbeforeunload = function() {
 }
 
 function nextPageTransition() {
-	$(".next_page_transition").toggleClass("next_page_transition_toggled");
-	$(".site").css({"transition": "all 500ms linear", "margin-top": "-50px"});
-	$("#intro").css({"transition": "all 500ms linear", "margin-top": "-50px"});
+	// $(".next_page_transition").toggleClass("next_page_transition_toggled");
+	// $(".site").css({"transition": "all 500ms linear", "margin-top": "-50px"});
+	// $("#intro").css({"transition": "all 500ms linear", "margin-top": "-50px"});
 }
 
 function thisPageTransition() {
-	$(".this_page_transition").toggleClass("this_page_transition_toggled");
-	console.log("test " + document.getElementsByClassName("site")[0].style.marginTop);
-	$(".site").css({"transition": "all 500ms ease-out", "margin-top": "0px"});
-	$("#intro").css({"transition": "all 500ms ease-out", "margin-top": "0px"});
+	// $(".this_page_transition").toggleClass("this_page_transition_toggled");
+	// console.log("test " + document.getElementsByClassName("site")[0].style.marginTop);
+	// $(".site").css({"transition": "all 500ms ease-out", "margin-top": "0px"});
+	// $("#intro").css({"transition": "all 500ms ease-out", "margin-top": "0px"});
 
-	setTimeout(function() {
-		$("#iite").css({"transition": "initial"});
-		$("#intro").css({"transition": "initial"});
-	}, 500);
+	// setTimeout(function() {
+	// 	$("#iite").css({"transition": "initial"});
+	// 	$("#intro").css({"transition": "initial"});
+	// }, 500);
 }
 setup.onLoadHook.push(thisPageTransition);
 

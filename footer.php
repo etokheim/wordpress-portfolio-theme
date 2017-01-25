@@ -11,11 +11,10 @@
 
 ?>
 
-	</div><!-- #content -->
 
 	<?php // if(!is_front_page()) { ?>
-	<div id="footer_margin_top"></div>
-	<footer id="colophon" class="site_footer" role="contentinfo">
+	<!-- <div class="whitespace_separator"></div> -->
+	<footer class="site_footer" role="contentinfo">
 		<div class="content_section">
 			<div class="site-info">
 				<span style="">- Erling Tokheim -</span>

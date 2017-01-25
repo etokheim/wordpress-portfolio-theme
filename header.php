@@ -75,9 +75,9 @@
 	};
 ?>
 </script>
-<div class="this_page_transition"></div>
-<div class="next_page_transition"></div>
-<div id="page" class="site">
+<!-- <div class="this_page_transition"></div> -->
+<!-- <div class="next_page_transition"></div> -->
+<div id="page">
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 't_fisk' ); ?></a>
 
 	<div id="menu_container" class="menu_container">
