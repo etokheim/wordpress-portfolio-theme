@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 Template Name: Forsidelayout
 */
@@ -41,9 +41,9 @@ get_header();
 							$attachment_id = $dynamic_featured_image->get_featured_images()[$i]["attachment_id"];
 
 							?>
-							
-							<div class='intro_slideshow' style='background-image: url("<?php //echo $dynamicFeaturedImages; ?>");'><?php echo wp_get_attachment_image( $attachment_id, 'full', false, 'style=object-fit: cover; width: 100%;' ); ?></div>
-							
+
+							<div class='intro_slideshow' style='background-image: url("<?php //echo $dynamicFeaturedImages; ?>");'><?php echo wp_get_attachment_image( $attachment_id, 'full', false ); ?></div>
+
 							<?php
 						}
 					// }
@@ -78,7 +78,7 @@ if(hours >= 6 && hours <= 8) {
 	introduksjons_helsing = "God kveld";
 }
 document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsing + " og velkommen til mi";
-	
+
 </script>
 	<div class="whitespace_separator"></div>
 	<div id="feature_container" class="feature_container">
@@ -89,7 +89,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 						<!-- Animated frame border for the featured section -->
 						<!-- <svg xmlns="http://www.w3.org/2000/svg" class="artboard">
 							<style type="text/css">
-							
+
 								.st0 {
 									fill: none;
 									stroke: rgb(230,230,230);
@@ -101,7 +101,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 								.st0 {
 									animation: animation-name 2s ease;
 								}
-								 
+
 								@keyframes animation-name {
 									from {
 										stroke-dasharray: 0% 386%;
@@ -120,7 +120,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 						</svg> -->
 					</div>
 				</div>
-				<?php 
+				<?php
 					$args = array(
 						'posts_per_page'   => 3,
 						'offset'           => 0,
@@ -158,7 +158,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 
 		</div>
 		<div class="display_feature_content_container">
-			<?php 
+			<?php
 				$args = array(
 					'posts_per_page'   => 3,
 					'offset'           => 0,
@@ -226,9 +226,9 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 					'suppress_filters'	=> true,
 					'terms'				=> ''
 				);
-				
+
 				$otherProjectsPosts = array();
-				
+
 				$getOthers = new WP_Query($args);
 				$postLoopIndex = 0;
 				if($getOthers -> have_posts()) :
@@ -251,7 +251,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 						$categories = get_the_category( $id = false );
 						// echo "<strong>Length before = " . count($categories) . "</strong>";
 
-						
+
 
 						// echo "<strong>Category: " . get_the_category( $id = false )[0]->name . "</strong>";
 						// var_dump(get_the_category( $id = false ));
@@ -259,7 +259,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 
 				endif;
 				wp_reset_postdata();
-				
+
 				$categoriesToRemove = array("Featured");
 				$categoriesRemoved = 0;
 				foreach ( $otherProjectsPosts as $index => $single_cat ) {
@@ -311,9 +311,9 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 				$otherProjectsCustomSortingNew = [$otherProjectsCustomSorting[0]];
 
 				for ($i=1; $i < count($otherProjectsCustomSorting); $i++) {
-					
+
 					$postsInNextRow = $otherProjectsCustomSorting[$i][0] + $otherProjectsCustomSorting[$i][1] + $otherProjectsCustomSorting[$i][2] + $otherProjectsCustomSorting[$i][3] + $otherProjectsCustomSorting[$i][4];
-					
+
 					if($otherProjectsRemainingPosts > 0) {
 						if($otherProjectsRemainingPosts < 15) {
 							// echo "<br>Less than 15 posts left (" . ($otherProjectsRemainingPosts) . ")";
@@ -321,7 +321,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 							if($otherProjectsRemainingPosts < 8) {
 								// echo "<br>Less than 8 posts! (" . $otherProjectsRemainingPosts . ")";
 								// echo "<br><br>Previous post setup = ";
-								for ($j=0; $j < count($otherProjectsCustomSortingNew[$i - 1]); $j++) { 
+								for ($j=0; $j < count($otherProjectsCustomSortingNew[$i - 1]); $j++) {
 									// echo $otherProjectsCustomSortingNew[$i - 1][$j] . " ";
 								}
 
@@ -349,7 +349,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 									$addToArray = [0.5, 0.5, 1, 0.5, 0.5];
 									array_push($otherProjectsCustomSortingNew, $addToArray);
 									$otherProjectsRemainingPosts -= 3;
-									
+
 								} else if ($otherProjectsRemainingPosts == 2) {
 									$addToArray = [0.5, 0.5, 1, 0, 0];
 									array_push($otherProjectsCustomSortingNew, $addToArray);
@@ -388,7 +388,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 								$addToArray = [1, 0.5, 0.5, 2, 1];
 								array_push($otherProjectsCustomSortingNew, $addToArray);
 								$otherProjectsRemainingPosts -= 5;
-								
+
 							} else if ($otherProjectsRemainingPosts == 13) {
 								$addToArray = [1, 0.5, 0.5, 2, 2];
 								array_push($otherProjectsCustomSortingNew, $addToArray);
@@ -401,7 +401,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 
 							}
 						} else {
-							// Else (it is more then 15 posts left to render) use the custom array.							
+							// Else (it is more then 15 posts left to render) use the custom array.
 							// echo "<br>Posts in next row = " . $postsInNextRow;
 							$otherProjectsRemainingPosts -= $postsInNextRow;
 							array_push($otherProjectsCustomSortingNew, $otherProjectsCustomSorting[$i]);
@@ -410,10 +410,10 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 				}
 
 
-				// 
+				//
 				// echo "<br><br>The array format:<br>";
 				// for ($i=0; $i < count($otherProjectsCustomSortingNew); $i++) {
-				// 	for ($j=0; $j < count($otherProjectsCustomSortingNew[$i]); $j++) { 
+				// 	for ($j=0; $j < count($otherProjectsCustomSortingNew[$i]); $j++) {
 				// 		if($otherProjectsCustomSortingNew[$i][$j] == 0.5) {
 				// 			echo "½ ";
 				// 		} else {
@@ -427,7 +427,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 
 				$otherProjectsRowNumber = 0;
 				$otherProjectsColumnNumber = 0;
-				
+
 				$multiplier = 5;
 				if(count($otherProjectsPosts) < 10) {
 					$multiplier = count($otherProjectsPosts);
@@ -442,13 +442,13 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 					for ($i=0; $i < $multiplier; $i++) { // Rows * columns
 						// echo "RUNNING ($i)";
 						// if($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] !== 0) {
-							
+
 							// For every fifth loop, change row (5 columns per row).
 							if($i%5 === 0 && $i !== 0) {
 								$otherProjectsRowNumber++;
 								// echo "<br>";
 							}
-						
+
 							$foasd = count($otherProjectsPosts);
 
 							// echo "<script>console.log('Loop $multiplier times, Post $otherProjectsIndex/$foasd, Row ($i%5): $otherProjectsRowNumber, column: $otherProjectsColumnNumber');</script>";
@@ -457,7 +457,7 @@ document.getElementById("introduksjons_helsing").innerHTML = introduksjons_helsi
 								$otherProjectsPosts[$otherProjectsIndex] = [];
 							}
 							if(!$otherProjectsSkipNext) {
-								
+
 								if ($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] == 2) {
 									$doublePost = [$otherProjectsPosts[$otherProjectsIndex], $otherProjectsPosts[$otherProjectsIndex + 1]];
 									otherProjectsRender($doublePost, $otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber], $otherProjectsRowNumber, $otherProjectsColumnNumber);
