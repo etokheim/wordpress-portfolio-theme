@@ -89,11 +89,13 @@ $(document).on('ready', function() {
 			},
 
 			difference: 0,
+			visiting: false,
 			current: 0,
 			zeroValue: 0,
 			computerScrolling: false,
 			slideCount: 3,
 			slides: [],
+			targetOffsetTop: 0,
 
 			goTo: function(index) {
 				// If the computer isn't already scrolling; scroll.
@@ -102,11 +104,11 @@ $(document).on('ready', function() {
 					feature.slide.computerScrolling = true;
 					console.log("Start scrolling, computerScrolling = " + feature.slide.computerScrolling);
 					feature.slide.current = index;
-					var targetOffsetTop = $('.feature_instance').eq(index).offset().top - feature.padding.top[index];
+					feature.slide.targetOffsetTop = $('.feature_instance').eq(index).offset().top - feature.padding.top[index];
 					console.log($('.feature_instance').eq(index).offset().top + " - " + feature.padding.top[index] + " targetOffsetTop " + feature.slide.targetOffsetTop);
 
 					$('html, body').animate({
-						scrollTop: targetOffsetTop
+						scrollTop: feature.slide.targetOffsetTop
 					}, feature.slide.settings.speed, feature.slide.settings.easing, function() {
 						// function to be triggered after the scroll is finished
 						setTimeout(function() {
@@ -157,12 +159,17 @@ $(document).on('ready', function() {
 		feature.padding.top = [];
 		for (var i = 0; i < feature.slide.slideCount; i++) {
 			feature.slide.slides.push($('.feature_instance h1').eq(i));
-			feature.padding.top.push(Math.abs(featureContainer.offset().top + feature.height * i - feature.slide.slides[i].offset().top));
+
+			// problem with the line height which causes the padding.top to
+			// be too small, added 1rem*2 as a quick fix.
+			feature.padding.top.push(Math.abs(featureContainer.offset().top + feature.height * i - feature.slide.slides[i].offset().top - setup.rem*2));
 		}
 
 		// If scrolled to feature and not passed; fix the background
 		if (scroll.y > feature.trueOffset.top &&
 			scroll.y < feature.offset.top + feature.totalHeight + feature.margin.top*2) {
+
+			feature.visiting = true;
 
 			featureBackground.addClass('feature_background_container_fixed');
 			featureBackground.css({ 'margin-top': 0 });
@@ -183,14 +190,31 @@ $(document).on('ready', function() {
 		// Else if scrolled past; remove fixed class and set margin-top
 		} else if(scroll.y > feature.offset.top + feature.totalHeight + feature.margin.top*2) {
 			console.log("Passed");
+			feature.visiting = false;
+
 			featureBackground.removeClass('feature_background_container_fixed');
 			featureBackground.css({ 'margin-top': feature.totalHeight + feature.height });
 		} else {
 			console.log("Before");
+			feature.visiting = false;
+
 			featureBackground.removeClass('feature_background_container_fixed');
 			featureBackground.css({ 'margin-top': 0 });
 		}
 	});
+
+	setInterval(function() {
+		if (feature.visiting &&
+			!feature.slide.computerScrolling &&
+			// If targetOffsetTop === scroll.y +/- 2px
+			// This is needed because the scroll function isn't precise enough.
+			// They often had a difference of < 1
+			Math.abs(feature.slide.targetOffsetTop - scroll.y) >= 2 &&
+			scroll.staticDuration > 250) {
+
+			feature.slide.goTo(feature.slide.current);
+		}
+	}, 100);
 });
 
 

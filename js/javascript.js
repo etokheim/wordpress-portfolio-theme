@@ -23,6 +23,15 @@ var setup = {
 	// 2 = Debug
 	debugLvl: 2,
 
+	// Size of one rem
+	rem: 16,
+
+	determineRemSize: function() {
+		// If there is a p, then get font-size from that element, else set
+		// 1 rem to 16.
+		setup.rem = $('p').css('font-size') !== undefined ? Number($('p').css('font-size').replace('px', '')) : 16;
+	},
+
 	log: function(message, messageLvl) {
 		if(setup.debugging && setup.debugLvl >= messageLvl) {
 			console.log(message);
@@ -32,26 +41,43 @@ var setup = {
 
 	onScrollHook: [],
 	onLoadHook: [],
+	onResizeHook: [],
 
-	onScrollFunction: function() {$(window).scroll(function() {
-		// Runs the scroll hooked functions.
-		for (var i = 0; i < setup.onScrollHook.length; i++) {
-			scroll.y = $(window).scrollTop(); // Has to be set before determineScrollDirection() runs!
-			setup.onScrollHook[i]();
-		}
-	})},
+	onScrollFunction: function() {
+		$(window).scroll(function() {
+			// Runs the scroll hooked functions.
+			for (var i = 0; i < setup.onScrollHook.length; i++) {
+				scroll.y = $(window).scrollTop(); // Has to be set before determineScrollDirection() runs!
+				setup.onScrollHook[i]();
+			}
+		})
+	},
 
 	onLoadFunction: function() {
 		$(window).load(function() {
+			setup.determineRemSize();
+
 			// Runs the load hooked functions.
 			for (var i = 0; i < setup.onLoadHook.length; i++) {
 				setup.onLoadHook[i]();
+			}
+		});
+	},
+
+	onResizeFunction: function() {
+		$(window).resize(function() {
+			setup.determineRemSize();
+
+			// Runs the load hooked functions.
+			for (var i = 0; i < setup.onResizeHook.length; i++) {
+				setup.onResizeHook[i]();
 			}
 		});
 	}
 };
 setup.onScrollFunction();
 setup.onLoadFunction();
+setup.onResizeFunction();
 
 // start image loading (I assume you need this for tracking?)
 
@@ -74,6 +100,8 @@ var scroll = {
 	prevScrollPos: $(this).scrollTop(),
 	computerIsScrolling: false,
 	direction: "static",
+	stopScrollingDate: Date.now(),
+	staticDuration: 0, // value in ms
 };
 
 // Must run first!
@@ -82,20 +110,41 @@ function declareVariables() {
 }
 setup.onScrollHook.push(declareVariables);
 
+
+var scrollDetection;
 function determineScrollDirection() {
-	// Sets the current scrolling direction to static if there is no scrolling
-	if(scroll.y === scroll.prevScrollPos) {
-		scroll.direction = "static";
-	} else if (scroll.y > scroll.prevScrollPos) {
-		// downscroll code
+	clearTimeout(scrollDetection); // Doesn't error as long as var is created.
+
+	// downscroll code
+	if (scroll.y > scroll.prevScrollPos) {
 		scroll.direction = "down";
+		scroll.staticDuration = 0;
+
+	// upscroll code
 	} else {
-		// upscroll code
 		scroll.direction = "up";
+		scroll.staticDuration = 0;
 	}
-	scroll.prevScrollPos = scroll.y; // Has to be set after determening scroll direction
+
+	// Determine if window is scrolling
+	scrollDetection = setTimeout(function() {
+		if(scroll.y === scroll.prevScrollPos) {
+			scroll.direction = "static";
+			scroll.stopScrollingDate = Date.now();
+		}
+	}, 50)
+
+	scroll.prevScrollPos = scroll.y; // Has to be set last
 }
 setup.onScrollHook.push(determineScrollDirection);
+
+// Runs every 100ms to store how long the scroll has been static
+setInterval(function() {
+	if(scroll.direction === 'static') {
+		scroll.staticDuration = Date.now() - scroll.stopScrollingDate;
+	}
+}, 100);
+
 
 function test() {
 	$('html, body').animate({
