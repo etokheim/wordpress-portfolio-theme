@@ -29,20 +29,106 @@ var featured = {
 
 // Not yet sorted...............................
 
+// Disable / enable scrolling
+// Since scroll events cannot be canceled.
+// Credit to galamvalazs (http://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily)
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null;
+    window.onwheel = null;
+    window.ontouchmove = null;
+    document.onkeydown = null;
+}
 
 
 
+var feature, header, featureBackground, featureContainer;
+$(document).on('ready', function() {
 
+	header = {
+		height: $('#header').height(),
+	};
 
-
-
-
-var feature, header;
-$(window).on('scroll', function() {
-	var featureBackground = $('.feature_background_container').eq(0);
-	var featureContainer = $('.feature_container').eq(0);
+	featureBackground = $('.feature_background_container').eq(0);
+	featureContainer = $('.feature_container').eq(0);
 
 	feature = {
+		slide: {
+			settings: {
+				speed: 600, // ms
+				threshold: 100, // px
+				easing: "easeOutExpo",
+			},
+
+			difference: 0,
+			current: 0,
+			zeroValue: 0,
+			computerScrolling: false,
+			slideCount: 3,
+			slides: [],
+
+			goTo: function(index) {
+				// If the computer isn't already scrolling; scroll.
+				if(!feature.slide.computerScrolling) {
+					disableScroll();
+					feature.slide.computerScrolling = true;
+					console.log("Start scrolling, computerScrolling = " + feature.slide.computerScrolling);
+					feature.slide.current = index;
+					var targetOffsetTop = $('.feature_instance').eq(index).offset().top - feature.padding.top[index];
+					console.log($('.feature_instance').eq(index).offset().top + " - " + feature.padding.top[index] + " targetOffsetTop " + feature.slide.targetOffsetTop);
+
+					$('html, body').animate({
+						scrollTop: targetOffsetTop
+					}, feature.slide.settings.speed, feature.slide.settings.easing, function() {
+						// function to be triggered after the scroll is finished
+						setTimeout(function() {
+							enableScroll();
+							feature.slide.computerScrolling = false;
+							feature.slide.current = index;
+
+							console.log("Finished scrolling");
+						}, 20);
+					});
+				}
+			},
+
+			next: function() {
+				feature.slide.goTo(feature.slide.current + 1);
+			},
+
+			previous: function() {
+				feature.slide.goTo(feature.slide.current - 1);
+			}
+		},
+
 		offset: {
 			top: featureContainer.offset().top,
 		},
@@ -51,33 +137,60 @@ $(window).on('scroll', function() {
 			top: Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')),
 		},
 
+		// When scrolled to featuredContainer, trueOffset.top === scroll.y
+		trueOffset: {
+			top: featureContainer.offset().top - Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')) - header.height,
+		},
+
 		height: featureBackground.height(),
 
 		totalHeight: featureContainer.height(),
+
+		padding: {
+			top: [],
+		}
 	};
 
-	header = {
-		height: $('#header').height(),
-	};
 
-	// If scrolled to feature and not passed; fix the background
-	if (scroll.y > feature.offset.top - feature.margin.top - header.height &&
-		scroll.y < feature.offset.top + feature.totalHeight + feature.margin.top*2) {
+	$(window).on('scroll', function(event) {
+		// Set the slides and calculate the slides padding-top, can vary with number of lines
+		feature.padding.top = [];
+		for (var i = 0; i < feature.slide.slideCount; i++) {
+			feature.slide.slides.push($('.feature_instance h1').eq(i));
+			feature.padding.top.push(Math.abs(featureContainer.offset().top + feature.height * i - feature.slide.slides[i].offset().top));
+		}
 
-		console.log("on");
-		featureBackground.addClass('feature_background_container_fixed');
-		featureBackground.css({ 'margin-top': 0 });
+		// If scrolled to feature and not passed; fix the background
+		if (scroll.y > feature.trueOffset.top &&
+			scroll.y < feature.offset.top + feature.totalHeight + feature.margin.top*2) {
 
-	// Else if scrolled past; remove fixed class and set margin-top
-	} else if(scroll.y > feature.offset.top + feature.totalHeight + feature.margin.top*2) {
-		console.log("Passed");
-		featureBackground.removeClass('feature_background_container_fixed');
-		featureBackground.css({ 'margin-top': feature.totalHeight + feature.height });
-	} else {
-		console.log("Before");
-		featureBackground.removeClass('feature_background_container_fixed');
-		featureBackground.css({ 'margin-top': 0 });
-	}
+			featureBackground.addClass('feature_background_container_fixed');
+			featureBackground.css({ 'margin-top': 0 });
+
+			feature.slide.zeroValue = feature.trueOffset.top + feature.slide.current * feature.height;
+			feature.slide.difference = feature.slide.zeroValue - scroll.y;
+
+			// console.log("on, feature.slide.zeroValue = " + feature.slide.zeroValue + ", difference = " + feature.slide.difference);
+
+			if(Math.abs(feature.slide.difference) > feature.slide.settings.threshold) {
+				if(scroll.direction === "up") {
+					feature.slide.previous();
+				} else {
+					feature.slide.next();
+				}
+			}
+
+		// Else if scrolled past; remove fixed class and set margin-top
+		} else if(scroll.y > feature.offset.top + feature.totalHeight + feature.margin.top*2) {
+			console.log("Passed");
+			featureBackground.removeClass('feature_background_container_fixed');
+			featureBackground.css({ 'margin-top': feature.totalHeight + feature.height });
+		} else {
+			console.log("Before");
+			featureBackground.removeClass('feature_background_container_fixed');
+			featureBackground.css({ 'margin-top': 0 });
+		}
+	});
 });
 
 
