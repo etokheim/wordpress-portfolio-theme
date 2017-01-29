@@ -81,27 +81,71 @@ get_header();
 
 </script>
 
-<div class="whitespace_separator"></div>
-
+<div class="whitespace_separator" data-bind="click: fisk"></div>
 <section class="featured_posts filled col-md-12">
 	<div class="contain">
-		<div class="feature_background_container"></div>
+		<div class="feature_background_container">
+			<!-- ko foreach: feature.slide.backgrounds -->
+				<div class="feature_background" data-bind="html: $data.img, css: { feature_background_hidden: !$data.visible() }"></div>
+			<!-- /ko -->
+		</div>
 		<div class="feature_container">
 
-			<div class="feature_instance">
-				<h1>Ein liten test</h1>
-				<p>Dette her er ein veldig veldig liten test</p>
-			</div>
+			<?php
+				$args = array(
+					'posts_per_page'   => 3,
+					'offset'           => 0,
+					'category'         => '',
+					'category_name'    => 'Featured',
+					'orderby'          => 'date',
+					'order'            => 'DESC',
+					'include'          => '',
+					'exclude'          => '',
+					'meta_key'         => '',
+					'meta_value'       => '',
+					'post_type'        => 'post',
+					'post_mime_type'	=> '',
+					'post_parent'		=> '',
+					'post_status'		=> 'publish',
+					'suppress_filters'	=> true,
+					'terms'				=> 'Forsidenyhet'
+				);
+				$getFeatured = new WP_Query($args);
+				if($getFeatured -> have_posts()) :
+					$backgrounds = [];
+					while($getFeatured -> have_posts()) : $getFeatured -> the_post();
+						// Output here
+						?>
+						<?php array_push($backgrounds, wp_get_attachment_image( get_post_thumbnail_id($post->ID), 'full', false )); ?>
+						<div class="feature_instance">
+							<h1><?php the_title(); ?></h1>
+							<p><?php the_excerpt(); ?></p>
+						</div>
+						<?php
+					endwhile;
 
-			<div class="feature_instance">
-				<h1>Ein liten test</h1>
-				<p>Dette her er ein veldig veldig liten test</p>
-			</div>
+					else :
+						// fallback, display no content message here
+						echo "fallback, no posts";
+				endif;
 
-			<div class="feature_instance">
-				<h1>Ein liten test</h1>
-				<p>Dette her er ein veldig veldig liten test</p>
-			</div>
+				$backgroundsFormatted = "{ img: '" . $backgrounds[0] . "', visible: ko.observable(true) }";
+
+				for($i = 1; $i < count($backgrounds); $i++) {
+					$backgroundsFormatted .=  ", { img: '" . $backgrounds[$i] . "', visible: ko.observable(false) }";
+				}
+
+				?>
+
+				<script>
+					$(window).load(function() {
+						feature.slide.backgrounds([<?php echo $backgroundsFormatted; ?>]);
+					});
+				</script>
+
+				<?php
+				wp_reset_postdata();
+			?>
 
 		</div>
 	</div>

@@ -2077,13 +2077,12 @@ em {
 
 /* --------- Featured --------- */
 .featured_posts .contain {
-	margin: calc(22.5vh - 60px) 0;
+	margin: calc(22.5vh - 60px) auto;
 	display: flex;
 	justify-content: center;
 }
 
 .feature_container {
-	/* The following must add up to 100vh:; */
 	height: 55vh;
 
 	width: 100%;
@@ -2094,15 +2093,35 @@ em {
 }
 
 .feature_background_container {
-	/* same width and height as the feature_container */
-	/* The following must add up to 100vh:; */
 	height: 55vh;
 
 	width: 100%;
 	max-width: 850px;
-	border-radius: 5px;
+	border-radius: 10px;
 	background-color: rgba(0,255,255,0.2);
 	position: absolute;
+	overflow: hidden;
+
+	will-change: transform;
+	transform: translateZ(0);
+}
+
+.feature_background_container img {
+	object-fit: cover;
+	object-position: center;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+.feature_background {
+	opacity: 1;
+
+	transition: all 600ms ease-out;
+}
+
+.feature_background_hidden {
+	opacity: 0;
 }
 
 .feature_background_container_fixed {
@@ -2116,9 +2135,19 @@ em {
 	justify-content: center;
 	flex-direction: column;
 	height: 100%;
-	background-color: rgba(255,0,255,0.2);
+	margin-top: 0;
+	/*background-color: rgba(255,0,255,0.2);*/
+	position: relative;
+
+	will-change: transform;
+	transform: translateZ(0);
+
+	transition: all 100ms ease-out;
 }
 
+.feature_instance_hidden {
+	opacity: 0;
+}
 
 /* --------- Featured --------- */
 

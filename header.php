@@ -27,42 +27,16 @@
 	<link rel="stylesheet" media='screen and (min-width: 701px) and (max-width: 900px)' type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style_medium.css" />
 	<link rel="stylesheet" media='screen and (max-width: 700px)' type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style_small.css" />
 
-
+	<!-- MIDLERTIDIG! -->
+	<link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
 
 	<!-- PLUG-INS -->
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/plug-ins/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/plug-ins/jquery/jquery-ui.min.js"></script>
-	<script src="<?php bloginfo('template_directory'); ?>/plug-ins/stellar/jquery.stellar.min.js"></script>
-
-	<!-- Fonts from typekit: -->
-	<script src="https://use.typekit.net/sxe3quh.js"></script>
-	<script>try{Typekit.load({ async: true });}catch(e){}</script>
-
-	<!-- Javascript files: -->
-	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/javascript.js"></script>
-	<?php if(is_front_page()) { ?><script type='text/javascript' src='<?php bloginfo('template_directory'); echo "/js/javascript-front-page.js"; ?>'></script> <?php } ?>
-	<!-- <test> -->
-	<!-- MIDLERTIDIG! -->
-	<link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
 
 
 	<!-- REFRESHES PAGE EVERY x SECONDS -->
 	<!-- <meta http-equiv="refresh" content="3"> -->
 </head>
-
-<!-- Google analytics -->
-<script>
-	if(!setup.debugging) {
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-81638914-1', 'auto');
-		ga('send', 'pageview');
-	}
-</script>
-
 <body <?php body_class(); ?>>
 <script>
 <?php

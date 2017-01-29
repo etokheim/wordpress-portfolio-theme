@@ -71,10 +71,12 @@ function enableScroll() {
 
 
 var feature, header, featureBackground, featureContainer;
-$(document).on('ready', function() {
 
+var fish = ko.observable("<h1>FISH</h1>");
+
+var ViewModel = function() {
 	header = {
-		height: $('#header').height(),
+		height: $('#header').outerHeight(),
 	};
 
 	featureBackground = $('.feature_background_container').eq(0);
@@ -85,49 +87,61 @@ $(document).on('ready', function() {
 			settings: {
 				speed: 600, // ms
 				threshold: 100, // px
+				opacityThreshold: $('.feature_instance').eq(0).outerHeight() / 4,
 				easing: "easeOutExpo",
 			},
 
 			difference: 0,
 			visiting: false,
-			current: 0,
+			current: ko.observable(0),
 			zeroValue: 0,
+			// Max value is the max offset from the zero value where the heading should be visible
+			maxValue: featureBackground.outerHeight() / 2 - 50,
 			computerScrolling: false,
-			slideCount: 3,
+			slideCount: $('.feature_instance').length,
 			slides: [],
 			targetOffsetTop: 0,
+			backgrounds: ko.observableArray([]),
 
 			goTo: function(index) {
 				// If the computer isn't already scrolling; scroll.
 				if(!feature.slide.computerScrolling) {
 					disableScroll();
 					feature.slide.computerScrolling = true;
+
+					// Sets new background
+					feature.slide.backgrounds()[feature.slide.current()].visible(false);
+					feature.slide.backgrounds()[index].visible(true);
+
 					console.log("Start scrolling, computerScrolling = " + feature.slide.computerScrolling);
-					feature.slide.current = index;
-					feature.slide.targetOffsetTop = $('.feature_instance').eq(index).offset().top - feature.padding.top[index];
+					feature.slide.targetOffsetTop = feature.trueOffset.top + index * feature.instance.height;
 					console.log($('.feature_instance').eq(index).offset().top + " - " + feature.padding.top[index] + " targetOffsetTop " + feature.slide.targetOffsetTop);
 
 					$('html, body').animate({
 						scrollTop: feature.slide.targetOffsetTop
 					}, feature.slide.settings.speed, feature.slide.settings.easing, function() {
 						// function to be triggered after the scroll is finished
-						setTimeout(function() {
+						// setTimeout(function() {
 							enableScroll();
 							feature.slide.computerScrolling = false;
-							feature.slide.current = index;
+							feature.slide.current(index);
 
 							console.log("Finished scrolling");
-						}, 20);
+						// }, 20);
 					});
+
+					console.log(index + ", " + feature.slide.current());
+					// $('.feature_instance').eq(feature.slide.current()).addClass('feature_instance_hidden');
+					// $('.feature_instance').eq(index).removeClass('feature_instance_hidden');
 				}
 			},
 
 			next: function() {
-				feature.slide.goTo(feature.slide.current + 1);
+				feature.slide.goTo(feature.slide.current() + 1);
 			},
 
 			previous: function() {
-				feature.slide.goTo(feature.slide.current - 1);
+				feature.slide.goTo(feature.slide.current() - 1);
 			}
 		},
 
@@ -144,17 +158,23 @@ $(document).on('ready', function() {
 			top: featureContainer.offset().top - Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')) - header.height,
 		},
 
-		height: featureBackground.height(),
+		height: featureBackground.outerHeight(),
 
-		totalHeight: featureContainer.height(),
+		totalHeight: featureContainer.outerHeight(),
 
 		padding: {
 			top: [],
+		},
+
+		instance: {
+			height: $('.feature_instance').eq(0).outerHeight()
 		}
 	};
 
 
 	$(window).on('scroll', function(event) {
+		var featureCenterPoint = featureBackground.offset().top + featureBackground.outerHeight()/2;
+		// console.log( featureCenterPoint );
 		// Set the slides and calculate the slides padding-top, can vary with number of lines
 		feature.padding.top = [];
 		for (var i = 0; i < feature.slide.slideCount; i++) {
@@ -162,20 +182,44 @@ $(document).on('ready', function() {
 
 			// problem with the line height which causes the padding.top to
 			// be too small, added 1rem*2 as a quick fix.
-			feature.padding.top.push(Math.abs(featureContainer.offset().top + feature.height * i - feature.slide.slides[i].offset().top - setup.rem*2));
+			feature.padding.top.push(Math.abs(featureContainer.offset().top + feature.instance.height * i - feature.slide.slides[i].offset().top - setup.rem*2));
 		}
 
-		// If scrolled to feature and not passed; fix the background
+		// If scrolled to feature and not passed; fix the background ++
 		if (scroll.y > feature.trueOffset.top &&
 			scroll.y < feature.offset.top + feature.totalHeight + feature.margin.top*2) {
 
 			feature.visiting = true;
 
+			// Fix the background
 			featureBackground.addClass('feature_background_container_fixed');
 			featureBackground.css({ 'margin-top': 0 });
 
-			feature.slide.zeroValue = feature.trueOffset.top + feature.slide.current * feature.height;
+			// Zero value is the scroll.y position where the text is centered
+			feature.slide.zeroValue = feature.trueOffset.top + feature.slide.current() * feature.instance.height;
 			feature.slide.difference = feature.slide.zeroValue - scroll.y;
+
+			// zero = 100, max = 0
+			// Max value to %
+			// console.log((100 - (100 / feature.slide.maxValue) * Math.abs(feature.slide.difference)) / 100);
+			// $('.feature_instance').eq(feature.slide.current()).css({ 'opacity': (100 - (100 / feature.slide.maxValue) * Math.abs(feature.slide.difference)) / 100 });
+
+			// Calculate opacity of feature instances based on how far they are
+			// from the center of featureBackground
+
+			for (var i = 0; i < feature.slide.slideCount; i++) {
+				var instance = $('.feature_instance').eq(i);
+				var instanceCenterPoint = instance.offset().top + instance.outerHeight() / 2;
+				var instanceFromFeatureCenterPoint = Math.abs(featureCenterPoint - instanceCenterPoint);
+				var instanceOpacity = 1 - (1 / feature.slide.settings.opacityThreshold * instanceFromFeatureCenterPoint);
+				// console.log( featureCenterPoint + " - " + instanceCenterPoint + " = " + instanceFromFeatureCenterPoint + ", opacity = " + instanceOpacity + "%");
+				// console.log( 100 / feature.slide.settings.opacityThreshold * instanceFromFeatureCenterPoint );
+				if (instanceOpacity < 0 && instanceOpacity > 1) {
+					instanceOpacity = 0;
+				}
+
+				instance.css({ 'opacity': instanceOpacity });
+			}
 
 			// console.log("on, feature.slide.zeroValue = " + feature.slide.zeroValue + ", difference = " + feature.slide.difference);
 
@@ -193,7 +237,7 @@ $(document).on('ready', function() {
 			feature.visiting = false;
 
 			featureBackground.removeClass('feature_background_container_fixed');
-			featureBackground.css({ 'margin-top': feature.totalHeight + feature.height });
+			featureBackground.css({ 'margin-top': feature.totalHeight + feature.instance.height });
 		} else {
 			console.log("Before");
 			feature.visiting = false;
@@ -212,12 +256,16 @@ $(document).on('ready', function() {
 			Math.abs(feature.slide.targetOffsetTop - scroll.y) >= 2 &&
 			scroll.staticDuration > 250) {
 
-			feature.slide.goTo(feature.slide.current);
+			feature.slide.goTo(feature.slide.current());
 		}
 	}, 100);
-});
 
 
+	this.fisk = function() {
+		console.log("click");
+	}
+};
+ko.applyBindings(new ViewModel());
 
 
 
