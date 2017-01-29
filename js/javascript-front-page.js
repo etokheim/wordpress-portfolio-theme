@@ -69,17 +69,14 @@ function enableScroll() {
 }
 
 
-var feature, header, featureBackground, featureContainer;
-
-var fish = ko.observable("<h1>FISH</h1>");
-
+var feature, header, featureBackground, featureInstance;
 var ViewModel = function() {
 	header = {
 		height: $('#header').outerHeight(),
 	};
 
 	featureBackground = $('.feature_background_container').eq(0);
-	featureContainer = $('.feature_container').eq(0);
+	featureInstance = $('.feature_instance').eq(0);
 
 	feature = {
 		slide: {
@@ -145,7 +142,7 @@ var ViewModel = function() {
 		},
 
 		offset: {
-			top: featureContainer.offset().top,
+			top: featureInstance.offset().top,
 		},
 
 		margin: {
@@ -154,12 +151,12 @@ var ViewModel = function() {
 
 		// When scrolled to featuredContainer, trueOffset.top === scroll.y
 		trueOffset: {
-			top: featureContainer.offset().top - Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')) - header.height,
+			top: featureInstance.offset().top - Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')) - header.height,
 		},
 
 		height: featureBackground.outerHeight(),
 
-		totalHeight: featureContainer.outerHeight(),
+		totalHeight: featureInstance.outerHeight(),
 
 		padding: {
 			top: [],
@@ -219,6 +216,7 @@ var ViewModel = function() {
 				var instanceOpacity = 1 - (1 / feature.slide.settings.opacityThreshold * instanceFromFeatureCenterPoint);
 				// console.log( featureCenterPoint + " - " + instanceCenterPoint + " = " + instanceFromFeatureCenterPoint + ", opacity = " + instanceOpacity + "%");
 				// console.log( 100 / feature.slide.settings.opacityThreshold * instanceFromFeatureCenterPoint );
+				// A fallback for when the value goes over 1 or under 0
 				if (instanceOpacity < 0 && instanceOpacity > 1) {
 					instanceOpacity = 0;
 				}
@@ -265,11 +263,6 @@ var ViewModel = function() {
 			feature.slide.goTo(feature.slide.current());
 		}
 	}, 100);
-
-
-	this.fisk = function() {
-		console.log("click");
-	}
 };
 ko.applyBindings(new ViewModel());
 

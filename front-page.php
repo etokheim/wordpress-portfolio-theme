@@ -19,18 +19,6 @@ get_header();
 	</div>
 </div>
 
-<!-- Pagination for featured -->
-<!-- <div id="featured_pagination_container">
-	<nav id="featured_pagination">
-		<ul>
-			<li onclick="featured.scrollTo(featured.visiting - 1)">↑</li>
-			<li onclick="featured.scrollTo(0)">•</li>
-			<li onclick="featured.scrollTo(1)">•</li>
-			<li onclick="featured.scrollTo(2)">•</li>
-			<li onclick="featured.scrollTo(featured.visiting + 1)">↓</li>
-		</ul>
-	</nav>
-</div> -->
 <section>
 	<div id="intro_container">
 		<div id="intro" data-stellar-ratio="0.1" style="background-image: url('<?php // echo get_header_image(); ?>');">
@@ -81,16 +69,16 @@ get_header();
 
 </script>
 
-<div class="whitespace_separator" data-bind="click: fisk"></div>
-<section class="featured_posts filled col-md-12">
+<section class="featured_posts filled">
 	<div class="contain">
 		<div class="feature_background_container">
+			<div class="feature_background_color_overlay"></div>
 			<!-- ko foreach: feature.slide.backgrounds -->
 				<div class="feature_background" data-bind="html: $data.img, css: { feature_background_hidden: !$data.visible() }"></div>
 			<!-- /ko -->
 		</div>
-		<div class="feature_container">
 
+		<div class="feature_container">
 			<?php
 				$args = array(
 					'posts_per_page'   => 3,
@@ -148,11 +136,9 @@ get_header();
 				<?php
 				wp_reset_postdata();
 			?>
-
 		</div>
 	</div>
 </section>
-<!-- <div class="whitespace_separator"></div> -->
 
 
 			<?php
@@ -228,7 +214,7 @@ get_header();
 				$otherProjectsPosts = array_values($otherProjectsPosts);
 			?>
 
-<div class="other_projects_container content_section_wrapper" style="display: none;">
+<div class="other_projects_container content_section_wrapper">
 	<div class="content_section">
 		<?php
 		// var_dump($otherProjectsPosts);
