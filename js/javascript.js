@@ -100,6 +100,9 @@ var scroll = {
 	prevScrollPos: $(this).scrollTop(),
 	computerIsScrolling: false,
 	direction: "static",
+	// Say you want to add a negative margin-top while scrolling up
+	// and a positive when scrolling down, use the multiplier property.
+	multiplier: 1,
 	stopScrollingDate: Date.now(),
 	staticDuration: 0, // value in ms
 };
@@ -118,11 +121,13 @@ function determineScrollDirection() {
 	// downscroll code
 	if (scroll.y > scroll.prevScrollPos) {
 		scroll.direction = "down";
+		scroll.multiplier = -1;
 		scroll.staticDuration = 0;
 
 	// upscroll code
 	} else {
 		scroll.direction = "up";
+		scroll.multiplier = 1;
 		scroll.staticDuration = 0;
 	}
 

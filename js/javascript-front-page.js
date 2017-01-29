@@ -69,7 +69,6 @@ function enableScroll() {
 }
 
 
-
 var feature, header, featureBackground, featureContainer;
 
 var fish = ko.observable("<h1>FISH</h1>");
@@ -175,14 +174,26 @@ var ViewModel = function() {
 	$(window).on('scroll', function(event) {
 		var featureCenterPoint = featureBackground.offset().top + featureBackground.outerHeight()/2;
 		// console.log( featureCenterPoint );
-		// Set the slides and calculate the slides padding-top, can vary with number of lines
 		feature.padding.top = [];
 		for (var i = 0; i < feature.slide.slideCount; i++) {
-			feature.slide.slides.push($('.feature_instance h1').eq(i));
+			var instance = $('.feature_instance').eq(i);
 
-			// problem with the line height which causes the padding.top to
-			// be too small, added 1rem*2 as a quick fix.
-			feature.padding.top.push(Math.abs(featureContainer.offset().top + feature.instance.height * i - feature.slide.slides[i].offset().top - setup.rem*2));
+			// Set the slides
+			feature.slide.slides.push(instance);
+
+			// Set heights of headings and paragraphs
+			var headingContainer = instance.find('.feature_heading_container');
+			var heading = headingContainer.find('h1');
+			var headingHeight = heading.outerHeight();
+			var headingWidth = heading.outerWidth();
+
+			var paragraphContainer = instance.find('.feature_paragraph_container');
+			var paragraph = paragraphContainer.find('p');
+			var paragraphHeight = paragraph.outerHeight();
+			var paragraphWidth = paragraph.outerWidth();
+
+			headingContainer.css({ 'height': headingHeight, 'width': headingWidth });
+			paragraphContainer.css({ 'height': paragraphHeight, 'width': paragraphWidth });
 		}
 
 		// If scrolled to feature and not passed; fix the background ++
@@ -199,14 +210,8 @@ var ViewModel = function() {
 			feature.slide.zeroValue = feature.trueOffset.top + feature.slide.current() * feature.instance.height;
 			feature.slide.difference = feature.slide.zeroValue - scroll.y;
 
-			// zero = 100, max = 0
-			// Max value to %
-			// console.log((100 - (100 / feature.slide.maxValue) * Math.abs(feature.slide.difference)) / 100);
-			// $('.feature_instance').eq(feature.slide.current()).css({ 'opacity': (100 - (100 / feature.slide.maxValue) * Math.abs(feature.slide.difference)) / 100 });
-
 			// Calculate opacity of feature instances based on how far they are
 			// from the center of featureBackground
-
 			for (var i = 0; i < feature.slide.slideCount; i++) {
 				var instance = $('.feature_instance').eq(i);
 				var instanceCenterPoint = instance.offset().top + instance.outerHeight() / 2;
@@ -219,6 +224,7 @@ var ViewModel = function() {
 				}
 
 				instance.css({ 'opacity': instanceOpacity });
+				instance.find('h1').css({ 'margin-top': (1 - instanceOpacity) * -100 });
 			}
 
 			// console.log("on, feature.slide.zeroValue = " + feature.slide.zeroValue + ", difference = " + feature.slide.difference);

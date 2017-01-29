@@ -2149,6 +2149,13 @@ em {
 	opacity: 0;
 }
 
+.feature_heading_container > *, .feature_paragraph_container > * {
+	position: absolute;
+
+	will-change: transform;
+	transform: translateZ(0);
+}
+
 /* --------- Featured --------- */
 
 

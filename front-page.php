@@ -118,8 +118,10 @@ get_header();
 						?>
 						<?php array_push($backgrounds, wp_get_attachment_image( get_post_thumbnail_id($post->ID), 'full', false )); ?>
 						<div class="feature_instance">
-							<h1><?php the_title(); ?></h1>
-							<p><?php the_excerpt(); ?></p>
+							<div class="feature_heading_container">
+								<h1><?php the_title(); ?></h1>
+							</div>
+							<div class="feature_paragraph_container"><?php the_excerpt(); // The excerpt comes with a <p>-tag ?></div>
 						</div>
 						<?php
 					endwhile;
