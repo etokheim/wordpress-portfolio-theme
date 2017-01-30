@@ -68,8 +68,6 @@ function enableScroll() {
     document.onkeydown = null;
 }
 
-				var allFeaturedOffsetTop = [];
-
 var feature, header, featureBackground, featureInstance;
 var ViewModel = function() {
 	var that = this;
@@ -83,7 +81,7 @@ var ViewModel = function() {
 	featureInstance = $('.feature_instance').eq(0);
 
 	this.getClosestSlideIndex = function() {
-		allFeaturedOffsetTop = [];
+		var allFeaturedOffsetTop = [];
 
 		// Store all feature instances offset.top position
 		for(var i = 0; i < feature.slide.slideCount; i++) {
@@ -108,7 +106,8 @@ var ViewModel = function() {
 
 			difference: 0,
 			visiting: false,
-			current: ko.observable(0),
+			currentSlide: ko.observable(0),
+			previousSlide: false,
 			zeroValue: 0,
 			// Max value is the max offset from the zero value where the heading should be visible
 			computerScrolling: false,
@@ -122,7 +121,7 @@ var ViewModel = function() {
 				if(!feature.slide.computerScrolling) {
 					disableScroll();
 					feature.slide.computerScrolling = true;
-					feature.slide.current(index);
+					feature.slide.currentSlide(index);
 
 					// Calculate new scroll position
 					feature.slide.targetOffsetTop = feature.trueOffset.top + index * feature.instance.height;
@@ -139,18 +138,27 @@ var ViewModel = function() {
 						// }, 20);
 					});
 
-					console.log(index + ", " + feature.slide.current());
-					// $('.feature_instance').eq(feature.slide.current()).addClass('feature_instance_hidden');
+					console.log(index + ", " + feature.slide.currentSlide());
+					// $('.feature_instance').eq(feature.slide.currentSlide()).addClass('feature_instance_hidden');
 					// $('.feature_instance').eq(index).removeClass('feature_instance_hidden');
 				}
 			},
 
 			next: function() {
-				feature.slide.goTo(feature.slide.current() + 1);
+				feature.slide.goTo(feature.slide.currentSlide() + 1);
 			},
 
 			previous: function() {
-				feature.slide.goTo(feature.slide.current() - 1);
+				feature.slide.goTo(feature.slide.currentSlide() - 1);
+			},
+
+			showBackground: function(index) {
+				feature.slide.backgrounds()[index].visible(true);
+				if(feature.slide.previousSlide) {
+					feature.slide.backgrounds()[feature.slide.previousSlide].visible(false);
+				}
+
+				feature.slide.previousSlide = index;
 			}
 		},
 
@@ -207,7 +215,7 @@ var ViewModel = function() {
 	};
 
 	// Set current slide
-	feature.slide.current(this.getClosestSlideIndex());
+	feature.slide.currentSlide(this.getClosestSlideIndex());
 	feature.updateValues();
 	setup.onResizeHook.push(feature.updateValues);
 
@@ -216,20 +224,13 @@ var ViewModel = function() {
 		var closestSlide = that.getClosestSlideIndex();
 		// Make current slide visible
 		$('.feature_instance').eq(closestSlide).css({ 'opacity': 1 });
-		feature.slide.backgrounds()[closestSlide].visible(true);
+		feature.slide.showBackground(closestSlide);
 	});
 
 
-	// Change img visibility on feature.slide.current change
-	var lastVisible = false;
-	feature.slide.current.subscribe(function() {
-		console.log("Making " + feature.slide.current() + " visible");
-		feature.slide.backgrounds()[feature.slide.current()].visible(true);
-		if(lastVisible) {
-			feature.slide.backgrounds()[lastVisible].visible(false);
-		}
-
-		lastVisible = feature.slide.current();
+	// Change img visibility on feature.slide.currentSlide change
+	feature.slide.currentSlide.subscribe(function() {
+		feature.slide.showBackground(feature.slide.currentSlide());
 	});
 
 
@@ -261,7 +262,7 @@ var ViewModel = function() {
 			featureBackground.css({ 'margin-top': 0 });
 
 			// Zero value is the scroll.y position where the text is centered
-			feature.slide.zeroValue = feature.trueOffset.top + feature.slide.current() * feature.instance.height;
+			feature.slide.zeroValue = feature.trueOffset.top + feature.slide.currentSlide() * feature.instance.height;
 			feature.slide.difference = feature.slide.zeroValue - scroll.y;
 
 			// Calculate opacity of feature instances based on how far they are
@@ -316,7 +317,7 @@ var ViewModel = function() {
 			Math.abs(feature.slide.targetOffsetTop - scroll.y) >= 2 &&
 			scroll.staticDuration > 250) {
 
-			feature.slide.goTo(feature.slide.current());
+			feature.slide.goTo(feature.slide.currentSlide());
 		}
 	}, 100);
 };
