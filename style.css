@@ -875,7 +875,7 @@ section {
 
 section:after {
 	content: "";
-	width: calc(100vw - 60px);
+	width: calc(100% + 120px);
 	left: -60px;
 	height: 60px;
 	background: #fff;
@@ -1996,7 +1996,7 @@ em {
 	width: 100%;
 	overflow: hidden;
 	position: fixed;
-	top: 0;
+	top: -50px;
 }
 
 .intro_dimmer {
@@ -2145,14 +2145,23 @@ em {
 	max-width: 850px;
 }
 
+.feature_instance:first-of-type {
+	margin-top: 12.5vh;
+}
+
+.feature_instance:last-of-type {
+	margin-bottom: 12.5vh;
+}
+
 .feature_instance {
-	height: 55vh;
+	/* Must add up to the feature_background height */
+	height: 30vh;
+
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	margin-top: 0;
 	/*background-color: rgba(255,0,255,0.2);*/
 	position: relative;
 
@@ -2164,6 +2173,10 @@ em {
 
 .feature_instance_hidden {
 	/*opacity: 0;*/
+}
+
+.feature_heading_container {
+	width: 100%;
 }
 
 .feature_heading_container > *, .feature_paragraph_container > * {

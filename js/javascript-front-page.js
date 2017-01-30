@@ -68,6 +68,7 @@ function enableScroll() {
     document.onkeydown = null;
 }
 
+				var allFeaturedOffsetTop = [];
 
 var feature, header, featureBackground, featureInstance;
 var ViewModel = function() {
@@ -76,13 +77,29 @@ var ViewModel = function() {
 	};
 
 	featureBackground = $('.feature_background_container').eq(0);
+	featureContainer = $('.feature_container').eq(0);
 	featureInstance = $('.feature_instance').eq(0);
 
+	this.getClosestSlideIndex = function() {
+		allFeaturedOffsetTop = [];
+
+		// Store all feature instances offset.top position
+		for(var i = 0; i < feature.slide.slideCount; i++) {
+			allFeaturedOffsetTop.push( Math.abs(scroll.y + screen.availHeight/2 - ($('.feature_instance').eq(i).offset().top + $('.feature_instance').eq(i).innerHeight() / 2)) );
+		}
+		var lowestIndex = allFeaturedOffsetTop.indexOf(Math.min.apply(null, allFeaturedOffsetTop));
+		console.log("lowest index = " + lowestIndex);
+
+		return lowestIndex;
+	};
+
 	feature = {
+
 		slide: {
 			settings: {
 				speed: 600, // ms
 				threshold: 100, // px
+				// Travel distance from 100% to 0% opacity
 				opacityThreshold: $('.feature_instance').eq(0).outerHeight() / 4,
 				easing: "easeOutExpo",
 			},
@@ -92,7 +109,6 @@ var ViewModel = function() {
 			current: ko.observable(0),
 			zeroValue: 0,
 			// Max value is the max offset from the zero value where the heading should be visible
-			maxValue: featureBackground.outerHeight() / 2 - 50,
 			computerScrolling: false,
 			slideCount: $('.feature_instance').length,
 			slides: [],
@@ -105,13 +121,8 @@ var ViewModel = function() {
 					disableScroll();
 					feature.slide.computerScrolling = true;
 
-					// Sets new background
-					feature.slide.backgrounds()[feature.slide.current()].visible(false);
-					feature.slide.backgrounds()[index].visible(true);
-
-					console.log("Start scrolling, computerScrolling = " + feature.slide.computerScrolling);
+					// Calculate new scroll position
 					feature.slide.targetOffsetTop = feature.trueOffset.top + index * feature.instance.height;
-					console.log($('.feature_instance').eq(index).offset().top + " - " + feature.padding.top[index] + " targetOffsetTop " + feature.slide.targetOffsetTop);
 
 					$('html, body').animate({
 						scrollTop: feature.slide.targetOffsetTop
@@ -141,61 +152,96 @@ var ViewModel = function() {
 			}
 		},
 
-		offset: {
-			top: featureInstance.offset().top,
+		updateTextSizes: function() {
+			for (var i = 0; i < feature.slide.slideCount; i++) {
+				var instance = $('.feature_instance').eq(i);
+
+				// Set heights of headings and paragraphs
+				var headingContainer = instance.find('.feature_heading_container');
+				var heading = headingContainer.find('h1');
+				var headingHeight = heading.outerHeight();
+				var headingWidth = heading.outerWidth();
+
+				var paragraphContainer = instance.find('.feature_paragraph_container');
+				var paragraph = paragraphContainer.find('p');
+				var paragraphHeight = paragraph.outerHeight();
+				var paragraphWidth = paragraph.outerWidth();
+
+				headingContainer.css({ 'height': headingHeight, 'width': headingWidth });
+				paragraphContainer.css({ 'height': paragraphHeight, 'width': paragraphWidth });
+			}
 		},
 
-		margin: {
-			top: Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')),
-		},
+		updateValues: function() {
+			feature.offset = {
+				top: featureContainer.offset().top,
+			};
 
-		// When scrolled to featuredContainer, trueOffset.top === scroll.y
-		trueOffset: {
-			top: featureInstance.offset().top - Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')) - header.height,
-		},
+			feature.margin = {
+				top: Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')),
+			};
 
-		height: featureBackground.outerHeight(),
+			// When scrolled to featuredContainer, trueOffset.top === scroll.y
+			feature.trueOffset = {
+				top: featureInstance.offset().top - parseInt($('.feature_instance').eq(0).css('margin-top')) - Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')) - header.height,
+			};
 
-		totalHeight: featureInstance.outerHeight(),
+			feature.height = featureBackground.outerHeight();
 
-		padding: {
-			top: [],
-		},
+			feature.totalHeight = featureContainer.outerHeight();
 
-		instance: {
-			height: $('.feature_instance').eq(0).outerHeight()
+			feature.padding = {
+				top: [],
+			};
+
+			feature.instance = {
+				height: $('.feature_instance').eq(0).outerHeight()
+			};
+
+			$(window).load(function() {
+				feature.updateTextSizes();
+			});
 		}
 	};
 
+	feature.updateValues();
+	setup.onResizeHook.push(feature.updateValues);
+
+	feature.slide.current(this.getClosestSlideIndex());
+
+	// Change img visibility on feature.slide.current change
+	var lastVisible = false;
+	feature.slide.current.subscribe(function() {
+		feature.slide.backgrounds()[feature.slide.current()].visible(true);
+		if(lastVisible) {
+			feature.slide.backgrounds()[lastVisible].visible(false);
+		}
+
+		lastVisible = feature.slide.current();
+	});
+
+
+	for (var i = 0; i < feature.slide.slideCount; i++) {
+		var instance = $('.feature_instance').eq(i);
+
+		// Set the slides
+		feature.slide.slides.push(instance);
+
+		// Set the backgrounds and their visibility
+		if(featureBackgrounds.length > 0) {
+			feature.slide.backgrounds.push({ img: featureBackgrounds[i], visible: ko.observable(false) })
+		}
+	}
 
 	$(window).on('scroll', function(event) {
+		console.log("scrolled");
 		var featureCenterPoint = featureBackground.offset().top + featureBackground.outerHeight()/2;
 		// console.log( featureCenterPoint );
-		feature.padding.top = [];
-		for (var i = 0; i < feature.slide.slideCount; i++) {
-			var instance = $('.feature_instance').eq(i);
-
-			// Set the slides
-			feature.slide.slides.push(instance);
-
-			// Set heights of headings and paragraphs
-			var headingContainer = instance.find('.feature_heading_container');
-			var heading = headingContainer.find('h1');
-			var headingHeight = heading.outerHeight();
-			var headingWidth = heading.outerWidth();
-
-			var paragraphContainer = instance.find('.feature_paragraph_container');
-			var paragraph = paragraphContainer.find('p');
-			var paragraphHeight = paragraph.outerHeight();
-			var paragraphWidth = paragraph.outerWidth();
-
-			headingContainer.css({ 'height': headingHeight, 'width': headingWidth });
-			paragraphContainer.css({ 'height': paragraphHeight, 'width': paragraphWidth });
-		}
 
 		// If scrolled to feature and not passed; fix the background ++
 		if (scroll.y > feature.trueOffset.top &&
-			scroll.y < feature.offset.top + feature.totalHeight + feature.margin.top*2) {
+			// The scroll.y value when scrolled to the last feature slide
+			scroll.y < feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
 
 			feature.visiting = true;
 
@@ -221,8 +267,8 @@ var ViewModel = function() {
 					instanceOpacity = 0;
 				}
 
+				instance.find('h1').css({ 'margin-top': (1 - instanceOpacity) * -25 });
 				instance.css({ 'opacity': instanceOpacity });
-				instance.find('h1').css({ 'margin-top': (1 - instanceOpacity) * -100 });
 			}
 
 			// console.log("on, feature.slide.zeroValue = " + feature.slide.zeroValue + ", difference = " + feature.slide.difference);
@@ -236,12 +282,13 @@ var ViewModel = function() {
 			}
 
 		// Else if scrolled past; remove fixed class and set margin-top
-		} else if(scroll.y > feature.offset.top + feature.totalHeight + feature.margin.top*2) {
+		// The scroll.y value when scrolled to the last feature slide
+		} else if(scroll.y > feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
 			console.log("Passed");
 			feature.visiting = false;
 
 			featureBackground.removeClass('feature_background_container_fixed');
-			featureBackground.css({ 'margin-top': feature.totalHeight + feature.instance.height });
+			featureBackground.css({ 'margin-top': feature.totalHeight - feature.height });
 		} else {
 			console.log("Before");
 			feature.visiting = false;

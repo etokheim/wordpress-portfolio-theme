@@ -119,18 +119,18 @@ get_header();
 						echo "fallback, no posts";
 				endif;
 
-				$backgroundsFormatted = "{ img: '" . $backgrounds[0] . "', visible: ko.observable(true) }";
+				$backgroundsFormatted = "'" . $backgrounds[0] . "'";
 
 				for($i = 1; $i < count($backgrounds); $i++) {
-					$backgroundsFormatted .=  ", { img: '" . $backgrounds[$i] . "', visible: ko.observable(false) }";
+					$backgroundsFormatted .=  ", '" . $backgrounds[$i] . "'";
 				}
 
 				?>
 
 				<script>
-					$(window).load(function() {
-						feature.slide.backgrounds([<?php echo $backgroundsFormatted; ?>]);
-					});
+					// $(window).ready(function() {
+						var featureBackgrounds = [<?php echo $backgroundsFormatted; ?>];
+					// });
 				</script>
 
 				<?php

@@ -41,6 +41,7 @@ var setup = {
 
 	onScrollHook: [],
 	onLoadHook: [],
+	onReadyHook: [],
 	onResizeHook: [],
 
 	onScrollFunction: function() {
@@ -60,6 +61,15 @@ var setup = {
 			// Runs the load hooked functions.
 			for (var i = 0; i < setup.onLoadHook.length; i++) {
 				setup.onLoadHook[i]();
+			}
+		});
+	},
+
+	onReadyFunction: function() {
+		$(window).ready(function() {
+			// Runs the ready hooked functions.
+			for (var i = 0; i < setup.onReadyHook.length; i++) {
+				setup.onReadyHook[i]();
 			}
 		});
 	},
@@ -159,19 +169,8 @@ function test() {
 	});
 }
 
-
 function determineWindowSize() {
-	if(window.innerWidth <= 700) {
-		windowSize = "small";
-
-		// // Funksjon frå front-page!!!! !! !!!!
-		// setTimeout(function() {
-		// 	notifyBeta();
-		// }, 50);
-
-	} else {
-		windowSize = "large";
-	}
+	// Use the predefined screen variable to get window sizes
 }
 determineWindowSize();
 
