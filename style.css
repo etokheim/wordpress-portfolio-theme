@@ -2171,6 +2171,7 @@ em {
 	/* Must add up to the feature_background height */
 	height: 30vh;
 
+	opacity: 0;
 	width: 100%;
 	display: flex;
 	align-items: center;

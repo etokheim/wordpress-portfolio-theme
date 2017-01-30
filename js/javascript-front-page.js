@@ -72,6 +72,8 @@ function enableScroll() {
 
 var feature, header, featureBackground, featureInstance;
 var ViewModel = function() {
+	var that = this;
+
 	header = {
 		height: $('#header').outerHeight(),
 	};
@@ -204,14 +206,24 @@ var ViewModel = function() {
 		}
 	};
 
+	// Set current slide
+	feature.slide.current(this.getClosestSlideIndex());
 	feature.updateValues();
 	setup.onResizeHook.push(feature.updateValues);
 
-	feature.slide.current(this.getClosestSlideIndex());
+	setup.onLoadHook.push(function() {
+		// Get closest slide
+		var closestSlide = that.getClosestSlideIndex();
+		// Make current slide visible
+		$('.feature_instance').eq(closestSlide).css({ 'opacity': 1 });
+		feature.slide.backgrounds()[closestSlide].visible(true);
+	});
+
 
 	// Change img visibility on feature.slide.current change
 	var lastVisible = false;
 	feature.slide.current.subscribe(function() {
+		console.log("Making " + feature.slide.current() + " visible");
 		feature.slide.backgrounds()[feature.slide.current()].visible(true);
 		if(lastVisible) {
 			feature.slide.backgrounds()[lastVisible].visible(false);
