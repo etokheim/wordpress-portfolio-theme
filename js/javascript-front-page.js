@@ -120,6 +120,7 @@ var ViewModel = function() {
 				if(!feature.slide.computerScrolling) {
 					disableScroll();
 					feature.slide.computerScrolling = true;
+					feature.slide.current(index);
 
 					// Calculate new scroll position
 					feature.slide.targetOffsetTop = feature.trueOffset.top + index * feature.instance.height;
@@ -131,7 +132,6 @@ var ViewModel = function() {
 						// setTimeout(function() {
 							enableScroll();
 							feature.slide.computerScrolling = false;
-							feature.slide.current(index);
 
 							console.log("Finished scrolling");
 						// }, 20);
@@ -234,7 +234,6 @@ var ViewModel = function() {
 	}
 
 	$(window).on('scroll', function(event) {
-		console.log("scrolled");
 		var featureCenterPoint = featureBackground.offset().top + featureBackground.outerHeight()/2;
 		// console.log( featureCenterPoint );
 
@@ -267,11 +266,9 @@ var ViewModel = function() {
 					instanceOpacity = 0;
 				}
 
-				instance.find('h1').css({ 'margin-top': (1 - instanceOpacity) * -25 });
+				// instance.find('h1').css({ 'margin-top': (1 - instanceOpacity) * -25 });
 				instance.css({ 'opacity': instanceOpacity });
 			}
-
-			// console.log("on, feature.slide.zeroValue = " + feature.slide.zeroValue + ", difference = " + feature.slide.difference);
 
 			if(Math.abs(feature.slide.difference) > feature.slide.settings.threshold) {
 				if(scroll.direction === "up") {

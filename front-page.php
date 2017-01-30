@@ -107,9 +107,20 @@ get_header();
 						<?php array_push($backgrounds, wp_get_attachment_image( get_post_thumbnail_id($post->ID), 'full', false )); ?>
 						<div class="feature_instance">
 							<div class="feature_heading_container">
-								<h1><?php the_title(); ?></h1>
+								<a href="<?php the_permalink() ?>">
+									<h1><?php the_title(); ?></h1>
+								</a>
 							</div>
-							<div class="feature_paragraph_container"><?php the_excerpt(); // The excerpt comes with a <p>-tag ?></div>
+
+							<div class="feature_paragraph_container ingress">
+								<a href="<?php the_permalink() ?>">
+									<?php the_excerpt(); // The excerpt comes with a <p>-tag ?>
+								</a>
+							</div>
+
+							<a href="<?php the_permalink() ?>">
+								<button class="feature_button">Les meir →</button>
+							</a>
 						</div>
 						<?php
 					endwhile;

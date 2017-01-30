@@ -36,6 +36,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Clearings
 # Widgets
 # Content
+	## Article
 	## Posts and pages
 		### Front-page
 	## Asides
@@ -274,9 +275,6 @@ button,
 input,
 select,
 textarea {
-	/*color: #404040;*/
-	font-family: sans-serif;
-	font-size: 16px;
 	font-size: 1rem;
 	line-height: 1.5;
 }
@@ -296,6 +294,7 @@ h1 {
 	margin: 0.67em 0;
 	text-align: center;
 	font-weight: 800;
+	letter-spacing: 0.2rem;
 	text-transform: none;
 	color: rgb(255,255,255);
 	/*font-family: 'Libre Baskerville', serif;*/
@@ -453,22 +452,24 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	background: none;
-	border-radius: 0;
-	border: .15rem solid rgba(230, 230, 230, 1);
-	color: rgba(230, 230, 230, 1);
+	background-color: #fff;
+	border-radius: 3px;
+	border: none;
+	color: #1f1f1f;
 	font-size: 1rem;
 	text-transform: uppercase;
 	line-height: 1;
-	padding: .6em 1em .4em;
+	font-size: .8rem;
+	letter-spacing: .2rem;
+	padding: 1rem 2rem;
 }
 
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
+	background-color: rgba(230, 230, 230, 1);
+	/*color: #fff;*/
 }
 
 button:focus,
@@ -538,9 +539,13 @@ textarea {
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 p > a {
 	color: #000;
-	text-decoration: none;
 	position: relative;
 	display: inline-block;
 
@@ -857,12 +862,20 @@ a:active {
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Page
---------------------------------------------------------------*/
 #page {
 	height: auto;
 	margin: 0 auto;
+}
+
+
+/*--------------------------------------------------------------
+## Article
+--------------------------------------------------------------*/
+.ingress {
+	font-weight: 400; /* Regular */
+	font-family: 'Libre Baskerville', serif;
+	/*font-style: italic;*/
+	letter-spacing: .05rem;
 }
 
 /*--------------------------------------------------------------
@@ -2143,6 +2156,7 @@ em {
 .feature_container {
 	width: 100%;
 	max-width: 850px;
+	color: #fff;
 }
 
 .feature_instance:first-of-type {
@@ -2175,7 +2189,7 @@ em {
 	/*opacity: 0;*/
 }
 
-.feature_heading_container {
+.feature_heading_container, .feature_paragraph_container {
 	width: 100%;
 }
 
@@ -2184,6 +2198,15 @@ em {
 
 	will-change: transform;
 	transform: translateZ(0);
+	margin: 0;
+}
+
+.feature_paragraph_container {
+	margin-top: 1rem;
+}
+
+.feature_button {
+	margin-top: 3.5rem;
 }
 
 /* --------- Featured --------- */
