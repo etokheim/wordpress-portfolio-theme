@@ -10,6 +10,12 @@ h1 {
 	font-size: 2.5rem;
 }
 
+section:after {
+	width: calc(100% + 20px);
+	left: -10px;
+	height: 10px;
+}
+
 .menu_container {
 	width: calc(100% - 20px);
 	left: calc(-100vw);
@@ -232,12 +238,6 @@ img.alignleft, img.alignright, img.aligncenter {
 	text-align: center;
 }
 
-.whitespace_separator {
-	width: 100%;
-	left: initial;
-	height: 10px;
-}
-
 
 
 
@@ -307,4 +307,38 @@ img.alignleft, img.alignright, img.aligncenter {
 	height: .75rem;
 	font-size: .75rem;
 	font-weight: initial;
+}
+
+
+/*--------------------------------------------------------------
+# Feature slider
+--------------------------------------------------------------*/
+.featured_posts .contain {
+	margin: 0 auto;
+}
+
+/* Remove the background, as only a couple of pixels of it would be visible */
+.featured_posts.filled {
+	/*background-color: #fff;*/
+}
+
+.feature_background_container {
+	height: calc(100vh - 60px - 10px);
+	box-shadow: initial;
+}
+
+.feature_background_container_fixed {
+	width: calc(100% - 20px); /* Excluding the white margins */
+	position: fixed;
+	top: calc(60px);
+}
+
+.feature_instance:first-of-type {
+	/* 35vh = instance height */
+	margin-top: calc((100vh - 60px - 10px)/2 - 35vh/2);
+}
+
+.feature_instance:last-of-type {
+	/* 35vh = instance height */
+	margin-bottom: calc((100vh - 60px - 10px)/2 - 35vh/2);
 }

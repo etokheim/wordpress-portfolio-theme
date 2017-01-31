@@ -908,14 +908,6 @@ section:after {
 	max-width: 1180px;
 }
 
-.whitespace_separator {
-	width: calc(100vw - 60px);
-	left: -60px;
-	height: 60px;
-	background: #fff;
-	position: relative;
-}
-
 .post_image_shadow {
 	box-shadow: 0px 10px 75px rgba(0,0,0,0.1);
 }
@@ -2158,16 +2150,16 @@ em {
 }
 
 .feature_instance:first-of-type {
-	margin-top: 12.5vh;
+	/* Must be half of feature_instance height */
+	margin-top: 17.5vh;
 }
 
 .feature_instance:last-of-type {
-	margin-bottom: 12.5vh;
+	margin-bottom: 17.5vh;
 }
 
 .feature_instance {
-	/* Must add up to the feature_background height */
-	height: 30vh;
+	height: 35vh;
 
 	opacity: 0;
 	width: 100%;
@@ -2193,11 +2185,17 @@ em {
 }
 
 .feature_heading_container > *, .feature_paragraph_container > * {
+	text-align: center;
 	position: absolute;
 
 	will-change: transform;
 	transform: translateZ(0);
 	margin: 0;
+}
+
+.feature_paragraph_container > a > * {
+	max-width: 90%;
+
 }
 
 .feature_paragraph_container {

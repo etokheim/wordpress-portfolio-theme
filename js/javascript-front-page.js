@@ -253,7 +253,7 @@ var ViewModel = function() {
 		// If scrolled to feature and not passed; fix the background ++
 		if (scroll.y > feature.trueOffset.top &&
 			// The scroll.y value when scrolled to the last feature slide
-			scroll.y < feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
+			scroll.y <= feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
 
 			feature.visiting = true;
 
@@ -293,7 +293,7 @@ var ViewModel = function() {
 
 		// Else if scrolled past; remove fixed class and set margin-top
 		// The scroll.y value when scrolled to the last feature slide
-		} else if(scroll.y > feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
+		} else if(scroll.y >= feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
 			console.log("Passed");
 			feature.visiting = false;
 
