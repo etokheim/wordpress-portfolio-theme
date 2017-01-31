@@ -328,7 +328,6 @@ ko.applyBindings(new ViewModel());
 /*--------------------------------------------------------------
 # Intro slideshow
 --------------------------------------------------------------*/
-// Description:
 // Displays a slideshow in the introduction section. (Top of the page)
 
 // Selects random slide to start with
@@ -388,7 +387,6 @@ setInterval(function() {
 /*--------------------------------------------------------------
 ## Hide intro slideshow
 --------------------------------------------------------------*/
-// Description:
 // Hides the slideshow when user scrolls past it to enhance performance.
 // The image has a fixed position and will otherwise stay in the background.
 
@@ -408,15 +406,10 @@ function showIntroSlideshow(boolean) {
 /*--------------------------------------------------------------
 # Hover effects for other projects
 --------------------------------------------------------------*/
-// Description:
 //
-function other_projects_hover(thisItem) {
-	setup.log(thisItem.find(".other_projects_img_overlay"), 1);
-
-	$(thisItem.find(".other_projects_img_overlay_2")).toggleClass("other_projects_img_overlay_2_toggled");
-	$(thisItem.find(".other_projects_img_overlay")).toggleClass("other_projects_img_overlay_toggled");
-
-	// thisItem.find(".other_projects_img_overlay").css({"opacity": "0.5"});
+function other_projects_hover(item) {
+	$(item.find(".other_projects_img_overlay")).toggleClass("other_projects_img_overlay_toggled");
+	$(item).first().toggleClass('other_pojects_hover');
 }
 
 
@@ -425,7 +418,6 @@ function other_projects_hover(thisItem) {
 /*--------------------------------------------------------------
 # Notifications
 --------------------------------------------------------------*/
-// Description:
 // Adds notification support to the site.
 var notificationShowing = false;
 

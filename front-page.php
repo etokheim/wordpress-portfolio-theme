@@ -231,25 +231,25 @@ get_header();
 		// var_dump($otherProjectsPosts);
 
 			$otherProjectsCustomSorting = [
-											[0.5, 0.5, 1,   1,   1],
-											[1,   1,   1,   2,   1],
-											[1,   0.5, 0.5, 2,   1],
-											[1,   1,   2,   2,   1],
-											[1,   0.5, 0.5, 1,   1],
-											[1,   2,   2,   1,   1],
-											[0.5, 0.5, 1,   2,   1],
-											[2,   1,   1,   1,   1],
+											[0.5, 0.5, 1,   1,   1  ],
+											[1,   1,   1,   2,   1  ],
+											[1,   0.5, 0.5, 2,   1  ],
+											[1,   1,   2,   2,   1  ],
+											[1,   0.5, 0.5, 1,   1  ],
+											[1,   2,   2,   1,   1  ],
+											[0.5, 0.5, 1,   2,   1  ],
+											[2,   1,   1,   1,   1  ],
 											[1,   1,   1,   0.5, 0.5],
-											[1,   0.5, 0.5, 1,   1],
-											[1,   1,   1,   2,   1],
-											[1,   0.5, 0.5, 2,   1],
-											[1,   1,   2,   2,   1],
-											[1,   0.5, 0.5, 1,   1],
-											[1,   2,   2,   1,   1],
-											[0.5, 0.5, 1,   2,   1],
-											[2,   1,   1,   1,   1],
+											[1,   0.5, 0.5, 1,   1  ],
+											[1,   1,   1,   2,   1  ],
+											[1,   0.5, 0.5, 2,   1  ],
+											[1,   1,   2,   2,   1  ],
+											[1,   0.5, 0.5, 1,   1  ],
+											[1,   2,   2,   1,   1  ],
+											[0.5, 0.5, 1,   2,   1  ],
+											[2,   1,   1,   1,   1  ],
 											[1,   1,   1,   0.5, 0.5],
-											[0.5, 0.5, 1,   1,   1]
+											[0.5, 0.5, 1,   1,   1  ]
 										]; // 48 * 2 + 4 = 100 -> I made 48 and just duplicated them.
 
 			// echo 'count($otherProjectsPosts) = ' . count($otherProjectsPosts) . "<br>";
@@ -451,17 +451,24 @@ get_header();
 				} else if($postSize == 0.5) {
 					?>
 
-					<a href="<?php echo $postObject['permalink']; ?>" onmouseover="other_projects_hover($(this));" onmouseout="other_projects_hover($(this));">
-						<div class="other_pojects_05 other_pojects<?php echo " $postPosition"; ?>">
-							<div class="other_projects_big_img_wrapper">
-								<div class="other_projects_img_overlay_2"></div>
-								<div class="other_projects_img_overlay"></div>
-								<div class="other_projects_logo" style="background-image: url('<?php echo $postObject['employersLogo']; ?>');"></div>
-								<div class="other_projects_img" style="background-image: url('<?php echo $postObject['image']; ?>');"></div>
-							</div>
-							<div class="other_projects_text_wrapper">
-								<h3><?php echo $postObject["title"]; ?></h3>
-								<p><?php echo $postObject["excerpt"]; ?></p>
+					<a href="<?php echo $postObject['permalink']; ?>">
+						<!-- A div to detemine the width -->
+						<div class="col-md-4 col-lg-6 other_projects_padding<?php echo " $postPosition"; ?>" onmouseover="other_projects_hover($(this));" onmouseout="other_projects_hover($(this));">
+							<!--
+								A div for effects - the col-classes uses paddings to separate content
+								which means we can't add the shadow to the columns. (The shadow would
+								display ouside the padding, while the content inside the padding.)
+							-->
+							<div class="other_pojects">
+								<div class="other_projects_big_img_wrapper">
+									<div class="other_projects_img_overlay"></div>
+									<div class="other_projects_logo" style="background-image: url('<?php echo $postObject['employersLogo']; ?>');"></div>
+									<div class="other_projects_img" style="background-image: url('<?php echo $postObject['image']; ?>');"></div>
+								</div>
+								<div class="other_projects_text_wrapper">
+									<h3><?php echo $postObject["title"]; ?></h3>
+									<p><?php echo $postObject["excerpt"]; ?></p>
+								</div>
 							</div>
 						</div>
 					</a>
@@ -470,17 +477,18 @@ get_header();
 				} else if($postSize == 1) {
 					?>
 
-					<a href="<?php echo $postObject['permalink']; ?>" onmouseover="other_projects_hover($(this));" onmouseout="other_projects_hover($(this));">
-						<div class="other_pojects_1 other_pojects<?php echo " $postPosition"; ?>">
-							<div class="other_projects_big_img_wrapper">
-								<div class="other_projects_img_overlay_2"></div>
-								<div class="other_projects_img_overlay"></div>
-								<div class="other_projects_logo" style="background-image: url('<?php echo $postObject['employersLogo']; ?>');"></div>
-								<div class="other_projects_img" style="background-image: url('<?php echo $postObject['image']; ?>');"></div>
-							</div>
-							<div class="other_projects_text_wrapper">
-								<h3><?php echo $postObject["title"]; ?></h3>
-								<p><?php echo $postObject["excerpt"]; ?></p>
+					<a href="<?php echo $postObject['permalink']; ?>">
+						<div class="col-md-4 col-lg-3 other_projects_padding<?php echo " $postPosition"; ?>" onmouseover="other_projects_hover($(this));" onmouseout="other_projects_hover($(this));">
+							<div class="other_pojects">
+								<div class="other_projects_big_img_wrapper">
+									<div class="other_projects_img_overlay"></div>
+									<div class="other_projects_logo" style="background-image: url('<?php echo $postObject['employersLogo']; ?>');"></div>
+									<div class="other_projects_img" style="background-image: url('<?php echo $postObject['image']; ?>');"></div>
+								</div>
+								<div class="other_projects_text_wrapper">
+									<h3><?php echo $postObject["title"]; ?></h3>
+									<p><?php echo $postObject["excerpt"]; ?></p>
+								</div>
 							</div>
 						</div>
 					</a>
@@ -489,11 +497,10 @@ get_header();
 				} else if($postSize == 2) {
 					// var_dump($postObject);
 					?>
-					<div class="other_pojects_1 other_pojects<?php echo " $postPosition"; ?>">
+					<div class="col-md-4 col-lg-3 other_projects_padding<?php echo " $postPosition"; ?>">
 						<a class="other_projects_2_container" href="<?php echo $postObject[0]['permalink']; ?>" onmouseover="other_projects_hover($(this));" onmouseout="other_projects_hover($(this));">
 							<div class="other_pojects_2 other_pojects">
 								<div class="other_projects_big_img_wrapper">
-									<div class="other_projects_img_overlay_2"></div>
 									<div class="other_projects_img_overlay"></div>
 									<div class="other_projects_logo" style="background-image: url('<?php echo $postObject[0]['employersLogo']; ?>');"></div>
 									<div class="other_projects_img" style="background-image: url('<?php echo $postObject[0]['image']; ?>');"></div>
@@ -506,7 +513,6 @@ get_header();
 						<a class="other_projects_2_container" href="<?php echo $postObject[1]['permalink']; ?>" onmouseover="other_projects_hover($(this));" onmouseout="other_projects_hover($(this));">
 							<div class="other_pojects_2 other_pojects">
 								<div class="other_projects_big_img_wrapper">
-									<div class="other_projects_img_overlay_2"></div>
 									<div class="other_projects_img_overlay"></div>
 									<div class="other_projects_logo" style="background-image: url('<?php echo $postObject[1]['employersLogo']; ?>');"></div>
 									<div class="other_projects_img" style="background-image: url('<?php echo $postObject[1]['image']; ?>');"></div>
