@@ -231,130 +231,86 @@ get_header();
 		// var_dump($otherProjectsPosts);
 
 			$otherProjectsCustomSorting = [
-											[0.5, 0.5, 1,   1,   1  ],
-											[1,   1,   1,   2,   1  ],
-											[1,   0.5, 0.5, 2,   1  ],
-											[1,   1,   2,   2,   1  ],
-											[1,   0.5, 0.5, 1,   1  ],
-											[1,   2,   2,   1,   1  ],
-											[0.5, 0.5, 1,   2,   1  ],
-											[2,   1,   1,   1,   1  ],
-											[1,   1,   1,   0.5, 0.5],
-											[1,   0.5, 0.5, 1,   1  ],
-											[1,   1,   1,   2,   1  ],
-											[1,   0.5, 0.5, 2,   1  ],
-											[1,   1,   2,   2,   1  ],
-											[1,   0.5, 0.5, 1,   1  ],
-											[1,   2,   2,   1,   1  ],
-											[0.5, 0.5, 1,   2,   1  ],
-											[2,   1,   1,   1,   1  ],
-											[1,   1,   1,   0.5, 0.5],
-											[0.5, 0.5, 1,   1,   1  ]
+											[0.5, 0.5, 1,   1,  ],
+											[1,   1,   1,   2,  ],
+											[1,   0.5, 0.5, 2,  ],
+											[1,   1,   2,   2,  ],
+											[1,   0.5, 0.5, 1,  ],
+											[1,   2,   2,   1,  ],
+											[0.5, 0.5, 1,   2,  ],
+											[2,   1,   1,   1,  ],
+											[1,   1,   1,   1,  ],
+											[1,   0.5, 0.5, 1,  ],
+											[1,   1,   1,   2,  ],
+											[1,   0.5, 0.5, 2,  ],
+											[1,   1,   2,   2,  ],
+											[1,   0.5, 0.5, 1,  ],
+											[1,   2,   2,   1,  ],
+											[0.5, 0.5, 1,   2,  ],
+											[2,   1,   1,   1,  ],
+											[1,   1,   0.5, 0.5,],
+											[0.5, 0.5, 1,   1,  ]
 										]; // 48 * 2 + 4 = 100 -> I made 48 and just duplicated them.
 
 			// echo 'count($otherProjectsPosts) = ' . count($otherProjectsPosts) . "<br>";
 
-			$otherProjectsRemainingPosts = count($otherProjectsPosts) - 4; // minus the first row of posts
+			$otherProjectsRemainingPosts = count($otherProjectsPosts) - 3; // minus the first row of posts
 			$otherProjectsCustomSortingNew = [$otherProjectsCustomSorting[0]];
 
 			for ($i=1; $i < count($otherProjectsCustomSorting); $i++) {
 
-				$postsInNextRow = $otherProjectsCustomSorting[$i][0] + $otherProjectsCustomSorting[$i][1] + $otherProjectsCustomSorting[$i][2] + $otherProjectsCustomSorting[$i][3] + $otherProjectsCustomSorting[$i][4];
+				$postsInNextRow = $otherProjectsCustomSorting[$i][0] + $otherProjectsCustomSorting[$i][1] + $otherProjectsCustomSorting[$i][2] + $otherProjectsCustomSorting[$i][3];
 
-				if($otherProjectsRemainingPosts > 0) {
-					if($otherProjectsRemainingPosts < 15) {
-						// echo "<br>Less than 15 posts left (" . ($otherProjectsRemainingPosts) . ")";
-
-						if($otherProjectsRemainingPosts < 8) {
-							// echo "<br>Less than 8 posts! (" . $otherProjectsRemainingPosts . ")";
-							// echo "<br><br>Previous post setup = ";
-							for ($j=0; $j < count($otherProjectsCustomSortingNew[$i - 1]); $j++) {
-								// echo $otherProjectsCustomSortingNew[$i - 1][$j] . " ";
-							}
-
-							if($otherProjectsRemainingPosts == 7) {
-								$addToArray = [2, 2, 1, 1, 1];
-								array_push($otherProjectsCustomSortingNew, $addToArray);
-								$otherProjectsRemainingPosts -= 7;
-
-							} else if($otherProjectsRemainingPosts == 6) {
-								$addToArray = [1, 0.5, 0.5, 2, 2];
-								array_push($otherProjectsCustomSortingNew, $addToArray);
-								$otherProjectsRemainingPosts -= 6;
-
-							} else if($otherProjectsRemainingPosts == 5) {
-								$addToArray = [1, 0.5, 0.5, 2, 1];
-								array_push($otherProjectsCustomSortingNew, $addToArray);
-								$otherProjectsRemainingPosts -= 5;
-
-							} else if ($otherProjectsRemainingPosts == 4) {
-								$addToArray = [1, 0.5, 0.5, 1, 1];
-								array_push($otherProjectsCustomSortingNew, $addToArray);
-								$otherProjectsRemainingPosts -= 4;
-
-							} else if ($otherProjectsRemainingPosts == 3) {
-								$addToArray = [0.5, 0.5, 1, 0.5, 0.5];
-								array_push($otherProjectsCustomSortingNew, $addToArray);
-								$otherProjectsRemainingPosts -= 3;
-
-							} else if ($otherProjectsRemainingPosts == 2) {
-								$addToArray = [0.5, 0.5, 1, 0, 0];
-								array_push($otherProjectsCustomSortingNew, $addToArray);
-								$otherProjectsRemainingPosts -= 2;
-
-							} else if ($otherProjectsRemainingPosts == 1) {
-								$addToArray = [0.5, 0.5, 0, 0, 0];
-								array_push($otherProjectsCustomSortingNew, $addToArray);
-								$otherProjectsRemainingPosts -= 1;
-
-							}
-
-							// echo "<br><br><br><br>";
-
-						} else if($otherProjectsRemainingPosts == 8) {
-							$addToArray = [1, 1, 1, 0.5, 0.5];
-							array_push($otherProjectsCustomSortingNew, $addToArray);
-							$otherProjectsRemainingPosts -= 4;
-
-						} else if($otherProjectsRemainingPosts == 9) {
-							$addToArray = [0.5, 0.5, 1, 1, 1];
-							array_push($otherProjectsCustomSortingNew, $addToArray);
-							$otherProjectsRemainingPosts -= 4;
-
-						} else if($otherProjectsRemainingPosts == 10) {
-							$addToArray = [0.5, 0.5, 1, 0.5, 0.5];
-							array_push($otherProjectsCustomSortingNew, $addToArray);
-							$otherProjectsRemainingPosts -= 3;
-
-						} else if ($otherProjectsRemainingPosts == 11) {
-							$addToArray = [1, 0.5, 0.5, 1, 1];
-							array_push($otherProjectsCustomSortingNew, $addToArray);
-							$otherProjectsRemainingPosts -= 4;
-
-						} else if ($otherProjectsRemainingPosts == 12) {
-							$addToArray = [1, 0.5, 0.5, 2, 1];
-							array_push($otherProjectsCustomSortingNew, $addToArray);
-							$otherProjectsRemainingPosts -= 5;
-
-						} else if ($otherProjectsRemainingPosts == 13) {
-							$addToArray = [1, 0.5, 0.5, 2, 2];
-							array_push($otherProjectsCustomSortingNew, $addToArray);
-							$otherProjectsRemainingPosts -= 6;
-
-						} else if ($otherProjectsRemainingPosts == 14) {
-							$addToArray = [2, 2, 1, 1, 1];
-							array_push($otherProjectsCustomSortingNew, $addToArray);
-							$otherProjectsRemainingPosts -= 7;
-
-						}
-					} else {
-						// Else (it is more then 15 posts left to render) use the custom array.
-						// echo "<br>Posts in next row = " . $postsInNextRow;
-						$otherProjectsRemainingPosts -= $postsInNextRow;
-						array_push($otherProjectsCustomSortingNew, $otherProjectsCustomSorting[$i]);
+				if($otherProjectsRemainingPosts < 7 && $otherProjectsRemainingPosts > 0) {
+					echo "<script>console.log('Less than 7 posts $otherProjectsRemainingPosts');</script>";
+					// echo "<br><br>Previous post setup = ";
+					for ($j=0; $j < count($otherProjectsCustomSortingNew[$i - 1]); $j++) {
+						// echo $otherProjectsCustomSortingNew[$i - 1][$j] . " ";
 					}
+
+					if($otherProjectsRemainingPosts == 6) {
+						$addToArray = [1, 2, 1, 2];
+						array_push($otherProjectsCustomSortingNew, $addToArray);
+						$otherProjectsRemainingPosts -= 6;
+
+					} else if($otherProjectsRemainingPosts == 5) {
+						$addToArray = [1, 1, 1, 2];
+						array_push($otherProjectsCustomSortingNew, $addToArray);
+						$otherProjectsRemainingPosts -= 5;
+
+					} else if ($otherProjectsRemainingPosts == 4) {
+						$addToArray = [1, 1, 1, 1];
+						array_push($otherProjectsCustomSortingNew, $addToArray);
+						$otherProjectsRemainingPosts -= 4;
+
+					} else if ($otherProjectsRemainingPosts == 3) {
+						$addToArray = [0.5, 0.5, 1, 1];
+						array_push($otherProjectsCustomSortingNew, $addToArray);
+						$otherProjectsRemainingPosts -= 3;
+
+					} else if ($otherProjectsRemainingPosts == 2) {
+						$addToArray = [0.5, 0.5, 1, 0];
+						array_push($otherProjectsCustomSortingNew, $addToArray);
+						$otherProjectsRemainingPosts -= 2;
+
+					} else if ($otherProjectsRemainingPosts == 1) {
+						$addToArray = [0.5, 0.5, 0, 0];
+						array_push($otherProjectsCustomSortingNew, $addToArray);
+						$otherProjectsRemainingPosts -= 1;
+
+					}
+
+					// echo "<br><br><br><br>";
+
+				} else if($otherProjectsRemainingPosts > 0) {
+					// Else (it is more then 7 posts left to render) use the custom array.
+					// echo "<br>Posts in next row = " . $postsInNextRow;
+					$otherProjectsRemainingPosts -= $postsInNextRow;
+					array_push($otherProjectsCustomSortingNew, $otherProjectsCustomSorting[$i]);
+
 				}
 			}
+
 
 
 			//
@@ -379,7 +335,7 @@ get_header();
 			if(count($otherProjectsPosts) < 10) {
 				$multiplier = count($otherProjectsPosts);
 			} else {
-				$multiplier = (count($otherProjectsCustomSortingNew)) * 5;
+				$multiplier = (count($otherProjectsCustomSortingNew)) * 4;
 			}
 			$otherProjectsSkipNext = false;
 			$otherProjectsIndex = 0;
@@ -390,8 +346,8 @@ get_header();
 					// echo "RUNNING ($i)";
 					// if($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] !== 0) {
 
-						// For every fifth loop, change row (5 columns per row).
-						if($i%5 === 0 && $i !== 0) {
+						// For every fourth loop, change row (5 columns per row).
+						if($i%4 === 0 && $i !== 0) {
 							$otherProjectsRowNumber++;
 							// echo "<br>";
 						}
@@ -404,7 +360,6 @@ get_header();
 							$otherProjectsPosts[$otherProjectsIndex] = [];
 						}
 						if(!$otherProjectsSkipNext) {
-
 							if ($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] == 2) {
 								$doublePost = [$otherProjectsPosts[$otherProjectsIndex], $otherProjectsPosts[$otherProjectsIndex + 1]];
 								otherProjectsRender($doublePost, $otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber], $otherProjectsRowNumber, $otherProjectsColumnNumber);
@@ -423,7 +378,7 @@ get_header();
 							$otherProjectsIndex++;
 						}
 
-						if($otherProjectsColumnNumber == 4) {
+						if($otherProjectsColumnNumber == 3) {
 							$otherProjectsColumnNumber = 0;
 						} else {
 							$otherProjectsColumnNumber++;
@@ -431,7 +386,7 @@ get_header();
 					// }
 				}
 			} else {
-				echo "Fallback - No posts available. Try refresh the scroll. If the problem persists, please contact me at erling@tokheim.no";
+				echo "Fallback - No posts available. Try to refresh the page. If the problem persists, please contact me at erling@tokheim.no";
 			}
 
 			function otherProjectsRender($postObject, $postSize, $rowNumber, $columnNumber) {
