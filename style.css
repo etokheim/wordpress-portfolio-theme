@@ -1167,6 +1167,13 @@ article {
 	position: absolute;
 	bottom: 1.5625rem;
 	left: 1.5625rem;
+	filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0));
+
+	transition: all 250ms ease-out;
+}
+
+.other_projects_logo_hover {
+	filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
 }
 
 .other_projects_text_wrapper {

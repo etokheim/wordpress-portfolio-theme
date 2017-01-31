@@ -410,6 +410,8 @@ function showIntroSlideshow(boolean) {
 function other_projects_hover(item) {
 	$(item.find(".other_projects_img_overlay")).toggleClass("other_projects_img_overlay_toggled");
 	$(item).first().toggleClass('other_pojects_hover');
+	console.log(item);
+	$(item).find('.other_projects_logo').toggleClass('other_projects_logo_hover');
 }
 
 
