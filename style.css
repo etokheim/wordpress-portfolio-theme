@@ -888,7 +888,7 @@ section {
 	/*margin-bottom: 60px;*/
 }
 
-section:after {
+section:after, article > header:after {
 	content: "";
 	width: calc(100% + 120px);
 	left: -60px;
@@ -898,6 +898,11 @@ section:after {
 	position: relative;
 	/*margin: 15px 0;*/
 	/*top: 60px;*/
+}
+
+.post_padding {
+	padding-left: 30px;
+	padding-right: 30px;
 }
 
 .container {
@@ -910,6 +915,20 @@ section:after {
 .contain {
 	margin: 0 auto;
 	max-width: 1180px;
+}
+
+.contain > p {
+	max-width: 780px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contain > h2 {
+	max-width: 780px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .post_image_shadow {
@@ -1264,6 +1283,8 @@ article {
 --------------------------------------------------------------*/
 .post_work_table {
 	margin-bottom: 70px;
+	max-width: 850px;
+	margin: 0 auto;
 }
 
 .post_work_table h6 {
@@ -1286,6 +1307,10 @@ article {
 	padding-right: 20px;
 	padding-left: 40px;
 	line-height: 16px;
+}
+
+.post_work_table td:nth-of-type(1) p {
+	text-align: right;
 }
 
 .post_work_table td:nth-of-type(2) {
@@ -1611,17 +1636,17 @@ object {
 ## Images
 --------------------------------------------------------------*/
 img.alignleft {
-	margin-left: -50px;
+	/*margin-left: -50px;*/
 }
 
 img.alignright {
-	margin-right: -50px;
+	/*margin-right: -50px;*/
 }
 
 .centered_image, .wp-caption.aligncenter {
-	margin-left: -10%;
+	/*margin-left: -10%;
 	max-width: calc(120%);
-	width: calc(200%) !important; /* !important in order to override .wp-caption */
+	width: calc(200%) !important; /* !important in order to override .wp-caption */*/
 }
 
 .centered_image img.aligncenter {
@@ -2016,21 +2041,21 @@ em {
 	position: absolute;
 }
 
-.intro_slideshow {
+.intro_slideshow, .intro_image {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
 	opacity: 0;
 
 	will-change: transform;
 	transform: translateZ(0);
 }
 
-.intro_slideshow img {
-	max-height: 100%;
+.intro_image {
+	opacity: 1;
+}
+
+.intro_slideshow img, .intro_image img {
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
@@ -2040,7 +2065,7 @@ em {
 	position: relative;
 	display: inline;
 	color: #fff;
-	opacity: .85;
+	/*opacity: .85;*/
 	text-align: center;
 
 	will-change: transform;

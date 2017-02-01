@@ -37,7 +37,7 @@ get_header();
 
 			<div id="intro_txt">
 				<p id="introduksjons_helsing" data-stellar-ratio="0.95">Vennligst aktiver javascript!</p>
-				<h1 data-stellar-ratio="0.95"><?php echo get_bloginfo( 'description', 'display' ); ?></h1>
+				<h1><?php echo get_bloginfo( 'description', 'display' ); ?></h1>
 				<!-- <div class="intro_cta_wrapper"> -->
 					<p class="intro_cta" data-stellar-ratio="0.95">↓ Bla for arbeider <span class="separator">|</span><a href="http://erling.tokheim.no/2014/01/25/om-meg/" style="color: #fff; text-decoration-color: #fff;">Les om meg →</a></p>
 				<!-- </div> -->
