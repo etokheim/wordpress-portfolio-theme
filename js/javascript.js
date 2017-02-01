@@ -91,8 +91,6 @@ setup.onResizeFunction();
 
 // start image loading (I assume you need this for tracking?)
 
-
-
 var page = {
 	isScrolled: false,
 	ckeckIfIsScrolled: function() {

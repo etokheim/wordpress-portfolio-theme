@@ -116,8 +116,9 @@ var ViewModel = function() {
 			backgrounds: ko.observableArray([]),
 
 			goTo: function(index) {
-				// If the computer isn't already scrolling; scroll.
-				if(!feature.slide.computerScrolling) {
+				// If the computer isn't already scrolling and the index slide
+				// is a slide; scroll to it.
+				if(!feature.slide.computerScrolling && index >= 0 && index <= feature.slide.slideCount - 1) {
 					disableScroll();
 					feature.slide.computerScrolling = true;
 					feature.slide.currentSlide(index);
@@ -246,12 +247,29 @@ var ViewModel = function() {
 		}
 	}
 
+	// Touch events
+	// This is a custom scrolling function. It manually moved the page as much
+	// as the touch input is moving. This is in order to prevent the (while on
+	// mobile) address bar from hiding/showing when changing scroll direction.
+	// Also to prevent the easing, meaning the scroll stops at once the finger
+	// is lifted to prevent scrolling multiple slides at a time.
+	getMove(document, function(difference) {
+		if(!feature.slide.computerScrolling) {
+			var newScroll = scroll.y + difference;
+			window.scrollTo(0, newScroll);
+		}
+	}, function() {
+		return feature.visiting;
+	});
+
+
+	// Scroll events
 	$(window).on('scroll', function(event) {
 		var featureCenterPoint = featureBackground.offset().top + featureBackground.outerHeight()/2;
 		// console.log( featureCenterPoint );
 
 		// If scrolled to feature and not passed; fix the background ++
-		if (scroll.y > feature.trueOffset.top &&
+		if (scroll.y >= feature.trueOffset.top &&
 			// The scroll.y value when scrolled to the last feature slide
 			scroll.y <= feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
 

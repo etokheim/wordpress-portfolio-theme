@@ -319,7 +319,7 @@ img.alignleft, img.alignright, img.aligncenter {
 
 /* Remove the background, as only a couple of pixels of it would be visible */
 .featured_posts.filled {
-	/*background-color: #fff;*/
+	background-color: #fff;
 }
 
 .feature_background_container {
