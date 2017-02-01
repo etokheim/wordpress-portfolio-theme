@@ -1990,6 +1990,7 @@ em {
 	position: relative;
 	left: -60px;
 	top: -60px;
+	width: calc(100% + 120px);
 }
 
 #intro {
@@ -1998,6 +1999,12 @@ em {
 	overflow: hidden;
 	position: fixed;
 	top: -50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	will-change: transform;
+	transform: translateZ(0);
 }
 
 .intro_dimmer {
@@ -2005,12 +2012,8 @@ em {
 	height: 100%;
 	background-color: #000;
 	pointer-events: none;
-	opacity: .5;
+	opacity: 0;
 	position: absolute;
-}
-
-.intro_dimmer {
-	opacity: .8;
 }
 
 .intro_slideshow {
@@ -2021,6 +2024,9 @@ em {
 	background-repeat: no-repeat;
 	background-position: center;
 	opacity: 0;
+
+	will-change: transform;
+	transform: translateZ(0);
 }
 
 .intro_slideshow img {
@@ -2031,33 +2037,29 @@ em {
 }
 
 #intro_txt {
-	margin: 0 auto;
 	position: relative;
-	margin-top: calc(50vh - 60px);
-	top: -30px;
-	width: 100%;
+	display: inline;
+	color: #fff;
+	opacity: .85;
 	text-align: center;
+
+	will-change: transform;
+	transform: translateZ(0);
 }
 
 #intro_txt h1, #intro_txt p {
 	margin-top: 0;
 	margin-bottom: 0;
-	color: #fff;
-	opacity: .85;
 }
 
 #intro_txt h1 {
 	letter-spacing: 0.8rem;
-	line-height: 1.4;
 }
 
 #introduksjons_helsing {
-	text-transform: none;
-	font-weight: 300;
 	font-style: italic;
 	letter-spacing: 3px;
 	font-family: 'Libre Baskerville', serif;
-	margin-bottom: 10px;
 }
 
 .intro_cta_wrapper {
@@ -2187,15 +2189,18 @@ em {
 .feature_heading_container > *, .feature_paragraph_container > * {
 	text-align: center;
 	position: absolute;
+	left: 0;
+	right: 0;
+	padding: 0 5%;
 
 	will-change: transform;
 	transform: translateZ(0);
 	margin: 0;
 }
 
-.feature_paragraph_container > a > * {
-	max-width: 90%;
-
+.feature_heading_container > a > h1 {
+	line-height: 100%;
+	padding-bottom: 1rem;
 }
 
 .feature_paragraph_container {

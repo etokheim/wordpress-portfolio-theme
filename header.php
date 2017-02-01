@@ -19,12 +19,12 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 	<link rel="icon" type="image/png" href="img/ikon/favicon.png">
-	<meta name="viewport" content="width=device-width,  maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css" />
 
-	<link rel="stylesheet" media='screen and (min-width: 701px) and (max-width: 900px)' type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style_medium.css" />
+	<link rel="stylesheet" media='screen and (max-width: 900px)' type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style_medium.css" />
 	<link rel="stylesheet" media='screen and (max-width: 700px)' type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style_small.css" />
 
 	<!-- MIDLERTIDIG! -->

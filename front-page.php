@@ -8,10 +8,7 @@ get_header();
 
 // echo "The post thumbnail id = " . $test;
 ?>
-<!-- The embarassment is huge in this one -->
-<div class="noMobile">
-	<p><span style="font-size: 4rem;">😱</span><br><span style="font-size: 4rem; font-weight: 800;">SMERTE!</span><br>Pinlig, mobilversjonen er ikkje klar... Men ver snill og besøk meg via ein større skjerm! &thinsp;:&thinsp;)</p>
-</div>
+
 <div class="notification_container">
 	<div class="notification">
 		<div class="notification_x" style="cursor: pointer;" onclick="toggleBeta();">x</div>
@@ -21,7 +18,7 @@ get_header();
 
 <section>
 	<div id="intro_container">
-		<div id="intro" data-stellar-ratio="0.1" style="background-image: url('<?php // echo get_header_image(); ?>');">
+		<div id="intro" data-stellar-ratio="0.1">
 			<?php
 				// if(class_exists("get_featured_images")) { <-- DOESNT WORK
 					for($i=0; $i < count($dynamic_featured_image->get_featured_images()); $i++) {
@@ -38,11 +35,11 @@ get_header();
 			?>
 			<div class="intro_dimmer"></div>
 
-			<div id="intro_txt" data-stellar-ratio="0.95">
-				<p id="introduksjons_helsing">Vennligst aktiver javascript!</p>
-				<h1><?php echo get_bloginfo( 'description', 'display' ); ?></h1>
+			<div id="intro_txt">
+				<p id="introduksjons_helsing" data-stellar-ratio="0.95">Vennligst aktiver javascript!</p>
+				<h1 data-stellar-ratio="0.95"><?php echo get_bloginfo( 'description', 'display' ); ?></h1>
 				<!-- <div class="intro_cta_wrapper"> -->
-					<p class="intro_cta">↓ Bla for arbeider <span class="separator">|</span><a href="http://erling.tokheim.no/2014/01/25/om-meg/" style="color: #fff; text-decoration-color: #fff;">Les om meg →</a></p>
+					<p class="intro_cta" data-stellar-ratio="0.95">↓ Bla for arbeider <span class="separator">|</span><a href="http://erling.tokheim.no/2014/01/25/om-meg/" style="color: #fff; text-decoration-color: #fff;">Les om meg →</a></p>
 				<!-- </div> -->
 				<!-- <button>Om meg</button> -->
 				<!-- <span style="color: #fff; font-size: 1.2rem;">↓</span> -->

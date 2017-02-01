@@ -136,6 +136,8 @@ var ViewModel = function() {
 						// }, 20);
 					});
 
+					return false;
+
 					// $('.feature_instance').eq(feature.slide.currentSlide()).addClass('feature_instance_hidden');
 					// $('.feature_instance').eq(index).removeClass('feature_instance_hidden');
 				}
@@ -209,9 +211,9 @@ var ViewModel = function() {
 				height: $('.feature_instance').eq(0).outerHeight()
 			};
 
-			$(window).load(function() {
+			// $(window).load(function() {
 				feature.updateTextSizes();
-			});
+			// });
 		}
 	};
 
@@ -261,6 +263,20 @@ var ViewModel = function() {
 	}, function() {
 		return feature.visiting;
 	});
+
+	// Touch events
+	// $(document).click(function() {
+	// 	getSwipeDirection(document, function(direction) {
+	// 		console.log("swipe " + direction)
+	// 		if(direction === "up") {
+	// 			feature.slide.next();
+	// 		} else if(direction === "down") {
+	// 			feature.slide.previous();
+	// 		}
+	// 	}, function() {
+	// 		return !feature.visiting;
+	// 	});
+	// })
 
 
 	// Scroll events
