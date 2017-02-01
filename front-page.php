@@ -225,8 +225,8 @@ get_header();
 				$otherProjectsPosts = array_values($otherProjectsPosts);
 			?>
 
-<div class="other_projects_container content_section_wrapper">
-	<div class="content_section">
+<section class="other_projects filled">
+	<div class="contain">
 		<?php
 		// var_dump($otherProjectsPosts);
 
@@ -262,7 +262,7 @@ get_header();
 				$postsInNextRow = $otherProjectsCustomSorting[$i][0] + $otherProjectsCustomSorting[$i][1] + $otherProjectsCustomSorting[$i][2] + $otherProjectsCustomSorting[$i][3];
 
 				if($otherProjectsRemainingPosts < 7 && $otherProjectsRemainingPosts > 0) {
-					echo "<script>console.log('Less than 7 posts $otherProjectsRemainingPosts');</script>";
+					// echo "<script>console.log('Less than 7 posts $otherProjectsRemainingPosts');</script>";
 					// echo "<br><br>Previous post setup = ";
 					for ($j=0; $j < count($otherProjectsCustomSortingNew[$i - 1]); $j++) {
 						// echo $otherProjectsCustomSortingNew[$i - 1][$j] . " ";
@@ -485,6 +485,6 @@ get_header();
 		?>
 		<div class="clear"></div>
 	</div>
-</div>
+</section>
 
 <?php get_footer(); ?>

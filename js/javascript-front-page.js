@@ -88,7 +88,6 @@ var ViewModel = function() {
 			allFeaturedOffsetTop.push( Math.abs(scroll.y + screen.availHeight/2 - ($('.feature_instance').eq(i).offset().top + $('.feature_instance').eq(i).innerHeight() / 2)) );
 		}
 		var lowestIndex = allFeaturedOffsetTop.indexOf(Math.min.apply(null, allFeaturedOffsetTop));
-		console.log("lowest index = " + lowestIndex);
 
 		return lowestIndex;
 	};
@@ -133,12 +132,9 @@ var ViewModel = function() {
 						// setTimeout(function() {
 							enableScroll();
 							feature.slide.computerScrolling = false;
-
-							console.log("Finished scrolling");
 						// }, 20);
 					});
 
-					console.log(index + ", " + feature.slide.currentSlide());
 					// $('.feature_instance').eq(feature.slide.currentSlide()).addClass('feature_instance_hidden');
 					// $('.feature_instance').eq(index).removeClass('feature_instance_hidden');
 				}
@@ -152,10 +148,14 @@ var ViewModel = function() {
 				feature.slide.goTo(feature.slide.currentSlide() - 1);
 			},
 
-			showBackground: function(index) {
+			showSlide: function(index) {
 				feature.slide.backgrounds()[index].visible(true);
-				if(feature.slide.previousSlide) {
+				$('.feature_instance').eq(index).css({ 'pointer-events': 'initial' });
+
+				// 0 also evaluates to false!
+				if(feature.slide.previousSlide !== false) {
 					feature.slide.backgrounds()[feature.slide.previousSlide].visible(false);
+					$('.feature_instance').eq(feature.slide.previousSlide).css({ 'pointer-events': 'none' });
 				}
 
 				feature.slide.previousSlide = index;
@@ -224,13 +224,13 @@ var ViewModel = function() {
 		var closestSlide = that.getClosestSlideIndex();
 		// Make current slide visible
 		$('.feature_instance').eq(closestSlide).css({ 'opacity': 1 });
-		feature.slide.showBackground(closestSlide);
+		feature.slide.showSlide(closestSlide);
 	});
 
 
 	// Change img visibility on feature.slide.currentSlide change
 	feature.slide.currentSlide.subscribe(function() {
-		feature.slide.showBackground(feature.slide.currentSlide());
+		feature.slide.showSlide(feature.slide.currentSlide());
 	});
 
 
@@ -294,13 +294,13 @@ var ViewModel = function() {
 		// Else if scrolled past; remove fixed class and set margin-top
 		// The scroll.y value when scrolled to the last feature slide
 		} else if(scroll.y >= feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
-			console.log("Passed");
+			// console.log("Passed");
 			feature.visiting = false;
 
 			featureBackground.removeClass('feature_background_container_fixed');
 			featureBackground.css({ 'margin-top': feature.totalHeight - feature.height });
 		} else {
-			console.log("Before");
+			// console.log("Before");
 			feature.visiting = false;
 
 			featureBackground.removeClass('feature_background_container_fixed');

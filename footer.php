@@ -13,7 +13,6 @@
 
 
 	<?php // if(!is_front_page()) { ?>
-	<div class="whitespace_separator"></div>
 	<footer class="site_footer" role="contentinfo">
 		<div class="content_section">
 			<div class="site-info">
