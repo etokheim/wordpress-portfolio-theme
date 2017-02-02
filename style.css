@@ -296,10 +296,15 @@ h1 {
 	font-weight: 800;
 	letter-spacing: 0.2rem;
 	text-transform: none;
-	color: rgb(255,255,255);
+	/*color: rgb(255,255,255);*/
 	/*font-family: 'Libre Baskerville', serif;*/
 	text-transform: uppercase;
-	text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+	text-shadow: 7px 11px 34px rgba(0, 0, 0, 0.4);
+}
+
+.post_content h1 {
+	font-size: 2.5rem;
+	text-shadow: initial;
 }
 
 h2 {
@@ -924,7 +929,7 @@ section:after, article > header:after {
 	margin-right: auto;
 }
 
-.contain > h2 {
+.contain > h2, .contain > h3, .contain > h4, .contain > h5 {
 	max-width: 780px;
 	text-align: center;
 	margin-left: auto;
@@ -2070,6 +2075,8 @@ em {
 
 	will-change: transform;
 	transform: translateZ(0);
+	max-width: calc(100% - 120px);
+	padding: 0 1.5rem;
 }
 
 #intro_txt h1, #intro_txt p {
@@ -2115,7 +2122,9 @@ em {
 
 
 
-/* --------- Featured --------- */
+/*--------------------------------------------------------------
+# Feature slider
+--------------------------------------------------------------*/
 .featured_posts .contain {
 	margin: calc(22.5vh - 60px) auto;
 	display: flex;
@@ -2217,15 +2226,21 @@ em {
 	left: 0;
 	right: 0;
 	padding: 0 5%;
-
-	will-change: transform;
-	transform: translateZ(0);
 	margin: 0;
 }
 
 .feature_heading_container > a > h1 {
 	line-height: 100%;
 	padding-bottom: 1rem;
+	will-change: transform;
+	transform: translateZ(0);
+}
+
+.feature_heading_container > p > h1 {
+	line-height: 100%;
+	padding-bottom: 1rem;
+	will-change: transform;
+	transform: translateZ(0);
 }
 
 .feature_paragraph_container {
@@ -2234,6 +2249,9 @@ em {
 
 .feature_button {
 	margin-top: 3.5rem;
+
+	will-change: transform;
+	transform: translateZ(0);
 }
 
 /* --------- Featured --------- */

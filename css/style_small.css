@@ -7,7 +7,7 @@ body {
 }
 
 h1 {
-	font-size: 2.5rem;
+	font-size: 2.3rem;
 }
 
 section:after, article > header:after {
@@ -127,6 +127,11 @@ section:after, article > header:after {
 #intro_container {
 	width: calc(100% + 20px);
 	left: -10px;
+}
+
+#intro_txt {
+	max-width: calc(100% - 20px);
+	padding: 0 1.5rem;
 }
 
 .feature_container {

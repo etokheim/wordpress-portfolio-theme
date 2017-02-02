@@ -45,7 +45,7 @@
 		for($i = 0; $i < count($post_splitted); $i++) {
 			if(strlen($post_splitted[$i]) > 2) {
 				echo '
-				<section class="filled">
+				<section class="post_content filled">
 					<div class="contain post_padding">
 						' . apply_filters("the_content", $post_splitted[$i])/* Formats with wp's formatting, ie.: [caption] becomes an HTML caption */ . '
 					</div>

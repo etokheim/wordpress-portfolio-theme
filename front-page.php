@@ -27,7 +27,7 @@ get_header();
 
 						?>
 
-						<div class='intro_slideshow'><?php echo wp_get_attachment_image( $attachment_id, 'full', false ); ?></div>
+						<div class='intro_slideshow' data-bind="style: { display: introSlideshow.visiting() ? 'initial' : 'none' }"><?php echo wp_get_attachment_image( $attachment_id, 'full', false ); ?></div>
 
 						<?php
 					}

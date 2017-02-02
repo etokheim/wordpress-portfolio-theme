@@ -169,13 +169,28 @@ function test() {
 
 function determineWindowSize() {
 	// Use the predefined screen variable to get window sizes
+	screen.innerWidth = $(window).innerWidth();
+	screen.innerHeight = $(window).innerHeight();
 }
 determineWindowSize();
+setup.onResizeHook.push(determineWindowSize);
 
-var windowSize;
-window.onresize = function() {
-	determineWindowSize(); // Funksjon frå front-page!!!! !! !!!!
+// This function is for mobile and tablet devices with address bars which are
+// showing and hiding depending on how the user scrolls.
+// 		The function sets a new height for the intro element on window resize,
+// BUT only if the window has been resized more than 200px. This prevents the
+// page from "jumping" when the user changes scroll direction.
+var previousScreenHeight = 0;
+function setIntroHeight() {
+	if(Math.abs(previousScreenHeight - screen.innerHeight) > 200) {
+		$('#intro_container').css({ 'height': innerHeight });
+		$('#intro').css({ 'height': innerHeight });
+
+		previousScreenHeight = innerHeight;
+	}
 }
+setup.onLoadHook.push(setIntroHeight);
+setup.onResizeHook.push(setIntroHeight);
 
 
 

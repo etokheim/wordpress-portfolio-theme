@@ -69,7 +69,7 @@ function enableScroll() {
 }
 
 var feature, header, featureBackground, featureInstance;
-var ViewModel = function() {
+var FeatureView = function() {
 	var that = this;
 
 	header = {
@@ -337,6 +337,7 @@ var ViewModel = function() {
 			// console.log("Before");
 			feature.visiting = false;
 
+
 			featureBackground.removeClass('feature_background_container_fixed');
 			featureBackground.css({ 'margin-top': 0 });
 		}
@@ -355,7 +356,8 @@ var ViewModel = function() {
 		}
 	}, 100);
 };
-ko.applyBindings(new ViewModel());
+
+
 
 
 
@@ -364,58 +366,61 @@ ko.applyBindings(new ViewModel());
 --------------------------------------------------------------*/
 // Displays a slideshow in the introduction section. (Top of the page)
 
-// Selects random slide to start with
-var introSlideshow = {
-	currentSlide: Math.round(Math.random() * ($('.intro_slideshow').length - 1)),
+var introSlideshow;
+var IntroSlideshowView = function() {
+	// Selects random slide to start with
+	introSlideshow = {
+		visiting: ko.observable(true),
+		currentSlide: Math.round(Math.random() * ($('.intro_slideshow').length - 1)),
 
-	// Slideshow settings
-	slidingSpeed: 12000,
-	transitionSpeed: 2000,
-	nextSlideEasing: "linear",
+		// Slideshow settings
+		slidingSpeed: 12000,
+		transitionSpeed: 2000,
+		nextSlideEasing: "linear",
 
-	shrinkingTime: 12000 + 2000, // introSlideshow.slidingSpeed + introSlideshow.transitionSpeed,
-	defaultSize: "scale(1)",
-	startSize: "scale(1.1)",
-}
-
-function startIntroSlideshow() {
-	$('.intro_slideshow').css({"transition": "opacity 0ms " +  introSlideshow.nextSlideEasing + ", transform 0ms " + introSlideshow.nextSlideEasing});
-	$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.startSize});
-
-
-	setTimeout(function() {
-		// Sets transition properties for slideshow
-		$('.intro_slideshow').css({"transition": "opacity " + introSlideshow.transitionSpeed + "ms " +  introSlideshow.nextSlideEasing + ", transform " + introSlideshow.shrinkingTime + "ms " + introSlideshow.nextSlideEasing});
-		$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.defaultSize});
-	}, 10);
-}
-setup.onLoadHook.push(startIntroSlideshow);
-
-function navigateIntroSlideshow(nextSlide) {
-	// If the slideshow is at the end, then restart.
-	if(nextSlide > $('.intro_slideshow').length - 1) {
-		nextSlide = 0;
+		shrinkingTime: 12000 + 2000, // introSlideshow.slidingSpeed + introSlideshow.transitionSpeed,
+		defaultSize: "scale(1)",
+		startSize: "scale(1.1)",
 	}
 
-	$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "0"});
-
-	$('.intro_slideshow').eq(nextSlide).css({"transition": "opacity 0ms " +  introSlideshow.nextSlideEasing + ", transform 0ms " + introSlideshow.nextSlideEasing});
-	$('.intro_slideshow').eq(nextSlide).css({"transform": introSlideshow.startSize});
-
-	setTimeout(function() {
-		$('.intro_slideshow').eq(nextSlide).css({"opacity": "1", "transform": introSlideshow.startSize});
-		$('.intro_slideshow').eq(nextSlide).css({"transition": "opacity " + introSlideshow.transitionSpeed + "ms " +  introSlideshow.nextSlideEasing + ", transform " + introSlideshow.shrinkingTime + "ms " + introSlideshow.nextSlideEasing});
-		$('.intro_slideshow').eq(nextSlide).css({"transform": introSlideshow.defaultSize});
-	}, 10)
-
-	introSlideshow.currentSlide = nextSlide;
-}
-
-setInterval(function() {
-	navigateIntroSlideshow(introSlideshow.currentSlide + 1);
-}, introSlideshow.slidingSpeed);
+	function startIntroSlideshow() {
+		$('.intro_slideshow').css({"transition": "opacity 0ms " +  introSlideshow.nextSlideEasing + ", transform 0ms " + introSlideshow.nextSlideEasing});
+		$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.startSize});
 
 
+		setTimeout(function() {
+			// Sets transition properties for slideshow
+			$('.intro_slideshow').css({"transition": "opacity " + introSlideshow.transitionSpeed + "ms " +  introSlideshow.nextSlideEasing + ", transform " + introSlideshow.shrinkingTime + "ms " + introSlideshow.nextSlideEasing});
+			$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.defaultSize});
+		}, 10);
+	}
+	setup.onLoadHook.push(startIntroSlideshow);
+
+	function navigateIntroSlideshow(nextSlide) {
+		// If the slideshow is at the end, then restart.
+		if(nextSlide > $('.intro_slideshow').length - 1) {
+			nextSlide = 0;
+		}
+
+		$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "0"});
+
+		$('.intro_slideshow').eq(nextSlide).css({"transition": "opacity 0ms " +  introSlideshow.nextSlideEasing + ", transform 0ms " + introSlideshow.nextSlideEasing});
+		$('.intro_slideshow').eq(nextSlide).css({"transform": introSlideshow.startSize});
+
+		setTimeout(function() {
+			$('.intro_slideshow').eq(nextSlide).css({"opacity": "1", "transform": introSlideshow.startSize});
+			$('.intro_slideshow').eq(nextSlide).css({"transition": "opacity " + introSlideshow.transitionSpeed + "ms " +  introSlideshow.nextSlideEasing + ", transform " + introSlideshow.shrinkingTime + "ms " + introSlideshow.nextSlideEasing});
+			$('.intro_slideshow').eq(nextSlide).css({"transform": introSlideshow.defaultSize});
+		}, 10)
+
+		introSlideshow.currentSlide = nextSlide;
+	}
+
+	setInterval(function() {
+		navigateIntroSlideshow(introSlideshow.currentSlide + 1);
+	}, introSlideshow.slidingSpeed);
+
+};
 
 
 /*--------------------------------------------------------------
@@ -444,7 +449,6 @@ function showIntroSlideshow(boolean) {
 function other_projects_hover(item) {
 	$(item.find(".other_projects_img_overlay")).toggleClass("other_projects_img_overlay_toggled");
 	$(item).first().toggleClass('other_pojects_hover');
-	console.log(item);
 	$(item).find('.other_projects_logo').toggleClass('other_projects_logo_hover');
 }
 
@@ -487,3 +491,11 @@ function showBetaNotification() {
 setup.onLoadHook.push(showBetaNotification);
 
 
+
+
+var my = {
+	feature: new FeatureView(),
+	introSlideshow: new IntroSlideshowView(),
+};
+
+ko.applyBindings(my.feature);
