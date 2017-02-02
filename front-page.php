@@ -25,11 +25,21 @@ get_header();
 						$dynamicFeaturedImages = false/*$dynamic_featured_image->get_featured_images()[$i]["full"]*/;
 						$attachment_id = $dynamic_featured_image->get_featured_images()[$i]["attachment_id"];
 
+						$attribute = "$(window).ready(function() { thisPageTransition() });";
+
+						if($i === 0) {
+						?>
+
+						<div class='intro_slideshow' data-bind="css: { intro_slideshow_hidden: !introSlideshow.visiting() }"><?php echo wp_get_attachment_image( $attachment_id, 'full', false, array('onload'=>$attribute) ); ?></div>
+
+						<?php
+						} else {
 						?>
 
 						<div class='intro_slideshow' data-bind="css: { intro_slideshow_hidden: !introSlideshow.visiting() }"><?php echo wp_get_attachment_image( $attachment_id, 'full', false ); ?></div>
 
 						<?php
+						}
 					}
 				// }
 			?>

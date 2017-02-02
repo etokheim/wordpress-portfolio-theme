@@ -49,8 +49,20 @@
 	};
 ?>
 </script>
-<!-- <div class="this_page_transition"></div> -->
-<!-- <div class="next_page_transition"></div> -->
+<div class="this_page_transition">
+	<div class="loading_animation">
+		<div class="ball_container ball_container_first">
+			<div class="loading_ball loading_ball_first"></div>
+		</div>
+		<div class="ball_container ball_container_second">
+			<div class="loading_ball loading_ball_second"></div>
+		</div>
+		<div class="ball_container  ball_container_third">
+			<div class="loading_ball loading_ball_third"></div>
+		</div>
+	</div>
+</div>
+<div class="next_page_transition"></div>
 <div id="page">
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 't_fisk' ); ?></a>
 

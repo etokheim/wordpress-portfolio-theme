@@ -192,7 +192,7 @@ function setIntroHeight() {
 
 
 	$('.intro_section').css({ 'margin-bottom': parseInt($('#bottom_box_margin').css('height')) });
-	feature.updateValues(); // Quick fix.. don't really know why I need it yet
+	if(typeof feature != 'undefined') {feature.updateValues();} // Quick fix.. don't really know why I need it yet
 }
 setup.onLoadHook.push(setIntroHeight);
 setup.onResizeHook.push(setIntroHeight);
@@ -268,26 +268,29 @@ window.onbeforeunload = function() {
 		nextPageTransition();
 	}
 }
-
+var dt;
 function nextPageTransition() {
-	// $(".next_page_transition").toggleClass("next_page_transition_toggled");
-	// $(".site").css({"transition": "all 500ms linear", "margin-top": "-50px"});
-	// $("#intro").css({"transition": "all 500ms linear", "margin-top": "-50px"});
+	$(".next_page_transition").toggleClass("next_page_transition_toggled");
+	$("body").css({"transition": "all 500ms linear", "margin-top": "-50px"});
+	$("#intro").css({"transition": "all 500ms linear", "margin-top": "-50px"});
 }
 
+var heroImageLoaded = false;
 function thisPageTransition() {
-	// $(".this_page_transition").toggleClass("this_page_transition_toggled");
-	// console.log("test " + document.getElementsByClassName("site")[0].style.marginTop);
-	// $(".site").css({"transition": "all 500ms ease-out", "margin-top": "0px"});
-	// $("#intro").css({"transition": "all 500ms ease-out", "margin-top": "0px"});
+	if(!heroImageLoaded) {
+		$(".this_page_transition").toggleClass("this_page_transition_toggled");
+		// console.log("test " + document.getElementsByClassName("site")[0].style.marginTop);
+		$(".site").css({"transition": "all 500ms ease-out", "margin-top": "0px"});
+		// $("#intro").css({"transition": "all 500ms ease-out", "margin-top": "0px"});
 
-	// setTimeout(function() {
-	// 	$("#iite").css({"transition": "initial"});
-	// 	$("#intro").css({"transition": "initial"});
-	// }, 500);
+		setTimeout(function() {
+			$("#iite").css({"transition": "initial"});
+			$("#intro").css({"transition": "initial"});
+		}, 500);
+
+		heroImageLoaded = !heroImageLoaded;
+	}
 }
-setup.onLoadHook.push(thisPageTransition);
-
 
 
 
