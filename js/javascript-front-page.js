@@ -290,6 +290,7 @@ var FeatureView = function() {
 			scroll.y <= feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
 
 			feature.visiting = true;
+			introSlideshow.visiting(false);
 
 			// Fix the background
 			featureBackground.addClass('feature_background_container_fixed');
@@ -336,6 +337,7 @@ var FeatureView = function() {
 		} else {
 			// console.log("Before");
 			feature.visiting = false;
+			introSlideshow.visiting(true);
 
 
 			featureBackground.removeClass('feature_background_container_fixed');
