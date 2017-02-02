@@ -285,7 +285,7 @@ var FeatureView = function() {
 		// console.log( featureCenterPoint );
 
 		// If scrolled to feature and not passed; fix the background ++
-		if (scroll.y >= feature.trueOffset.top &&
+		if (scroll.y >= feature.trueOffset.top - 1 &&
 			// The scroll.y value when scrolled to the last feature slide
 			scroll.y <= feature.trueOffset.top + (feature.slide.slideCount - 1) * feature.instance.height) {
 
