@@ -33,7 +33,7 @@ get_header();
 					}
 				// }
 			?>
-			<div class="intro_dimmer"></div>
+			<div class="intro_dimmer" data-bind="style: { display: introSlideshow.visiting() ? 'initial' : 'none' }"></div>
 
 			<div id="intro_txt">
 				<p id="introduksjons_helsing" data-stellar-ratio="0.95">Vennligst aktiver javascript!</p>
