@@ -2062,6 +2062,10 @@ em {
 	transform: translateZ(0);
 }
 
+.intro_slideshow_hidden {
+	display: none;
+}
+
 .intro_image {
 	opacity: 1;
 }
