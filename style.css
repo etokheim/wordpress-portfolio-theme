@@ -906,8 +906,7 @@ section:after, article > header:after {
 }
 
 .post_padding {
-	padding-left: 30px;
-	padding-right: 30px;
+	padding: 30px;
 }
 
 .container {
@@ -2112,7 +2111,7 @@ em {
 	font-family: "proxima-nova" sans-serif;
 	letter-spacing: 10;
 	text-transform: uppercase;
-	font-size: 70%;
+	font-size: 1rem;
 	font-style: normal;
 	display: block;
 	padding-top: 1rem;
