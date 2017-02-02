@@ -1114,7 +1114,7 @@ article {
 
 @media (min-width: 1316px) {
 	.other_projects .contain {
-		margin: 2rem auto;
+		padding: 2rem 0;
 	}
 }
 
@@ -2021,11 +2021,6 @@ em {
 	background-size: contain;
 	background-repeat: no-repeat;
 }
-
-/* intro */
-/*.intro_section {
-	margin-bottom: 60px;
-}*/
 
 #intro_container {
 	height: 100vh;

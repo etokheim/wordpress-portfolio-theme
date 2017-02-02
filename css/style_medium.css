@@ -28,7 +28,7 @@ html {
 # Feature slider
 --------------------------------------------------------------*/
 .featured_posts .contain {
-	margin: 0 auto;
+	padding: 0;
 }
 
 /* Remove the background, as only a couple of pixels of it would be visible */
