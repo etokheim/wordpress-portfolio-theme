@@ -220,7 +220,13 @@ var FeatureView = function() {
 	// Set current slide
 	feature.slide.currentSlide(this.getClosestSlideIndex());
 	feature.updateValues();
-	setup.onResizeHook.push(feature.updateValues);
+
+	// Apparantly have to delay it a sec
+	setup.onResizeHook.push(function() {
+		setTimeout(function() {
+			feature.updateValues
+		}, 50);
+	});
 
 	setup.onLoadHook.push(function() {
 		// Get closest slide
