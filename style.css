@@ -1353,6 +1353,8 @@ article {
 	width: 19rem;
 	color: #3e3e3e;
 	background: rgba(255,255,255,0.95);
+	overflow: hidden;
+	border-radius: 5px;
 	box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
 
 	-webkit-animation: notificationOut 0ms linear infinite both;
@@ -1373,12 +1375,17 @@ article {
 
 .notification_x {
 	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: .75rem;
-	height: .75rem;
-	font-size: .75rem;
+	top: 5px;
+	right: 5px;
+	width: calc(1rem + 10px);
+	height: calc(1rem + 10px);
+	padding: 5px;
+	font-size: 1rem;
+	line-height: 100%;
+	vertical-align: middle;
+	text-align: center;
 	font-weight: initial;
+	font-weight: bold;
 }
 
 .beta_hidden {
