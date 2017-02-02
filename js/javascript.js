@@ -183,11 +183,16 @@ setup.onResizeHook.push(determineWindowSize);
 var previousScreenHeight = 0;
 function setIntroHeight() {
 	if(Math.abs(previousScreenHeight - screen.innerHeight) > 200) {
-		$('#intro_container').css({ 'height': innerHeight });
-		$('#intro').css({ 'height': innerHeight });
+		$('#intro_container').css({ 'height': screen.innerHeight });
+		$('#intro').css({ 'height': screen.innerHeight });
+		$('.intro_section').css({ 'height': screen.innerHeight });
 
-		previousScreenHeight = innerHeight;
+		previousScreenHeight = screen.innerHeight;
 	}
+
+
+	$('.intro_section').css({ 'margin-bottom': parseInt($('#bottom_box_margin').css('height')) });
+	feature.updateValues(); // Quick fix.. don't really know why I need it yet
 }
 setup.onLoadHook.push(setIntroHeight);
 setup.onResizeHook.push(setIntroHeight);

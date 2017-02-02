@@ -191,12 +191,12 @@ var FeatureView = function() {
 			};
 
 			feature.margin = {
-				top: Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')),
+				top: Number($('.featured_posts .contain').eq(0).css('padding-top').replace('px', '')),
 			};
 
 			// When scrolled to featuredContainer, trueOffset.top === scroll.y
 			feature.trueOffset = {
-				top: featureInstance.offset().top - parseInt($('.feature_instance').eq(0).css('margin-top')) - Number($('.featured_posts .contain').eq(0).css('margin-top').replace('px', '')) - header.height,
+				top: featureInstance.offset().top - parseInt($('.feature_instance').eq(0).css('margin-top')) - Number($('.featured_posts .contain').eq(0).css('padding-top').replace('px', '')) - header.height,
 			};
 
 			feature.height = featureBackground.outerHeight();

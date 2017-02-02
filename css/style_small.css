@@ -28,6 +28,8 @@ section:after, article > header:after {
 
 
 
+
+
 .intro_info {
 	width: 100%;
 	height: auto;
@@ -312,7 +314,7 @@ img.alignleft, img.alignright, img.aligncenter {
 # Feature slider
 --------------------------------------------------------------*/
 .featured_posts .contain {
-	margin: 0 auto;
+	padding: 0;
 }
 
 /* Remove the background, as only a couple of pixels of it would be visible */

@@ -888,7 +888,7 @@ a:active {
 --------------------------------------------------------------*/
 section {
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	/*  */
 	/*margin-bottom: 60px;*/
 }
@@ -2023,6 +2023,10 @@ em {
 }
 
 /* intro */
+/*.intro_section {
+	margin-bottom: 60px;
+}*/
+
 #intro_container {
 	height: 100vh;
 	position: relative;
@@ -2134,7 +2138,7 @@ em {
 # Feature slider
 --------------------------------------------------------------*/
 .featured_posts .contain {
-	margin: calc(22.5vh - 60px) auto;
+	padding: calc(22.5vh - 60px) 0;
 	display: flex;
 	justify-content: center;
 }

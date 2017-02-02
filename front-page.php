@@ -16,7 +16,7 @@ get_header();
 	</div>
 </div>
 
-<section>
+<section class="intro_section">
 	<div id="intro_container">
 		<div id="intro" data-stellar-ratio="0.1">
 			<?php
