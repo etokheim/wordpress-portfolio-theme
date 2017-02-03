@@ -379,7 +379,7 @@ var IntroSlideshowView = function() {
 	// Selects random slide to start with
 	introSlideshow = {
 		visiting: ko.observable(true),
-		currentSlide: Math.round(Math.random() * ($('.intro_slideshow').length - 1)),
+		currentSlide: 0,//Math.round(Math.random() * ($('.intro_slideshow').length - 1)),
 
 		// Slideshow settings
 		slidingSpeed: 12000,
@@ -392,6 +392,11 @@ var IntroSlideshowView = function() {
 	}
 
 	function startIntroSlideshow() {
+		// Add the onload attribute which removes the loading screen when this image is loaded.
+		$('.intro_slideshow').eq(introSlideshow.currentSlide).find('img').load(function() {
+			console.log('test');
+		});
+
 		$('.intro_slideshow').css({"transition": "opacity 0ms " +  introSlideshow.nextSlideEasing + ", transform 0ms " + introSlideshow.nextSlideEasing});
 		$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.startSize});
 
