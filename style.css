@@ -740,7 +740,6 @@ a:active {
 .next_page_transition_toggled {
 	animation: next_page_animation 500ms ease !important;
 	height: 100vh;
-	/*display: block !important;*/
 }
 
 .this_page_transition_toggled {

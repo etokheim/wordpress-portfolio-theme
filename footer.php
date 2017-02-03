@@ -27,13 +27,19 @@
 </div><!-- #page -->
 
 <!-- PLUG-INS -->
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/plug-ins/jquery/jquery-ui.min.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/plug-ins/stellar/jquery.stellar.min.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/plug-ins/knockout/knockout-latest.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/plug-ins/jquery/jquery-ui.min.js"></script>
+	<script src="<?php bloginfo('template_directory'); ?>/plug-ins/stellar/jquery.stellar.min.js"></script>
+	<script src="<?php bloginfo('template_directory'); ?>/plug-ins/knockout/knockout-latest.js"></script>
 
-<!-- Fonts from typekit: -->
-<script src="https://use.typekit.net/sxe3quh.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	<!-- Fonts from typekit: -->
+		<script src="https://use.typekit.net/sxe3quh.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	<!-- /Fonts from typekit: -->
+
+	<!-- Analytics -->
+	<script async defer type="text/javascript" src="<?php bloginfo('template_directory'); ?>/plug-ins/analytics/google-analytics.js"></script>
+	<!-- /Analytics -->
+<!-- /PLUG-INS -->
 
 <!-- Javascript files: -->
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/touch-handling.js"></script>

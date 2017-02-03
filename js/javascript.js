@@ -15,7 +15,7 @@
 // Description:
 // Initialize whatever is needed.
 var setup = {
-	debugging: true,
+	debugging: false,
 
 	// Debug levels:
 	// 0 = Errors
