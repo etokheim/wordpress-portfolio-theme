@@ -14,8 +14,19 @@
 	<header>
 		<div id="intro_container">
 			<div id="intro" data-stellar-ratio="0.4">
-			<?php $attribute = "$(window).ready(function() { thisPageTransition() });"; ?>
+
+				<?php
+					$attribute = "$(window).ready(function() { thisPageTransition() });";
+				?>
+
 				<div class='intro_image'><?php the_post_thumbnail('full', array('onload'=>$attribute)); ?></div>
+
+				<?php
+					$thumb = get_the_post_thumbnail();
+					if(strlen($thumb) < 1) {
+						echo "<script>$(window).ready(function() { thisPageTransition() });</script>";
+					}
+				?>
 
 				<div class="intro_dimmer"></div>
 

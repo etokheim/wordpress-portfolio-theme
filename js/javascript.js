@@ -292,6 +292,11 @@ function thisPageTransition() {
 	}
 }
 
+// In case something goes wrong, make sure the user isn't left
+// waiting for nothing.
+setTimeout(function() {
+	$(window).ready(function() { thisPageTransition() });
+}, 3500);
 
 
 
