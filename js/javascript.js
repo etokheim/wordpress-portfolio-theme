@@ -287,6 +287,13 @@ function thisPageTransition() {
 			$("#intro").css({"transition": "initial"});
 		}, 500);
 
+		// If defined run, startIntroSlideshow()
+		// It's running from here because it has to run before onload and
+		// can't run on ready
+		if(typeof introSlideshow != 'undefined') {
+			introSlideshow.startIntroSlideshow();
+		}
+
 		heroImageLoaded = !heroImageLoaded;
 	}
 }

@@ -389,25 +389,22 @@ var IntroSlideshowView = function() {
 		shrinkingTime: 12000 + 2000, // introSlideshow.slidingSpeed + introSlideshow.transitionSpeed,
 		defaultSize: "scale(1)",
 		startSize: "scale(1.1)",
+
+		startIntroSlideshow: function() {
+			$('.intro_slideshow').css({"transition": "opacity 0ms " +  introSlideshow.nextSlideEasing + ", transform 0ms " + introSlideshow.nextSlideEasing});
+			$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.startSize});
+
+
+			setTimeout(function() {
+				// Sets transition properties for slideshow
+				$('.intro_slideshow').css({"transition": "opacity " + introSlideshow.transitionSpeed + "ms " +  introSlideshow.nextSlideEasing + ", transform " + introSlideshow.shrinkingTime + "ms " + introSlideshow.nextSlideEasing});
+				$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.defaultSize});
+			}, 10);
+		}
 	}
 
-	function startIntroSlideshow() {
-		// Add the onload attribute which removes the loading screen when this image is loaded.
-		$('.intro_slideshow').eq(introSlideshow.currentSlide).find('img').load(function() {
-			console.log('test');
-		});
-
-		$('.intro_slideshow').css({"transition": "opacity 0ms " +  introSlideshow.nextSlideEasing + ", transform 0ms " + introSlideshow.nextSlideEasing});
-		$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.startSize});
-
-
-		setTimeout(function() {
-			// Sets transition properties for slideshow
-			$('.intro_slideshow').css({"transition": "opacity " + introSlideshow.transitionSpeed + "ms " +  introSlideshow.nextSlideEasing + ", transform " + introSlideshow.shrinkingTime + "ms " + introSlideshow.nextSlideEasing});
-			$('.intro_slideshow').eq(introSlideshow.currentSlide).css({"opacity": "1", "transform": introSlideshow.defaultSize});
-		}, 10);
-	}
-	setup.onLoadHook.push(startIntroSlideshow);
+	// Now staring from thisPageTransition()
+	// setup.onLoadHook.push(startIntroSlideshow);
 
 	function navigateIntroSlideshow(nextSlide) {
 		// If the slideshow is at the end, then restart.
