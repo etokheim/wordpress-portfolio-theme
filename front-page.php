@@ -428,7 +428,7 @@ get_header();
 									<div class="other_projects_img" style="background-image: url('<?php echo $postObject['image']; ?>');"></div>
 								</div>
 								<div class="other_projects_text_wrapper">
-									<h3><?php echo $postObject["title"]; ?></h3>
+									<h2><?php echo $postObject["title"]; ?></h2>
 									<p><?php echo $postObject["excerpt"]; ?></p>
 								</div>
 							</div>
@@ -448,7 +448,7 @@ get_header();
 									<div class="other_projects_img" style="background-image: url('<?php echo $postObject['image']; ?>');"></div>
 								</div>
 								<div class="other_projects_text_wrapper">
-									<h3><?php echo $postObject["title"]; ?></h3>
+									<h2><?php echo $postObject["title"]; ?></h2>
 									<p><?php echo $postObject["excerpt"]; ?></p>
 								</div>
 							</div>
