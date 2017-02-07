@@ -469,6 +469,7 @@ get_header();
 								</div>
 								<div class="other_projects_text_wrapper">
 									<h3><?php echo $postObject[0]["title"]; ?></h3>
+									<p><?php echo $postObject[0]["excerpt"]; ?></p>
 								</div>
 							</div>
 						</a>
@@ -481,6 +482,7 @@ get_header();
 								</div>
 								<div class="other_projects_text_wrapper">
 									<h3><?php echo $postObject[1]["title"]; ?></h3>
+									<p><?php echo $postObject[1]["excerpt"]; ?></p>
 								</div>
 							</div>
 						</a>

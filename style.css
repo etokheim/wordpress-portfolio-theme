@@ -1152,7 +1152,7 @@ article {
 .other_projects_big_img_wrapper {
 	width: 100%;
 	height: 66%;
-	flex-grow: 3;
+	flex-grow: 20;
 	position: relative;
 }
 

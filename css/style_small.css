@@ -243,7 +243,7 @@ img.alignleft, img.alignright, img.aligncenter {
 
 
 
-
+/* OTHER PROJECTS */
 
 .other_pojects_05, .other_pojects_1, .other_pojects_2 {
 	width: 100%;
@@ -255,6 +255,24 @@ img.alignleft, img.alignright, img.aligncenter {
 	padding-top: 0px;
 }
 
+.other_pojects_2 {
+	/*width: 100%;*/
+	/*float: left;*/
+	/*min-width: 230px;*/
+	/*height: calc(28rem / 2 - 1rem);*/
+	/*margin: 2rem 0 0 0;*/
+	height: 28rem;
+}
+
+.other_projects_text_wrapper h3 {
+	font-size: 1.625rem;
+}
+
+/* The small projects */
+.other_pojects_2 .other_projects_text_wrapper {
+	padding: 1.5625rem;
+	height: 34%;
+}
 
 
 
