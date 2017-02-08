@@ -1245,6 +1245,17 @@ article {
 	margin: 0;
 }
 
+/*
+	The h3s are only assigned one line, so if they overflow, then
+	make three dots to visualize an overflow.
+*/
+.other_projects_text_wrapper h3 {
+	word-break: break-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 @media (max-width: 1400px) {
 	.other_pojects_1 {
 		width: calc(25% - 3.3333px);

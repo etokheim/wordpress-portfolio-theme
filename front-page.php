@@ -486,6 +486,8 @@ get_header();
 								</div>
 							</div>
 						</a>
+						<!-- Clearing - important -->
+						<div class="clear"></div>
 					</div>
 
 					<?php

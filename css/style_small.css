@@ -244,20 +244,10 @@ img.alignleft, img.alignright, img.aligncenter {
 
 
 /* OTHER PROJECTS */
-
-.other_pojects_05, .other_pojects_1, .other_pojects_2 {
-	width: 100%;
-	margin: 30px 0 0 0;
-	min-width: initial;
-}
-
-.other_projects_container {
-	padding-top: 0px;
-}
-
 .other_pojects_2 {
-	/*width: 100%;*/
-	/*float: left;*/
+	width: 100%;
+	/*float: initial;*/
+	/*display: block;*/
 	/*min-width: 230px;*/
 	/*height: calc(28rem / 2 - 1rem);*/
 	/*margin: 2rem 0 0 0;*/
