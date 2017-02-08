@@ -451,6 +451,11 @@ table {
 	width: 100%;
 }
 
+.arrow_medium {
+	width: 1rem;
+	height: 1rem;
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -1120,6 +1125,16 @@ article {
 	.other_projects .contain {
 		padding: 2rem 0;
 	}
+}
+
+.other_projects_intro {
+	width: 100%;
+	text-align: center;
+	opacity: 0.5;
+}
+
+.other_projects_intro p {
+	margin-bottom: 2rem;
 }
 
 .other_projects_padding {

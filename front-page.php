@@ -158,7 +158,6 @@ get_header();
 	</div>
 </section>
 
-
 			<?php
 				$featuredFilteredOut = 0; // Filter out already displayed posts.
 				$normalPostsToDisplay = array();
@@ -234,6 +233,13 @@ get_header();
 
 <section class="other_projects filled">
 	<div class="contain">
+		<div class="other_projects_intro">
+			<h2>Fleire arbeid</h2>
+			<p>
+				<img class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
+			</p>
+		</div>
+
 		<?php
 		// var_dump($otherProjectsPosts);
 
