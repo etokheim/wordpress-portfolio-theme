@@ -87,8 +87,10 @@ get_header();
 
 		<div class="feature_container">
 			<?php
+				$featuredPosts = [];
+				$numberOfFeaturedPosts = 3;
 				$args = array(
-					'posts_per_page'   => 3,
+					'posts_per_page'   => $numberOfFeaturedPosts,
 					'offset'           => 0,
 					'category'         => '',
 					'category_name'    => 'Featured',
@@ -110,6 +112,9 @@ get_header();
 					$backgrounds = [];
 					while($getFeatured -> have_posts()) : $getFeatured -> the_post();
 						// Output here
+					echo "<script>console.log('$post->ID');</script>";
+					array_push($featuredPosts, $post->ID);
+					// Remember the posts (In order to exclude them later)
 						?>
 						<?php array_push($backgrounds, wp_get_attachment_image( get_post_thumbnail_id($post->ID), 'full', false )); ?>
 						<div class="feature_instance">
@@ -183,48 +188,48 @@ get_header();
 				$otherProjectsPosts = array();
 
 				$getOthers = new WP_Query($args);
-				$postLoopIndex = 0;
 				if($getOthers -> have_posts()) :
 					while($getOthers -> have_posts()) : $getOthers -> the_post();
-						$postLoopIndex++;
-						// Output here
-						if(get_the_category() !== "Featured" && $featuredFilteredOut < 3) {
 
+						// Filter out the already displayed posts (3 first featured posts)
+						$alreadyDisplayed = false;
+						$currentPostId = $post->ID;
+						for ($i=0; $i < $numberOfFeaturedPosts; $i++) {
+							if($currentPostId === $featuredPosts[$i]) {
+								$alreadyDisplayed = true;
+							}
 						}
-						// echo get_the_title();
-						// $categories = get_the_terms( $post->ID, 'taxonomy' );
-						if (class_exists('MultiPostThumbnails')) {
-							$employersLogo = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(),'employers-logo');
+
+						// If not already displayed; add them to the array
+						if(!$alreadyDisplayed) {
+							if (class_exists('MultiPostThumbnails')) {
+								$employersLogo = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'employers-logo');
+							}
+
+							$contentArray = array("title" => get_the_title(), "excerpt" => get_the_excerpt(), "category" => get_the_category( $id = false )[0]->name, "permalink" => get_the_permalink(), "image" => wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'other_projects' )[0], "employersLogo" => $employersLogo);
+							array_push($otherProjectsPosts, $contentArray);
+
+
+							$categories = get_the_category( $id = false );
 						}
 
-						$contentArray = array("title" => get_the_title(), "excerpt" => get_the_excerpt(), "category" => get_the_category( $id = false )[0]->name, "permalink" => get_the_permalink(), "image" => wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'other_projects' )[0], "employersLogo" => $employersLogo);
-						array_push($otherProjectsPosts, $contentArray);
-
-
-						$categories = get_the_category( $id = false );
-						// echo "<strong>Length before = " . count($categories) . "</strong>";
-
-
-
-						// echo "<strong>Category: " . get_the_category( $id = false )[0]->name . "</strong>";
-						// var_dump(get_the_category( $id = false ));
 					endwhile;
 
 				endif;
 				wp_reset_postdata();
 
-				$categoriesToRemove = array("Featured");
-				$categoriesRemoved = 0;
-				foreach ( $otherProjectsPosts as $index => $single_cat ) {
-					if($categoriesRemoved < 3) {
-						if ( in_array( $otherProjectsPosts[$index]["category"], $categoriesToRemove ) ) {
-							// echo "<strong> / Just removed: " . $otherProjectsPosts[$index]["title"] . "</strong>";
-							unset( $otherProjectsPosts[ $index ] ); // Remove the category.
+				// $categoriesToRemove = array("Featured");
+				// $categoriesRemoved = 0;
+				// foreach ( $otherProjectsPosts as $index => $single_cat ) {
+				// 	if($categoriesRemoved < 3) {
+				// 		if ( in_array( $otherProjectsPosts[$index]["category"], $categoriesToRemove ) ) {
+				// 			// echo "<strong> / Just removed: " . $otherProjectsPosts[$index]["title"] . "</strong>";
+				// 			unset( $otherProjectsPosts[ $index ] ); // Remove the category.
 
-							$categoriesRemoved++;
-						}
-					}
-				}
+				// 			$categoriesRemoved++;
+				// 		}
+				// 	}
+				// }
 
 				// To reset the indexes. In example i deleted number 3 in the array, so it will return null.
 				// This function re arranges the array.
