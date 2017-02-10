@@ -16,12 +16,15 @@
 			<div id="intro" data-stellar-ratio="0.4">
 
 				<?php
+					// Attribute to be added to the <img>-tag
+					// This fires pageTransition on <img>.load
 					$attribute = "$(window).ready(function() { thisPageTransition() });";
 				?>
 
 				<div class='intro_image'><?php the_post_thumbnail('full', array('onload'=>$attribute)); ?></div>
 
 				<?php
+
 					$thumb = get_the_post_thumbnail();
 					if(strlen($thumb) < 1) {
 						echo "<script>$(window).ready(function() { thisPageTransition() });</script>";

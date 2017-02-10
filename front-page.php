@@ -265,9 +265,10 @@ get_header();
 											[0.5, 0.5, 1,   1,  ]
 										]; // 48 * 2 + 4 = 100 -> I made 48 and just duplicated them.
 
-			// echo 'count($otherProjectsPosts) = ' . count($otherProjectsPosts) . "<br>";
+			// echo '$otherProjectsPostsLength = ' . $otherProjectsPostsLength . "<br>";
 
-			$otherProjectsRemainingPosts = count($otherProjectsPosts) - 3; // minus the first row of posts
+			$otherProjectsPostsLength = count($otherProjectsPosts);
+			$otherProjectsRemainingPosts = $otherProjectsPostsLength - 3; // minus the first row of posts
 			$otherProjectsCustomSortingNew = [$otherProjectsCustomSorting[0]];
 
 			for ($i=1; $i < count($otherProjectsCustomSorting); $i++) {
@@ -326,8 +327,9 @@ get_header();
 
 
 
-			//
+
 			// echo "<br><br>The array format:<br>";
+			// echo "Number of posts: $otherProjectsPostsLength <br><br>";
 			// for ($i=0; $i < count($otherProjectsCustomSortingNew); $i++) {
 			// 	for ($j=0; $j < count($otherProjectsCustomSortingNew[$i]); $j++) {
 			// 		if($otherProjectsCustomSortingNew[$i][$j] == 0.5) {
@@ -345,8 +347,8 @@ get_header();
 			$otherProjectsColumnNumber = 0;
 
 			$multiplier = 5;
-			if(count($otherProjectsPosts) < 10) {
-				$multiplier = count($otherProjectsPosts);
+			if($otherProjectsPostsLength < 10) {
+				$multiplier = $otherProjectsPostsLength;
 			} else {
 				$multiplier = (count($otherProjectsCustomSortingNew)) * 4;
 			}
@@ -354,37 +356,45 @@ get_header();
 			$otherProjectsIndex = 0;
 			$doublePost = [];
 
-			if(1+1==2) {
+			if($otherProjectsPostsLength > 1) {
 				for ($i=0; $i < $multiplier; $i++) { // Rows * columns
 					// echo "RUNNING ($i)";
 					// if($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] !== 0) {
 
-						// For every fourth loop, change row (5 columns per row).
+						// For every fourth loop, change row (4 cells per row).
 						if($i%4 === 0 && $i !== 0) {
 							$otherProjectsRowNumber++;
-							// echo "<br>";
+							echo "<script>console.log('Changing row');</script>";
 						}
 
-						$foasd = count($otherProjectsPosts);
 
-						// echo "<script>console.log('Loop $multiplier times, Post $otherProjectsIndex/$foasd, Row ($i%5): $otherProjectsRowNumber, column: $otherProjectsColumnNumber');</script>";
+						// echo "<script>console.log('Loop $multiplier times, Post $otherProjectsIndex/$otherProjectsPostsLength, Row ($i%5): $otherProjectsRowNumber, column: $otherProjectsColumnNumber');</script>";
 
+						$size = $otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber];
+						$loopNumber = $i + 1;
+						echo "<script>console.log('Loop number $loopNumber/$multiplier, Post $otherProjectsIndex/$otherProjectsPostsLength, size: $size, Row ($i%4): $otherProjectsRowNumber, column: $otherProjectsColumnNumber');</script>";
 						if($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] == 0) {
 							$otherProjectsPosts[$otherProjectsIndex] = [];
 						}
 						if(!$otherProjectsSkipNext) {
-							if ($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] == 2) {
+							if($size == 2) {
 								$doublePost = [$otherProjectsPosts[$otherProjectsIndex], $otherProjectsPosts[$otherProjectsIndex + 1]];
-								otherProjectsRender($doublePost, $otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber], $otherProjectsRowNumber, $otherProjectsColumnNumber);
+								otherProjectsRender($doublePost, $size, $otherProjectsRowNumber, $otherProjectsColumnNumber);
 								$doublePost = [];
 								$otherProjectsIndex++;
+								// Loop once less (This is a double post)
+								$multiplier--;
+								$otherProjectsSkipNext = true;
 							} else {
-								otherProjectsRender($otherProjectsPosts[$otherProjectsIndex], $otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber], $otherProjectsRowNumber, $otherProjectsColumnNumber);
+								otherProjectsRender($otherProjectsPosts[$otherProjectsIndex], $size, $otherProjectsRowNumber, $otherProjectsColumnNumber);
 							}
 						}
+
+						// If this post is a 0.5-post && it's the first half of it; don't count the other half and loop one more time
 						if($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] == 0.5 && !$otherProjectsSkipNext) {
 							$otherProjectsSkipNext = true;
-							if(count($otherProjectsPosts) < 10) {$multiplier++;}
+							// Loop one more time (Takes two loops to output 0.5-posts (they take two columns))
+							if($otherProjectsPostsLength < 10) {$multiplier++;}
 							// echo "<script>console.log('skipped one');</script>";
 						} else {
 							$otherProjectsSkipNext = false;

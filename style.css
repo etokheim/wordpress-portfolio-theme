@@ -1133,6 +1133,12 @@ article {
 	opacity: 0.5;
 }
 
+/* Use padding instead of margin to avoid a gap in the background */
+.other_projects_intro h2 {
+	padding-top: 1.5rem;
+	margin-top: 0;
+}
+
 .other_projects_intro p {
 	margin-bottom: 2rem;
 }
@@ -2072,7 +2078,7 @@ em {
 	top: calc(50% - 15px);
 	margin: 0 auto;
 	position: relative;
-	display: none; /*Not yet ready!*/
+	/*display: none; Not yet ready!*/
 }
 
 .menuButton_lines {
