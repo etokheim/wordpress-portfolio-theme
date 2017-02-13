@@ -78,41 +78,65 @@
 <div id="page">
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 't_fisk' ); ?></a>
 
-	<div id="menu_container" class="menu_container">
+<!-- 	<div id="menu_container" class="menu_container">
 		<h3>Meny:</h3>
 		<br/>
 		<nav id="navMenu" class="navMenu">
 			<?php
-				$args = array(
-					"theme_location" => "primarymenu",
-				);
+				// $args = array(
+				// 	"theme_location" => "primarymenu",
+				// );
 
-				wp_nav_menu($args);
+				// wp_nav_menu($args);
 			?>
 		</nav>
-	</div>
+	</div> -->
 
 
 	<header id="header" class="frame_container">
 		<div class="frame_topbot_hidden align_pos_top frame">
-			<div class="header_section_width">
-				<a href="<?php echo home_url(); ?>"><div id="header_logo_container"><?php //bloginfo("name"); ?><img height="13" width="150" itemprop="logo" alt="cropped-logo-3.png" class="custom-logo" src="<?php echo get_template_directory_uri() . "/img/logo-black.svg"; ?>"><?php // the_custom_logo(); ?></div></a>
+			<div class="contain_header">
+				<a href="<?php echo home_url(); ?>">
+					<?php //bloginfo("name"); ?>
+					<img class="header_logo" itemprop="logo" alt="Erling Tokheim" src="<?php echo get_template_directory_uri() . "/img/logo-black.svg"; ?>"><?php // the_custom_logo(); ?>
+				</a>
 
-				<div id="header_social_container">
-					<a href="https://no.linkedin.com/in/erling-tokheim-a78194121" target="_blank"><div class="header_social" style="background-image: url('<?php bloginfo('template_directory'); ?>/img/logo-linkedin-black.svg')"></div></a>
-					<a href="https://500px.com/etokheim" target="_blank"><div class="header_social" style="background-image: url('<?php bloginfo('template_directory'); ?>/img/logo-500px-black.svg')"></div></a>
+				<div class="header_social_container">
+					<a href="https://500px.com/etokheim" target="_blank" title="Besøk 500px-profilen min">
+						<img class="header_social" src="<?php bloginfo('template_directory'); ?>/img/logo-500px-black.svg">
+					</a>
+
+					<a href="https://github.com/etokheim/" target="_blank" title="Besøk GitHub-profilen min">
+						<img class="header_social" src="<?php bloginfo('template_directory'); ?>/img/logo-github-black.svg">
+					</a>
+
+					<a href="https://no.linkedin.com/in/erling-tokheim-a78194121" target="_blank" title="Besøk LinkedIn-profilen min">
+						<img class="header_social" src="<?php bloginfo('template_directory'); ?>/img/logo-linkedin-black.svg">
+					</a>
 				</div>
 			</div>
 		</div>
-		<div class="header_section_width">
-			<a href="<?php echo home_url(); ?>"><div id="header_logo_container"><?php //bloginfo("name"); ?><img height="13" width="150" itemprop="logo" alt="cropped-logo-3.png" class="custom-logo" src="<?php echo get_template_directory_uri() . "/img/logo-white.svg"; ?>"></div></a>
+		<div class="header_gradient"></div>
+		<div class="contain_header">
+			<a href="<?php echo home_url(); ?>">
+				<?php //bloginfo("name"); ?>
+				<img class="header_logo" itemprop="logo" alt="Erling Tokheim" src="<?php echo get_template_directory_uri() . "/img/logo-white.svg"; ?>"><?php // the_custom_logo(); ?>
+			</a>
 
-			<div id="header_social_container">
-				<a href="https://no.linkedin.com/in/erling-tokheim-a78194121" target="_blank"><div class="header_social" style="background-image: url('<?php bloginfo('template_directory'); ?>/img/logo-linkedin-white.svg')"></div></a>
-				<a href="https://500px.com/etokheim" target="_blank"><div class="header_social" style="background-image: url('<?php bloginfo('template_directory'); ?>/img/logo-500px-white.svg')"></div></a>
+			<div class="header_social_container">
+				<a href="https://500px.com/etokheim" target="_blank" title="Besøk 500px-profilen min">
+					<img class="header_social" src="<?php bloginfo('template_directory'); ?>/img/logo-500px-white.svg">
+				</a>
+
+				<a href="https://github.com/etokheim/" target="_blank" title="Besøk GitHub-profilen min">
+					<img class="header_social" src="<?php bloginfo('template_directory'); ?>/img/logo-github-white.svg">
+				</a>
+
+				<a href="https://no.linkedin.com/in/erling-tokheim-a78194121" target="_blank" title="Besøk LinkedIn-profilen min">
+					<img class="header_social" src="<?php bloginfo('template_directory'); ?>/img/logo-linkedin-white.svg">
+				</a>
 			</div>
 		</div>
-		<div class="header_gradient"></div>
 	</header>
 
 	<!-- White boxes to simluate a frame -->

@@ -1390,6 +1390,72 @@ article {
 /*--------------------------------------------------------------
 ## Header
 --------------------------------------------------------------*/
+.contain_header {
+	width: calc(100% - 120px);
+	height: 60px;
+	margin: 0 auto;
+	padding: 15px 10px 15px 10px;
+	z-index: 5;
+	position: relative;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header_logo {
+	height: 1rem;
+	/*padding: 10px;*/
+	display: block;
+}
+
+.header_social_container {
+	/*height: 35px;*/
+	display: flex;
+}
+
+.header_social {
+	/*width: 35px;*/
+	height: 2.15rem;
+	padding: 0.5rem;
+	margin-left: 0rem;
+	display: block;
+}
+
+.header_social:hover {
+	opacity: 0.75;
+}
+
+.header_gradient {
+	width: 100%;
+	height: 200%;
+	position: absolute;
+	top: 0px;
+	pointer-events: none;
+
+	transition: opacity 500ms ease;
+
+	/* Gradient for the header */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,777777+100&0.2+0,0.15+33,0.05+71,0.05+71,0+100 */
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(39,39,39,0.15) 33%, rgba(84,84,84,0.05) 71%, rgba(119,119,119,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(39,39,39,0.15) 33%,rgba(84,84,84,0.05) 71%,rgba(119,119,119,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.2) 0%,rgba(39,39,39,0.15) 33%,rgba(84,84,84,0.05) 71%,rgba(119,119,119,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#00777777',GradientType=0 ); /* IE6-9 */
+}
+
+.header_gradient_off {
+	opacity: 0;
+}
+
+
+
+
+
+
+
+
+
 .notification_container {
 	position: fixed;
 	width: 21rem;
@@ -1964,17 +2030,6 @@ em {
 	text-indent: 15px;
 }
 
-.header_section_width {
-	width: calc(100% - 120px);
-	height: 60px;
-	margin: 0 auto;
-	position: relative;
-	padding: 15px 10px 15px 10px;
-	z-index: 5;
-	/*border-right: 1px solid grey;
-	border-left: 1px solid grey;*/
-}
-
 .frame_container {
 	position: fixed;
 	z-index: 100;
@@ -1985,27 +2040,6 @@ em {
 	height: 60px;
 	top: 0;
 	left: 0;
-}
-
-.header_gradient {
-	width: 100%;
-	height: 200%;
-	position: absolute;
-	top: 0px;
-	pointer-events: none;
-
-	transition: opacity 500ms ease;
-
-	/* Gradient for the header */
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,777777+100&0.2+0,0.15+33,0.05+71,0.05+71,0+100 */
-	background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(39,39,39,0.15) 33%, rgba(84,84,84,0.05) 71%, rgba(119,119,119,0) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(39,39,39,0.15) 33%,rgba(84,84,84,0.05) 71%,rgba(119,119,119,0) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  rgba(0,0,0,0.2) 0%,rgba(39,39,39,0.15) 33%,rgba(84,84,84,0.05) 71%,rgba(119,119,119,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#00777777',GradientType=0 ); /* IE6-9 */
-}
-
-.header_gradient_off {
-	opacity: 0;
 }
 
 .frame {
@@ -2072,17 +2106,6 @@ em {
 	/*background-color: lightblue;*/
 }
 
-#header_logo_container {
-	float: left;
-	height: 15px;
-	width: 50%;
-	margin-top: 7px;
-	position: relative;
-	background-size: contain;
-	background-position: left;
-	background-repeat: no-repeat;
-}
-
 #menuButton {
 	width: 25px;
 	height: 30px;
@@ -2091,7 +2114,7 @@ em {
 	top: calc(50% - 15px);
 	margin: 0 auto;
 	position: relative;
-	/*display: none; Not yet ready!*/
+	display: none; /*Not yet ready!*/
 }
 
 .menuButton_lines {
@@ -2105,25 +2128,6 @@ em {
 
 .menuButton_lines:first-of-type {
 	margin-top: 0;
-}
-
-#header_social_container {
-	float: right;
-	position: relative;
-	width: 50%;
-	height: 100%;
-}
-
-.header_social {
-	float: right;
-	width: 17px;
-	height: 17px;
-	position: relative;
-	margin-top: 8.5px;
-	margin-left: 1rem;
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
 }
 
 #intro_container {

@@ -21,7 +21,7 @@ section:after, article > header:after {
 	left: calc(-100vw);
 }
 
-.header_section_width {
+.contain_header {
 	padding: 15px 15px 15px 15px;
 	width: calc(100% - 20px);
 }
