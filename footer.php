@@ -30,6 +30,7 @@
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/plug-ins/jquery/jquery-ui.min.js"></script>
 	<script src="<?php bloginfo('template_directory'); ?>/plug-ins/stellar/jquery.stellar.min.js"></script>
 	<script src="<?php bloginfo('template_directory'); ?>/plug-ins/knockout/knockout-latest.js"></script>
+	<script src="<?php bloginfo('template_directory'); ?>/plug-ins/modernizr/modernizr.js"></script>
 
 	<!-- Fonts from typekit: -->
 		<script src="https://use.typekit.net/sxe3quh.js"></script>

@@ -112,10 +112,11 @@ get_header();
 					$backgrounds = [];
 					while($getFeatured -> have_posts()) : $getFeatured -> the_post();
 						// Output here
-					echo "<script>console.log('$post->ID');</script>";
-					array_push($featuredPosts, $post->ID);
-					// Remember the posts (In order to exclude them later)
+						// echo "<script>console.log('$post->ID');</script>";
+						array_push($featuredPosts, $post->ID);
+						// Remember the posts (In order to exclude them later)
 						?>
+
 						<?php array_push($backgrounds, wp_get_attachment_image( get_post_thumbnail_id($post->ID), 'full', false )); ?>
 						<div class="feature_instance">
 							<div class="feature_heading_container">
@@ -369,7 +370,7 @@ get_header();
 						// For every fourth loop, change row (4 cells per row).
 						if($i%4 === 0 && $i !== 0) {
 							$otherProjectsRowNumber++;
-							echo "<script>console.log('Changing row');</script>";
+							// echo "<script>console.log('Changing row');</script>";
 						}
 
 
@@ -377,7 +378,7 @@ get_header();
 
 						$size = $otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber];
 						$loopNumber = $i + 1;
-						echo "<script>console.log('Loop number $loopNumber/$multiplier, Post $otherProjectsIndex/$otherProjectsPostsLength, size: $size, Row ($i%4): $otherProjectsRowNumber, column: $otherProjectsColumnNumber');</script>";
+						// echo "<script>console.log('Loop number $loopNumber/$multiplier, Post $otherProjectsIndex/$otherProjectsPostsLength, size: $size, Row ($i%4): $otherProjectsRowNumber, column: $otherProjectsColumnNumber');</script>";
 						if($otherProjectsCustomSortingNew[$otherProjectsRowNumber][$otherProjectsColumnNumber] == 0) {
 							$otherProjectsPosts[$otherProjectsIndex] = [];
 						}

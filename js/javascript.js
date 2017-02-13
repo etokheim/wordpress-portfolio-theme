@@ -65,7 +65,7 @@ var setup = {
 	},
 
 	onReadyFunction: function() {
-		$(window).ready(function() {
+		$(document).ready(function() {
 			// Runs the ready hooked functions.
 			for (var i = 0; i < setup.onReadyHook.length; i++) {
 				setup.onReadyHook[i]();
@@ -86,6 +86,7 @@ var setup = {
 };
 setup.onScrollFunction();
 setup.onLoadFunction();
+setup.onReadyFunction();
 setup.onResizeFunction();
 
 // start image loading (I assume you need this for tracking?)
@@ -195,6 +196,64 @@ function setIntroHeight() {
 }
 setup.onLoadHook.push(setIntroHeight);
 setup.onResizeHook.push(setIntroHeight);
+
+
+
+/*--------------------------------------------------------------
+# Modernizr
+--------------------------------------------------------------*/
+// Converts <img>-s with object-fit to background images with
+// background-size: cover.
+//
+// Browsers without support for object-fit inclues: IE and Edge
+function modernizeObjectFit() {
+	if ( ! Modernizr.objectfit ) {
+		console.warn("This browser doesn't support object-fit. No worries though, images will be converted to CSS background images instead. NOTE: the page might load slower as srcsets are not available in CSS (the largest image will always be used).")
+
+		// Feature slider
+		$('.feature_background').each(function () {
+			var $wrapper = $(this),
+			imgUrl = $wrapper.find('img').prop('src');
+
+			if (imgUrl) {
+				$wrapper
+				.css('backgroundImage', 'url(' + imgUrl + ')')
+				.addClass('object_fit_IE_fallback')
+				.children('img').hide();
+			}
+		});
+
+		// Front page slideshow
+		$('.intro_slideshow').each(function () {
+			var $wrapper = $(this),
+			imgUrl = $wrapper.find('img').prop('src');
+
+			if (imgUrl) {
+				$wrapper
+				.css('backgroundImage', 'url(' + imgUrl + ')')
+				.addClass('object_fit_IE_fallback')
+				.children('img').hide();
+			}
+		});
+
+		// Post hero images
+		$('.intro_image').each(function () {
+			var $wrapper = $(this),
+			imgUrl = $wrapper.find('img').prop('src');
+
+			if (imgUrl) {
+				$wrapper
+				.css('backgroundImage', 'url(' + imgUrl + ')')
+				.addClass('object_fit_IE_fallback')
+				.children('img').hide();
+			}
+		});
+	}
+}
+
+setup.onReadyHook.push(modernizeObjectFit);
+
+
 
 
 
