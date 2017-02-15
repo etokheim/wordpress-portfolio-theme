@@ -49,7 +49,7 @@
 	};
 ?>
 </script>
-<!-- <div class="this_page_transition">
+<div class="this_page_transition">
 	<div class="loading_animation">
 		<div class="ball_container ball_container_first">
 			<div class="loading_ball loading_ball_first"></div>
@@ -74,7 +74,7 @@
 			<div class="loading_ball loading_ball_third"></div>
 		</div>
 	</div>
-</div> -->
+</div>
 <div id="page">
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 't_fisk' ); ?></a>
 
@@ -180,14 +180,6 @@
 					<!-- ko if: hasContent() && screen.koDeviceSize() !== "mobile" -->
 						<a data-bind="attr: { href: permalink }">
 							<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }"">
-								<div class="post_navigation_preview post_navigation_previous post_navigation_preview_hidden" data-bind="css: { post_navigation_preview_hidden: !visible() }">
-									<div class="post_navigation_preview_constant_width">
-										<!-- <div class="post_navigation_arrow"></div> -->
-										<div class="post_navigation_image" data-bind="html: thumbnail"></div>
-										<h1 data-bind="text: title">Neste post</h1>
-										<p data-bind="text: excerpt">Kort forklaring av innlegget</p>
-									</div>
-								</div>
 								<img style="transform: rotate(90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
 							</div>
 						</a>
@@ -233,14 +225,6 @@
 				<!-- ko if: hasContent() && screen.koDeviceSize() !== "mobile" -->
 				<a data-bind="attr: { href: permalink }">
 					<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }"">
-						<div class="post_navigation_preview post_navigation_next post_navigation_preview_hidden" data-bind="css: { post_navigation_preview_hidden: !visible() }">
-							<div class="post_navigation_preview_constant_width">
-								<!-- <div class="post_navigation_arrow"></div> -->
-								<div class="post_navigation_image" data-bind="html: thumbnail"></div>
-								<h1 data-bind="text: title">Neste post</h1>
-								<p data-bind="text: excerpt">Kort forklaring av innlegget</p>
-							</div>
-						</div>
 						<img style="transform: rotate(-90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
 					</div>
 				</a>
@@ -253,3 +237,35 @@
 	<div id="bottom_box_margin" class="frame_container">
 		<div class="frame_topbot_hidden align_pos_bottom frame"></div>
 	</div>
+
+	<?php if($previousPost) { ?>
+		<!-- ko with: postNavigationView.prev -->
+			<div class="post_navigation_preview post_navigation_previous post_navigation_previous_hidden" data-bind="css: { post_navigation_previous_hidden: !visible() }">
+				<div class="post_navigation_preview_constant_width">
+					<!-- <div class="post_navigation_arrow"></div> -->
+					<div class="post_navigation_image_container">
+						<div class="post_navigation_image_overlay"></div>
+						<div class="post_navigation_image" data-bind="html: thumbnail"></div>
+					</div>
+					<h1 data-bind="text: title">Forrige post</h1>
+					<p data-bind="text: excerpt">Lorem ipsum dolor sit amet.</p>
+				</div>
+			</div>
+		<!-- /ko -->
+	<?php } // if previous post ?>
+
+	<?php if($nextPost) { ?>
+		<!-- ko with: postNavigationView.next -->
+			<div class="post_navigation_preview post_navigation_next post_navigation_next_hidden" data-bind="css: { post_navigation_next_hidden: !visible() }">
+				<div class="post_navigation_preview_constant_width">
+					<!-- <div class="post_navigation_arrow"></div> -->
+					<div class="post_navigation_image_container">
+						<div class="post_navigation_image_overlay"></div>
+						<div class="post_navigation_image" data-bind="html: thumbnail"></div>
+					</div>
+					<h1 data-bind="text: title">Neste post</h1>
+					<p data-bind="text: excerpt">Lorem ipsum dolor sit amet.</p>
+				</div>
+			</div>
+		<!-- /ko -->
+	<?php } // if next post ?>
