@@ -49,7 +49,7 @@
 	};
 ?>
 </script>
-<div class="this_page_transition">
+<!-- <div class="this_page_transition">
 	<div class="loading_animation">
 		<div class="ball_container ball_container_first">
 			<div class="loading_ball loading_ball_first"></div>
@@ -74,7 +74,7 @@
 			<div class="loading_ball loading_ball_third"></div>
 		</div>
 	</div>
-</div>
+</div> -->
 <div id="page">
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 't_fisk' ); ?></a>
 
@@ -141,11 +141,21 @@
 
 	<!-- White boxes to simluate a frame -->
 	<div id="left_box_margin" class="frame_container align_pos_left">
-		<div class="frame_lefrig_hidden frame">
+		<!-- <div class="frame_lefrig_hidden frame">
 			<div id="menuButton" onclick="expandMenu()">
 				<div class="menuButton_lines"></div>
 				<div class="menuButton_lines"></div>
 				<div class="menuButton_lines"></div>
+			</div>
+		</div> -->
+
+		<div class="post_navigation">
+			<div class="post_navigation_button">
+				<div class="post_navigation_preview post_navigation_previous">
+					<h1>Portefølje</h1>
+					<p>Dette er eit bilete av ei lita portefølje</p>
+				</div>
+				<img style="transform: rotate(90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
 			</div>
 		</div>
 	</div>
