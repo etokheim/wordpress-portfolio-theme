@@ -171,7 +171,18 @@ function determineWindowSize() {
 	// Use the predefined screen variable to get window sizes
 	screen.innerWidth = $(window).innerWidth();
 	screen.innerHeight = $(window).innerHeight();
+
+	// There is a bug here as $(window).innerWidth() does not include scroll-
+	// bar width. +/- 17px
+	if(screen.innerWidth <= 700) {
+		screen.deviceSize = "mobile";
+		screen.koDeviceSize("mobile");
+	} else {
+		screen.deviceSize = "desktop";
+		screen.koDeviceSize("desktop");
+	}
 }
+screen.koDeviceSize = ko.observable();
 determineWindowSize();
 setup.onResizeHook.push(determineWindowSize);
 

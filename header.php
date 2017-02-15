@@ -149,23 +149,60 @@
 			</div>
 		</div> -->
 
-		<div class="post_navigation">
-			<div class="post_navigation_button">
-				<div class="post_navigation_preview post_navigation_previous">
-					<h1>Portefølje</h1>
-					<p>Dette er eit bilete av ei lita portefølje</p>
+		<?php
+			$previousPost = get_previous_post(true);
+			if($previousPost) {
+				$prevPost = get_posts([
+					'posts_per_page' => 1,
+					'include' => $previousPost->ID
+				]);
+
+				foreach ($prevPost as $post) {
+					setup_postdata($post);
+		?>
+
+					<script>
+						$(document).ready(function() {
+							postNavigationView.prev.hasContent(true);
+							postNavigationView.prev.title("<?php the_title(); ?>");
+							postNavigationView.prev.excerpt("<?php echo get_the_excerpt() ?>");
+							postNavigationView.prev.permalink("<?php the_permalink(); ?>");
+							postNavigationView.prev.thumbnail('<?php the_post_thumbnail(); ?>');
+						});
+					</script>
+
+		<?php
+					wp_reset_postdata();
+				} // foreach
+			} // if
+		?>
+
+		<div class="post_navigation" data-bind="with: postNavigationView.prev">
+			<!-- ko if: hasContent() && screen.koDeviceSize() !== "mobile" -->
+			<a data-bind="attr: { href: permalink }">
+				<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }"">
+					<div class="post_navigation_preview post_navigation_previous post_navigation_preview_hidden" data-bind="css: { post_navigation_preview_hidden: !visible() }">
+						<div class="post_navigation_preview_constant_width">
+							<!-- <div class="post_navigation_arrow"></div> -->
+							<div class="post_navigation_image" data-bind="html: thumbnail"></div>
+							<h1 data-bind="text: title">Neste post</h1>
+							<p data-bind="text: excerpt">Kort forklaring av innlegget</p>
+						</div>
+					</div>
+					<img style="transform: rotate(90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
 				</div>
-				<img style="transform: rotate(90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
-			</div>
+			</a>
+			<!-- /ko -->
 		</div>
 	</div>
 	<div id="right_box_margin" class="frame_container">
-		<div class="frame_lefrig_hidden align_pos_right frame">
+		<!-- <div class="frame_lefrig_hidden align_pos_right frame">
 			<div id="toc_container">
 
 			</div>
-		</div>
+		</div> -->
 	</div>
+
 	<div id="bottom_box_margin" class="frame_container">
 		<div class="frame_topbot_hidden align_pos_bottom frame"></div>
 	</div>

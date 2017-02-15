@@ -42,11 +42,12 @@
 	<!-- /Analytics -->
 <!-- /PLUG-INS -->
 
-<!-- Javascript files: -->
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/touch-handling.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/javascript.js"></script>
-<?php if(is_front_page()) { ?><script type='text/javascript' src='<?php bloginfo('template_directory'); echo "/js/javascript-front-page.js"; ?>'></script> <?php } ?>
-<!-- <test> -->
+<!-- Custom JavaScript -->
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/touch-handling.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/javascript.js"></script>
+	<?php if(is_front_page()) { ?><script type='text/javascript' src='<?php bloginfo('template_directory'); echo "/js/javascript-front-page.js"; ?>'></script> <?php } ?>
+	<?php if(is_single()) { ?><script type='text/javascript' src='<?php bloginfo('template_directory'); echo "/js/javascript-single.js"; ?>'></script> <?php } ?>
+<!-- /Custom JavaScript -->
 
 <?php wp_footer(); ?>
 
