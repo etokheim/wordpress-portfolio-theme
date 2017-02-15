@@ -141,66 +141,113 @@
 
 	<!-- White boxes to simluate a frame -->
 	<div id="left_box_margin" class="frame_container align_pos_left">
-		<!-- <div class="frame_lefrig_hidden frame">
-			<div id="menuButton" onclick="expandMenu()">
+		<div class="frame_lefrig_hidden frame">
+			<!-- <div id="menuButton" onclick="expandMenu()">
 				<div class="menuButton_lines"></div>
 				<div class="menuButton_lines"></div>
 				<div class="menuButton_lines"></div>
-			</div>
-		</div> -->
+			</div> -->
 
-		<?php
-			$previousPost = get_previous_post(true);
-			if($previousPost) {
-				$prevPost = get_posts([
-					'posts_per_page' => 1,
-					'include' => $previousPost->ID
-				]);
 
-				foreach ($prevPost as $post) {
-					setup_postdata($post);
-		?>
+			<?php
+				$previousPost = get_previous_post(true);
+				if($previousPost) {
+					$previousPost = get_posts([
+						'posts_per_page' => 1,
+						'include' => $previousPost->ID
+					]);
 
-					<script>
-						$(document).ready(function() {
-							postNavigationView.prev.hasContent(true);
-							postNavigationView.prev.title("<?php the_title(); ?>");
-							postNavigationView.prev.excerpt("<?php echo get_the_excerpt() ?>");
-							postNavigationView.prev.permalink("<?php the_permalink(); ?>");
-							postNavigationView.prev.thumbnail('<?php the_post_thumbnail(); ?>');
-						});
-					</script>
+					foreach ($previousPost as $post) {
+						setup_postdata($post);
+			?>
 
-		<?php
-					wp_reset_postdata();
-				} // foreach
-			} // if
-		?>
+						<script>
+							$(document).ready(function() {
+								postNavigationView.prev.hasContent(true);
+								postNavigationView.prev.title("<?php the_title(); ?>");
+								postNavigationView.prev.excerpt("<?php echo get_the_excerpt() ?>");
+								postNavigationView.prev.permalink("<?php the_permalink(); ?>");
+								postNavigationView.prev.thumbnail('<?php the_post_thumbnail(); ?>');
+							});
+						</script>
 
-		<div class="post_navigation" data-bind="with: postNavigationView.prev">
-			<!-- ko if: hasContent() && screen.koDeviceSize() !== "mobile" -->
-			<a data-bind="attr: { href: permalink }">
-				<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }"">
-					<div class="post_navigation_preview post_navigation_previous post_navigation_preview_hidden" data-bind="css: { post_navigation_preview_hidden: !visible() }">
-						<div class="post_navigation_preview_constant_width">
-							<!-- <div class="post_navigation_arrow"></div> -->
-							<div class="post_navigation_image" data-bind="html: thumbnail"></div>
-							<h1 data-bind="text: title">Neste post</h1>
-							<p data-bind="text: excerpt">Kort forklaring av innlegget</p>
-						</div>
-					</div>
-					<img style="transform: rotate(90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
+			<?php
+						wp_reset_postdata();
+					} // foreach
+			?>
+
+				<div class="post_navigation" data-bind="with: postNavigationView.prev">
+					<!-- ko if: hasContent() && screen.koDeviceSize() !== "mobile" -->
+						<a data-bind="attr: { href: permalink }">
+							<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }"">
+								<div class="post_navigation_preview post_navigation_previous post_navigation_preview_hidden" data-bind="css: { post_navigation_preview_hidden: !visible() }">
+									<div class="post_navigation_preview_constant_width">
+										<!-- <div class="post_navigation_arrow"></div> -->
+										<div class="post_navigation_image" data-bind="html: thumbnail"></div>
+										<h1 data-bind="text: title">Neste post</h1>
+										<p data-bind="text: excerpt">Kort forklaring av innlegget</p>
+									</div>
+								</div>
+								<img style="transform: rotate(90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
+							</div>
+						</a>
+					<!-- /ko -->
 				</div>
-			</a>
-			<!-- /ko -->
+			<?php } // if ?>
 		</div>
 	</div>
 	<div id="right_box_margin" class="frame_container">
-		<!-- <div class="frame_lefrig_hidden align_pos_right frame">
-			<div id="toc_container">
+		<div class="frame_lefrig_hidden align_pos_right frame">
+			<!-- <div id="toc_container">
 
+			</div> -->
+
+			<?php
+				$nextPost = get_next_post(true);
+				if($nextPost) {
+					$nextPost = get_posts([
+						'posts_per_page' => 1,
+						'include' => $nextPost->ID
+					]);
+
+					foreach ($nextPost as $post) {
+						setup_postdata($post);
+			?>
+
+						<script>
+							$(document).ready(function() {
+								postNavigationView.next.hasContent(true);
+								postNavigationView.next.title("<?php the_title(); ?>");
+								postNavigationView.next.excerpt("<?php echo get_the_excerpt() ?>");
+								postNavigationView.next.permalink("<?php the_permalink(); ?>");
+								postNavigationView.next.thumbnail('<?php the_post_thumbnail(); ?>');
+							});
+						</script>
+
+			<?php
+						wp_reset_postdata();
+					} // foreach
+			?>
+
+			<div class="post_navigation" data-bind="with: postNavigationView.next">
+				<!-- ko if: hasContent() && screen.koDeviceSize() !== "mobile" -->
+				<a data-bind="attr: { href: permalink }">
+					<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }"">
+						<div class="post_navigation_preview post_navigation_next post_navigation_preview_hidden" data-bind="css: { post_navigation_preview_hidden: !visible() }">
+							<div class="post_navigation_preview_constant_width">
+								<!-- <div class="post_navigation_arrow"></div> -->
+								<div class="post_navigation_image" data-bind="html: thumbnail"></div>
+								<h1 data-bind="text: title">Neste post</h1>
+								<p data-bind="text: excerpt">Kort forklaring av innlegget</p>
+							</div>
+						</div>
+						<img style="transform: rotate(-90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
+					</div>
+				</a>
+				<!-- /ko -->
 			</div>
-		</div> -->
+			<?php } // if ?>
+		</div>
 	</div>
 
 	<div id="bottom_box_margin" class="frame_container">
