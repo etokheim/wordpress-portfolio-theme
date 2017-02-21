@@ -96,7 +96,7 @@
 	<header id="header" class="frame_container">
 		<div class="frame_topbot_hidden align_pos_top frame">
 			<div class="contain_header">
-				<a href="<?php echo home_url(); ?>">
+				<a class="header_logo_anchor" href="<?php echo home_url(); ?>">
 					<?php //bloginfo("name"); ?>
 					<img class="header_logo" itemprop="logo" alt="Erling Tokheim" src="<?php echo get_template_directory_uri() . "/img/logo-black.svg"; ?>"><?php // the_custom_logo(); ?>
 				</a>
@@ -118,7 +118,7 @@
 		</div>
 		<div class="header_gradient"></div>
 		<div class="contain_header">
-			<a href="<?php echo home_url(); ?>">
+			<a class="header_logo_anchor" href="<?php echo home_url(); ?>">
 				<?php //bloginfo("name"); ?>
 				<img class="header_logo" itemprop="logo" alt="Erling Tokheim" src="<?php echo get_template_directory_uri() . "/img/logo-white.svg"; ?>"><?php // the_custom_logo(); ?>
 			</a>
@@ -179,7 +179,7 @@
 				<div class="post_navigation" data-bind="with: postNavigationView.prev">
 					<!-- ko if: hasContent() && screen.koDeviceSize() !== "mobile" -->
 						<a data-bind="attr: { href: permalink }">
-							<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }"">
+							<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }">
 								<img style="transform: rotate(90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
 							</div>
 						</a>
@@ -224,7 +224,7 @@
 			<div class="post_navigation" data-bind="with: postNavigationView.next">
 				<!-- ko if: hasContent() && screen.koDeviceSize() !== "mobile" -->
 				<a data-bind="attr: { href: permalink }">
-					<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }"">
+					<div class="post_navigation_button" data-bind="event: { mouseover: $parent.show, mouseout: $parent.hide }">
 						<img style="transform: rotate(-90deg);" class="arrow_medium" src="<?php echo get_template_directory_uri() ?>/img/arrow.svg" alt="">
 					</div>
 				</a>

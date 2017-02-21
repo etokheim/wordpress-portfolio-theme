@@ -1531,7 +1531,7 @@ article {
 	width: calc(100% - 120px);
 	height: 60px;
 	margin: 0 auto;
-	padding: 15px 10px 15px 10px;
+	padding: 21px 10px 21px 10px;
 	z-index: 5;
 	position: relative;
 
@@ -1541,10 +1541,16 @@ article {
 	justify-content: space-between;
 }
 
+.header_logo_anchor {
+	height: 100%;
+}
+
 .header_logo {
-	height: 1rem;
-	/*padding: 10px;*/
+	height: 100%;
 	display: block;
+}
+
+.header_logo img {
 }
 
 .header_social_container {

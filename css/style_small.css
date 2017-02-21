@@ -22,7 +22,7 @@ section:after, article > header:after {
 }
 
 .contain_header {
-	padding: 15px 15px 15px 15px;
+	padding: 23px 15px 23px 15px;
 	width: calc(100% - 20px);
 }
 
