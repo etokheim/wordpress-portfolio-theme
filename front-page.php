@@ -103,7 +103,8 @@ get_header();
 					'post_type'        => 'post',
 					'post_mime_type'	=> '',
 					'post_parent'		=> '',
-					'post_status'		=> 'publish',
+					// If logged in, display not published posts too
+					'post_status'		=> is_user_logged_in() ? 'any' : 'publish',
 					'suppress_filters'	=> true,
 					'terms'				=> 'Forsidenyhet'
 				);
@@ -181,7 +182,8 @@ get_header();
 					'post_type'        => 'post',
 					'post_mime_type'	=> '',
 					'post_parent'		=> '',
-					'post_status'		=> 'publish',
+					// If logged in, display not published posts too
+					'post_status'		=> is_user_logged_in() ? 'any' : 'publish',
 					'suppress_filters'	=> true,
 					'terms'				=> ''
 				);
