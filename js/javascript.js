@@ -267,7 +267,7 @@ function modernizeObjectFit() {
 
 			if (imgUrl) {
 				$wrapper
-				.css('backgroundImage', 'url(' + imgUrl + ')')
+				.css({'backgroundImage': 'url(' + imgUrl + ')', 'z-index': -1})
 				.addClass('object_fit_IE_fallback')
 				.children('img').hide();
 			}
