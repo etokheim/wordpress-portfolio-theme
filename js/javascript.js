@@ -259,6 +259,19 @@ function modernizeObjectFit() {
 				.children('img').hide();
 			}
 		});
+
+		// Post navigation
+		$('.post_navigation_image').each(function () {
+			var $wrapper = $(this),
+			imgUrl = $wrapper.find('img').prop('src');
+
+			if (imgUrl) {
+				$wrapper
+				.css('backgroundImage', 'url(' + imgUrl + ')')
+				.addClass('object_fit_IE_fallback')
+				.children('img').hide();
+			}
+		});
 	}
 }
 
