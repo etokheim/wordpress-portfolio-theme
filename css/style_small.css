@@ -7,7 +7,7 @@ body {
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 2.3rem;
 }
 
 section:after, article > header:after {
@@ -137,11 +137,15 @@ section:after, article > header:after {
 
 #intro_txt h1 {
 	letter-spacing: 0.3rem;
+	word-break: break-word;
+	line-height: 2.5rem;
 	padding: 0 0.2rem;
+	margin-top: .5rem;
 }
 
 #intro_txt p {
 	padding: 0 1.5rem;
+	font-size: 1rem;
 }
 
 .feature_container {

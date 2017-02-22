@@ -1167,15 +1167,7 @@ article {
 }*/
 
 .entry_excerpt {
-	vertical-align: middle;
-	text-align: center;
-	font-size: 1.5rem;
-	color: #fff;
-	text-shadow: 0px 1px 1px rgba(0,0,0,0.5), 0 0px 20px rgba(0,0,0,.6);
-	font-style: italic;
-	margin-top: -25px;
 
-	font-family: 'Libre Baskerville', serif;
 }
 
 
@@ -2301,6 +2293,7 @@ em {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 
 	will-change: transform;
 	transform: translateZ(0);
@@ -2365,28 +2358,51 @@ em {
 	letter-spacing: 0.8rem;
 }
 
-#introduksjons_helsing {
+.mobile_extra_letter_spacing {
+	letter-spacing: 0.6rem !important;
+}
+
+#intro_txt p {
+	font-size: 1.5rem;
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.5), 0 0px 20px rgba(0,0,0,.6);
 	font-style: italic;
-	letter-spacing: 3px;
+
 	font-family: 'Libre Baskerville', serif;
 }
 
-.intro_cta_wrapper {
-	width: 400px;
-	background: green;
-	height: auto;
-	margin: 0 auto;
+#introduksjons_helsing {
+	font-style: italic;
+	letter-spacing: 0.18rem;
+	font-family: 'Libre Baskerville', serif;
+	z-index: 10;
+	color: #fff;
+	opacity: .75 !important;
+	margin: 0;
+	margin-bottom: -0.4rem;
+	text-align: center;
+	width: 100%;
+	padding: 0 10px;
+	display: block;
 }
 
+
 .intro_cta {
-	font-family: "proxima-nova" sans-serif;
-	letter-spacing: 10;
+	font-family: "proxima-nova" sans-serif !important;
+	/*letter-spacing: 0.05rem;*/
 	text-transform: uppercase;
 	font-size: 1rem;
 	font-style: normal;
 	display: block;
-	padding-top: 1rem;
+	/*padding-top: 1rem;*/
 	opacity: .5 !important;
+	color: #fff;
+	text-align: center;
+	/*text-decoration-color: #fff;*/
+	margin: 0;
+	margin-top: 0.5rem;
+}
+.intro_cta a {
+	color: #fff;
 }
 
 .separator {

@@ -45,15 +45,18 @@ get_header();
 			?>
 			<div class="intro_dimmer" data-bind="style: { display: introSlideshow.visiting() ? 'initial' : 'none' }"></div>
 
+			<p id="introduksjons_helsing" data-stellar-ratio="0.95">Vennligst aktiver javascript!</p>
 			<div id="intro_txt">
-				<p id="introduksjons_helsing" data-stellar-ratio="0.95">Vennligst aktiver javascript!</p>
-				<h1><?php echo get_bloginfo( 'description', 'display' ); ?></h1>
-				<!-- <div class="intro_cta_wrapper"> -->
-					<p class="intro_cta" data-stellar-ratio="0.95">↓ Bla for arbeider <span class="separator">|</span><a href="http://erling.tokheim.no/2014/01/25/om-meg/" style="color: #fff; text-decoration-color: #fff;">Les om meg →</a></p>
-				<!-- </div> -->
-				<!-- <button>Om meg</button> -->
-				<!-- <span style="color: #fff; font-size: 1.2rem;">↓</span> -->
+				<h1 class="mobile_extra_letter_spacing"><?php echo get_bloginfo( 'description', 'display' ); ?></h1>
 			</div>
+
+			<p class="intro_cta" data-stellar-ratio="0.95">
+				↓ Bla for arbeider
+				<span class="separator">|</span>
+				<a href="http://erling.tokheim.no/2014/01/25/om-meg/">
+					Les om meg →
+				</a>
+			</p>
 		</div>
 	</div>
 </section>
