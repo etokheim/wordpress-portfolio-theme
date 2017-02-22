@@ -2353,7 +2353,7 @@ em {
 	will-change: transform;
 	transform: translateZ(0);
 	max-width: calc(100% - 120px);
-	padding: 0 1.5rem;
+	/*padding: 0 1.5rem;*/
 }
 
 #intro_txt h1, #intro_txt p {
